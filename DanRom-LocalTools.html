@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DanRom LocalTools</title>
+
+    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" href="images/favicon.png" />
+</head>
+
+<body>
+    <header>
+        <fieldset style="margin-top: 0px">
+            <legend>DanRom LocalTools</legend>
+            <nav>
+                <button class="standardBtn" style="background-color: #380106; color: red"
+                    onclick="showForm('YT-DLP_GUI-FORM')">
+                    YT-DLP GUI
+                </button>
+                <!-- <button class="standardBtn" style="background-color: #004000; color: lime"
+                    onclick="showForm('FFMPEG_GUI-FORM')">
+                    FFMPEG GUI
+                </button>
+                <button class="standardBtn" onclick="showForm('RemoveLineBreaks-FORM')">
+                    Remove Line Breaks
+                </button>
+                <button class="standardBtn" onclick="showForm('FileName_UrlConverter-FORM')">
+                    File Name ↔ URL Converter
+                </button>
+                <button class="standardBtn" onclick="showForm('RemoveNonASCII-FORM')">
+                    Remove Non-ASCII
+                </button>
+                <button class="standardBtn" onclick="showForm('UrlCleaner-FORM')">
+                    URL Cleaner
+                </button>
+                <button class="standardBtn" onclick="showForm('ChangeLetterCase-FORM')">
+                    Change Letter Case
+                </button>
+                <button class="standardBtn" onclick="showForm('Listify-FORM')">
+                    Listify
+                </button> -->
+            </nav>
+        </fieldset>
+
+        <ul>
+            <li>📋 = Copy Script to Clipboard</li>
+            <!-- <li>📜 = Download Script</li> -->
+            <!-- <li>🔡 =  Non-ASCII characters from all file names in folder.</li> -->
+        </ul>
+    </header>
+
+    <main>
+        <div style="margin-bottom: 10px;">
+            <input id="copyButton" type="button" value="📋">
+        </div>
+        <form id="YT-DLP_GUI-FORM">
+            <fieldset>
+                <legend style="color: red">YT-DLP GUI</legend>
+
+                <script>
+                </script>
+
+                <a>Enter all channel, playlist and video URLs here
+                    <b>(One URL per line)</b>.</a>
+                <br />
+                <textarea id="textarea-YT-DLP_GUI" rows="10"></textarea>
+
+                <h3>Select Content to Download (Select at Least One):</h3>
+
+                <input type="checkbox" name="Video" id="Video-YT-DLP" />
+                <label for="Video-YT-DLP">Video (.mp4)</label>
+                <br />
+                <input type="checkbox" name="Audio" id="Audio-YT-DLP" />
+                <label for="Audio-YT-DLP">Audio (.mp3)</label>
+                <br />
+                <input type="checkbox" name="Thumbnail" id="Thumbnail-YT-DLP" />
+                <label for="Thumbnail-YT-DLP">Thumbnail (.png)</label>
+                <br />
+                <input type="checkbox" name="Subtitles" id="Subtitles-YT-DLP" />
+                <label for="Subtitles-YT-DLP">Subtitles (.vtt)</label>
+                <br />
+                <input type="checkbox" name="Comments" id="Comments-YT-DLP" />
+                <label for="Comments-YT-DLP">Metadata + Comments (.json)</label>
+
+                <h3>Set Video Resolution</h3>
+
+                <select id="VideoResolution-YT-DLP" name="VideoResolution-YT-DLP">
+                    <option value="Best">Best</option>
+                    <option value="4320">8K (4320p)</option>
+                    <option value="2160">4K (2160p)</option>
+                    <option value="1440">1440p</option>
+                    <option value="1080">1080p</option>
+                    <option value="720">720p</option>
+                    <option value="480">480p</option>
+                    <option value="360">360p</option>
+                    <option value="240">240p</option>
+                    <option value="144">144p</option>
+                </select>
+
+                <h4>NOTES:</h4>
+
+                <ul>
+                    <li>
+                        The above dropdown will be ignored if
+                        <i>Video</i> isn't selected.
+                    </li>
+                    <li>
+                        FPS will be determined automatically (Ex. 720p60
+                        videos will be 60fps)
+                    </li>
+                </ul>
+
+                <h3>Misc. Settings</h3>
+
+                <input type="checkbox" name="Channel-YT-DLP" id="Channel-YT-DLP" />
+                <label for="Channel-YT-DLP">Include Channel Name in File</label>
+
+                <h3>Power Options When Complete</h3>
+
+                <select id="PowerOptions-YT-DLP" name="PowerOptions-YT-DLP">
+                    <option value="None" selected>None</option>
+                    <option value="Hibernate">Hibernate</option>
+                    <option value="Shut Down">Shut Down</option>
+                </select>
+
+            </fieldset>
+        </form>
+
+        <form id="FFMPEG_GUI-FORM">
+            <fieldset>
+                <legend style="color: lime">FFMPEG GUI</legend>
+
+                <fieldset>
+                    <input type="file" id="fileInput" multiple />
+                    <div id="fileList"></div>
+                </fieldset>
+
+                <h3>Append At End Option</h3>
+                <input type="checkbox" name="AppendToEnd" id="AppendToEnd">
+                <label for="AppendToEnd">Append to End</label>
+                <p>
+                    If checked, the string `<i>(OUTPUT)</i>` will appear at the end of the file name. Otherwise, it will
+                    be
+                    inserted at the beginning.
+                </p>
+
+                <h3>Audio Options</h3>
+                <select id="AudioFilterOp" name="AudioFilterOp">
+                    <option value="NormalizeAudio" selected>Normalize Audio</option>
+                    <option value="NoAudioFilters">No Audio Filters</option>
+                    <option value="RemoveAudio">Remove Audio</option>
+                </select>
+                <p>
+                    <b>NOTE: </b> This option will be IGNORED if `Copy Audio Codec` is checked.
+                </p>
+
+                <h3>Graphics Card Options</h3>
+                <p>
+                    Select the graphics card you want to use. <b>NOTE: </b> Selecting this option will IGNORE the "Copy
+                    Video Codec" option below!
+                </p>
+                </div>
+
+                <select id="GraphicsCardOp" name="GraphicsCardOp">
+                    <option value="None_UseCPU">None (Use CPU)</option>
+                    <option value="h264_nvenc">h264_nvenc</option>
+                </select>
+
+                <hr>
+                <p>
+                    For the following sections below, check the boxes if you want to include the corresponding
+                    option. If an option's checkbox is not checked, it will not be used.
+                    <b>
+                        The default functionality assumed is an input an output of the same file type.
+                    </b>
+                </p>
+
+                <div>
+                    <input type="checkbox" name="TrimMedia" id="TrimMedia" onclick="ffmpegShowHide('TrimMedia')">
+                    <label for="TrimMedia">Trim Media</label>
+                </div>
+
+                <fieldset class="ffmpeg-fieldset" id="TrimMedia-Options">
+                    <ul>
+                        <li>
+                            Ensure that...
+                            <ul>
+                                <li>The input file is separated by a <b>line break</b>.</li>
+                                <li>Each desired input is mapped correctly (Ex. Line 1 of each input will be mapped to
+                                    the first command
+                                    in the script file).</li>
+                            </ul>
+                        </li>
+                        <li>If this option is selected, <b>you must upload your files AND place them in the textarea
+                                below for them to be processed.</b></li>
+                        <li>Trimmed Media will be placed in the same folder as the original file.</li>
+                    </ul>
+                    <p>
+                        For all inputs below, ensure that they are separated by a <b>line break</b> and that each
+                        desired input is mapped correctly (Ex. Line 1 of each input will be mapped to the first command
+                        in the script file).
+                    </p>
+                    <hr>
+                    <p>
+                        Enter the names of the files you'd like to trim <b>including file extensions</b> below:<br>
+                        <textarea class="textInput" name="InputFileNames" id="InputFileNames" rows="12"></textarea>
+                    </p>
+
+                    <p>
+                        Enter start and end times in the format below. Milliseconds are optional.
+                    <p>
+                        <code style="font-size: large"><b>HOURS:MINUTES:SECONDS</b>.MILLISECONDS</code>
+                        <br>
+                        <code style="font-size: large">Example: <b>01:23:45</b>.678</code>
+                    </p>
+                    </p>
+
+                    <p>
+                        Enter start times:<br>
+                        <textarea class="textInput" name="StartTimes" id="StartTimes" rows="12"></textarea>
+                    </p>
+
+                    <p>
+                        Enter end times:<br>
+                        <textarea class="textInput" name="EndTimes" id="EndTimes" rows="12"></textarea>
+                    </p>
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="ConvertFileType" id="ConvertFileType"
+                        onclick="ffmpegShowHide('ConvertFileType')">
+                    <label for="ConvertFileType">Convert File Type</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="ConvertFileType-Options">
+                    Enter all desired output file extensions separated by a <b>line break</b> below:
+                    <textarea class="textInput" name="OutputExtensions" id="OutputExtensions" rows="3"></textarea>
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="CopyCodecs" id="CopyCodecs" onclick="ffmpegShowHide('CopyCodecs')">
+                    <label for="CopyCodecs">Copy Codecs</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="CopyCodecs-Options">
+                    <input type="checkbox" name="CopyVideoCodec" id="CopyVideoCodec">
+                    <label for="CopyVideoCodec">Copy Video Codec</label>
+                    <input type="checkbox" name="CopyAudioCodec" id="CopyAudioCodec">
+                    <label for="CopyAudioCodec">Copy Audio Codec</label>
+
+                    <p><b>NOTE: </b>Selecting these options will cause the following options to be ignored:</p>
+                    <ul>
+                        <li>Custom Resolution (Affects Video Only)</li>
+                        <li>Reverse Media</li>
+                    </ul>
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="CustomBitrate" id="CustomBitrate"
+                        onclick="ffmpegShowHide('CustomBitrate')">
+                    <label for="CustomBitrate">Custom Bitrate</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="CustomBitrate-Options">
+                    <input type="number" min="0" name="CustomBitrateNum">
+                    kbps
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="CustomFramerate" id="CustomFramerate"
+                        onclick="ffmpegShowHide('CustomFramerate')">
+                    <label for="CustomFramerate">Custom Framerate</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="CustomFramerate-Options">
+                    <input type="number" min="0" name="CustomFramerateNum">
+                    FPS
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="CustomResolution" id="CustomResolution"
+                        onclick="ffmpegShowHide('CustomResolution')">
+                    <label for="CustomResolution">Custom Resolution</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="CustomResolution-Options">
+                    <div>
+                        <input type="radio" name="TypeOfScaling" id="16x9_AspectRatios" value="16x9" checked>
+                        <label for="16x9_AspectRatios">Use 16x9 Aspect Ratio For Down-Scaling: </label>
+
+                        <select id="Preset_16x9_Dimensions" name="Preset_16x9_Dimensions">
+                            <option value="1920:1080">1920 x 1080 (1080p)</option>
+                            <option value="1280:720">1280 x 720 (720p)</option>
+                            <option value="640:360">640 x 360 (360p)</option>
+                            <option value="512:288">512 x 288 (288p)</option>
+                            <option value="384:216">384 x 216 (216p)</option>
+                            <option value="256:144">256 x 144 (144p)</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <input type="radio" name="TypeOfScaling" id="CustomScaling" value="CustomScaling">
+                    <label for="CustomScaling">Use Custom Scaling</label>
+                    <p>
+                        Select the scaling algorithm you prefer:
+
+                        <select id="ScaleType" name="ScaleType">
+                            <option value="None">None</option>
+                            <option value="fast_bilinear">fast_bilinear</option>
+                            <option value="bilinear">bilinear</option>
+                            <option value="bicubic">bicubic</option>
+                            <option value="experimental">experimental</option>
+                            <option value="neighbor">neighbor</option>
+                            <option value="area">area</option>
+                            <option value="bicublin">bicublin</option>
+                            <option value="gauss">gauss</option>
+                            <option value="sinc">sinc</option>
+                            <option value="lanczos">lanczos</option>
+                            <option value="spline">spline</option>
+                            <option value="print_info">print_info</option>
+                            <option value="accurate_rnd">accurate_rnd</option>
+                            <option value="full_chroma_int">full_chroma_int</option>
+                            <option value="full_chroma_inp">full_chroma_inp</option>
+                            <option value="bitexact">bitexact</option>
+                            <option value="error_diffusion">error_diffusion</option>
+                        </select>
+                    </p>
+                    <p>
+                        Enter your desired multiplier of the scaled media.
+                        <input type="number" class="textInput" step="any" id="ScaleMultiplier" name="ScaleMultiplier"
+                            min="0">
+                    </p>
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="LoopMedia" id="LoopMedia" onclick="ffmpegShowHide('LoopMedia')">
+                    <label for="LoopMedia">Loop Media</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="LoopMedia-Options">
+                    Enter the total number of <b>additional</b> times you would like the media to be looped. (Ex. 1 loop
+                    is 2 times.)
+                    <br><input type="number" class="textInput" id="NumLoops" name="NumLoops" min="1">
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="ReverseMedia" id="ReverseMedia">
+                    <label for="ReverseMedia-FFMPEG">Reverse Media</label>
+                </div>
+                <hr>
+
+                <h3>Power Options When Complete</h3>
+
+                <select id="PowerOptions-FFMPEG" name="PowerOptions-FFMPEG">
+                    <option value="None" selected>None</option>
+                    <option value="Hibernate">Hibernate</option>
+                    <option value="Shut Down">Shut Down</option>
+                </select>
+            </fieldset>
+        </form>
+
+        <form id="RemoveLineBreaks-FORM">
+            <fieldset>
+                <legend>Remove Line Breaks</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias illo, ipsam officiis necessitatibus rem fugiat
+                    ratione ex beatae impedit eum cum sequi voluptatem
+                    excepturi delectus error minima aliquid nihil
+                    laboriosam.
+                </p>
+            </fieldset>
+        </form>
+
+        <form id="FileName_UrlConverter-FORM">
+            <fieldset>
+                <legend>File Name ↔ URL Converter</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias illo, ipsam officiis necessitatibus rem fugiat
+                    ratione ex beatae impedit eum cum sequi voluptatem
+                    excepturi delectus error minima aliquid nihil
+                    laboriosam.
+                </p>
+            </fieldset>
+        </form>
+
+        <form id="RemoveNonASCII-FORM">
+            <fieldset>
+                <legend>Remove Non-ASCII</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias illo, ipsam officiis necessitatibus rem fugiat
+                    ratione ex beatae impedit eum cum sequi voluptatem
+                    excepturi delectus error minima aliquid nihil
+                    laboriosam.
+                </p>
+            </fieldset>
+        </form>
+
+        <form id="UrlCleaner-FORM">
+            <fieldset>
+                <legend>URL Cleaner</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ut voluptatum aut officia. Dignissimos, molestiae.
+                    Molestias delectus ad impedit asperiores sequi nihil, a,
+                    quisquam ipsum iure quaerat suscipit ea illo cupiditate!
+                </p>
+            </fieldset>
+        </form>
+
+        <form id="ChangeLetterCase-FORM">
+            <fieldset>
+                <legend>Change Letter Case</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias illo, ipsam officiis necessitatibus rem fugiat
+                    ratione ex beatae impedit eum cum sequi voluptatem
+                    excepturi delectus error minima aliquid nihil
+                    laboriosam.
+                </p>
+            </fieldset>
+        </form>
+
+        <form id="Listify-FORM">
+            <fieldset>
+                <legend>Listify</legend>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias illo, ipsam officiis necessitatibus rem fugiat
+                    ratione ex beatae impedit eum cum sequi voluptatem
+                    excepturi delectus error minima aliquid nihil
+                    laboriosam.
+                </p>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>
+            <a href="https://www.flaticon.com/free-icon/settings_576981" title="settings icons">Settings icons created
+                by Soodesign - Flaticon</a>
+        </p>
+    </footer>
+
+    <img src="../images/up-button.png" id="backtop" onclick="totop()" />
+    <script src="scripts/backtop.js"></script>
+    <link rel="stylesheet" href="scripts/backtop.css" />
+</body>
+
+<script src="scripts/showForm.js"></script>
+<script src="scripts/ffmpegShowHide.js"></script>
+<script src="scripts/fileHandler.js"></script>
+
+<!-- <script>
+    let blob
+    let objectURL
+    window.addEventListener('DOMContentLoaded', () => {
+        blob = new Blob(['Hello, world!'], { type: 'text/plain' });
+        objectURL = URL.createObjectURL(blob);
+
+        // const a = document.createElement("a");
+        // a.style.display = "none";
+        // a.href = objectURL;
+        // a.download = "file_paths.txt";
+        // document.body.appendChild(a);
+        // a.click();
+        // URL.revokeObjectURL(objectURL);
+        // document.body.removeChild(a);
+    });
+
+    document.getElementById("downloadButton").addEventListener("click", function () {
+        if (!scriptBuilder()) return
+
+        blob = new Blob(['Hello, world!'], { type: 'text/plain' });
+        objectURL = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = objectURL;
+        a.download = "file_paths.txt";
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(objectURL);
+        document.body.removeChild(a);
+    }); -->
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+#backtop {
+    /* (A) BOTTOM RIGHT CORNER */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+
+    /* (B) HIDDEN BY DEFAULT */
+    display: none;
+    visibility: none;
+    opacity: 0;
+
+    /* (C) COSMETICS */
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+/* (D) SHOW BUTTON */
+#backtop.show {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* (X) DOES NOT MATTER */
+* {
+    box-sizing: border-box;
+}

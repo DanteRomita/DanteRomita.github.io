@@ -39,11 +39,6 @@ input[type="file"] {
     font-size: large;
 }
 
-select {
-    font-family: monospace;
-    font-size: x-large;
-}
-
 textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

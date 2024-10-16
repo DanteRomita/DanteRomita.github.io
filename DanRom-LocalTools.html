@@ -23,22 +23,22 @@
                     onclick="showForm('FFMPEG_GUI-FORM')">
                     FFMPEG GUI
                 </button>
-                <!-- <button class="standardBtn" onclick="showForm('RemoveLineBreaks-FORM')">
+                <button class="standardBtn" onclick="showForm('RemoveLineBreaks-FORM')">
                     Remove Line Breaks
                 </button>
-                <button class="standardBtn" onclick="showForm('FileName_UrlConverter-FORM')">
+                <!-- <button class="standardBtn" onclick="showForm('FileName_UrlConverter-FORM')">
                     File Name ↔ URL Converter
-                </button>
-                <button class="standardBtn" onclick="showForm('RemoveNonASCII-FORM')">
+                </button> -->
+                <!-- <button class="standardBtn" onclick="showForm('RemoveNonASCII-FORM')">
                     Remove Non-ASCII
-                </button>
-                <button class="standardBtn" onclick="showForm('UrlCleaner-FORM')">
+                </button> -->
+                <!-- <button class="standardBtn" onclick="showForm('UrlCleaner-FORM')">
                     URL Cleaner
-                </button>
-                <button class="standardBtn" onclick="showForm('ChangeLetterCase-FORM')">
+                </button> -->
+                <!-- <button class="standardBtn" onclick="showForm('ChangeLetterCase-FORM')">
                     Change Letter Case
-                </button>
-                <button class="standardBtn" onclick="showForm('Listify-FORM')">
+                </button> -->
+                <!-- <button class="standardBtn" onclick="showForm('Listify-FORM')">
                     Listify
                 </button> -->
             </nav>
@@ -133,8 +133,8 @@
                 <legend style="color: lime">FFMPEG GUI</legend>
 
                 <fieldset>
-                    <input type="file" id="fileInput" multiple />
-                    <ul style="font-family: monospace; font-size: medium;" id="fileList"></ul>
+                    <input class="fileInput" type="file" id="fileInput-FFMPEG" multiple />
+                    <ul style="font-family: monospace; font-size: medium;" id="fileList-FFMPEG"></ul>
                 </fieldset>
 
                 <h3>Append At End Option</h3>
@@ -358,25 +358,212 @@
             <fieldset>
                 <legend>Remove Line Breaks</legend>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias illo, ipsam officiis necessitatibus rem fugiat
-                    ratione ex beatae impedit eum cum sequi voluptatem
-                    excepturi delectus error minima aliquid nihil
-                    laboriosam.
+                    Enter text to remove line breaks from below:<br>
+                    <textarea id="RemoveLineBreaks-Textarea" rows="20"></textarea>
                 </p>
+                <fieldset>
+                    <legend>Output</legend>
+                    <p id="RemoveLineBreaks-Output"></p>
+                </fieldset>
             </fieldset>
         </form>
 
         <form id="FileName_UrlConverter-FORM">
             <fieldset>
                 <legend>File Name ↔ URL Converter</legend>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias illo, ipsam officiis necessitatibus rem fugiat
-                    ratione ex beatae impedit eum cum sequi voluptatem
-                    excepturi delectus error minima aliquid nihil
-                    laboriosam.
+                <details>
+                    <summary><b>Format For File Names</b></summary>
+                    <fieldset style="margin-top: 10px;">
+                        <p>
+                            <b>NOTE: </b>Naming conventions below do not include file extensions. The conventions below
+                            apply to any
+                            valid media file extension.
+                        </p>
+
+                        <p>
+                            <b>General File Name Format:</b>
+                            <b style="color: green;">AccountName</b>-<b style="color: green;">ID</b>-<b
+                                style="color: grey;">WhateverElse</b>
+                        </p>
+                        <p>
+                        <ul>
+                            <li>
+                                <b style="color: grey;">WhateverElse</b>
+                                will be removed as it doesn't matter what comes after the ID.
+                            </li>
+                            <li>Supported platforms that follow the general convention are as follows:
+                                <ul>
+                                    <li>Twitter / X</li>
+                                    <li>Tumblr</li>
+                                    <li>Bluesky</li>
+                                    <li>Threads (An @ symbol precedes every username)</li>
+                                </ul>
+                            </li>
+                            <li>Platforms whose formats do not follow this convention will be specified below.</li>
+                        </ul>
+
+                        <p>
+                            <b style="color: deeppink">Instagram:</b>
+                            Only the ID matters in the file name, and <i style="color: deeppink">~IG~</i> replaces the
+                            dash in the
+                            general format.
+                            <i style="color: deeppink">Also, the ID in the format below refers to the POST ID, not the
+                                image ID when
+                                downloading an image from Instagram.
+                                This design is intentional as it's the easiest way to identify the image author!</i>
+                        </p>
+                        <p>
+                            <b style="color: orange">Newgrounds:</b>
+                            <i style="color: orange">~NG~</i> replaces the dash in the general format and the post's
+                            name is used
+                            instead of an ID.
+                            Newgrounds formats may not always work since the account name provided by the image isn't
+                            always
+                            up-to-date.
+                        <ul>
+                            <li>
+                                <b>Newgrounds File Name Format: </b><b style="color: orange">AccountName</b>~NG~<b
+                                    style="color: orange">PostName</b>~NG~WhateverElse
+                            </li>
+                        </ul>
+                        </p>
+                        <p>
+                            <b style="color: orangered">Reddit:</b>
+                            Subreddit name, ID and post name matter in the file name.
+                            <i style="color: orangered">Also, the ID in the format below refers to the POST ID, not the
+                                image ID
+                                when
+                                downloading an image from Reddit.
+                                This design is intentional as it's the easiest way to identify the image author!</i>
+                        <ul>
+                            <li>
+                                <b>Reddit File Name Format: </b><b style="color: orangered">Subreddit</b>-<b
+                                    style="color: orangered">ID</b>-<b
+                                    style="color: orangered">PostName</b></b>-WhateverElse
+                            </li>
+                        </ul>
+                        </p>
+                        <p>
+                            <b style="color: #00e59b">DeviantArt:</b>
+                            Account name, post name and ID matter in the file name.
+                        <ul>
+                            <li>
+                                <b>DeviantArt File Name Format: </b><b style="color: #00e59b">AccountName</b>-<b
+                                    style="color: #00e59b">PostNameAndID</b>
+                            </li>
+                        </ul>
+                        </p>
+                        <p>
+                            <b style="color: dodgerblue">Pixiv:</b>
+                            Only IDs matter, with underscores as delimiters in the file name [ _ ]. Otherwise, the
+                            naming convention
+                            is the same.
+                        <ul>
+                            <li>
+                                <b>Pixiv File Name Format: </b>AccountName_<b
+                                    style="color: dodgerblue">ID</b>_WhateverElse
+                            </li>
+                        </ul>
+                        </p>
+                        <p>
+                            <b style="color: lightsalmon">FurAffinity:</b>
+                            Only IDs matter, with periods as delimiters in the file name [ . ]. Otherwise, the naming
+                            convention is
+                            the same.
+                            <i style="color: lightsalmon">Also, the ID in the format below refers to the POST ID, not
+                                the
+                                image ID when
+                                downloading an image from FurAffinity.
+                                This design is intentional as it's the easiest way to identify the image author!</i>
+                        <ul>
+                            <li>
+                                <b>FurAffinity File Name Format: </b>AccountName.<b
+                                    style="color: lightsalmon">ID</b>.WhateverElse
+                            </li>
+                        </ul>
+                        </p>
+
+                        <p>
+                            <b style="color: lightblue">Pillowfort:</b> Only IDs matter. Otherwise, the naming
+                            convention is the same.
+                        </p>
+                    </fieldset>
+                </details>
+                <fieldset style="margin-top: 10px;">
+                    <fieldset>
+                        <input class="fileInput" type="file" id="fileInput-FileNameURL" multiple>
+                        <ul id="fileList-FileNameURL"></ul>
+                    </fieldset>
+
+                    <p>
+                        OR, you can input either all file names or all URLs here:
+                        <textarea class="textInput" id="FileNamesOrURLs-Textarea" rows="10"></textarea>
+                        (This textarea will be ignored if files are uploaded.)
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <input type="checkbox" id="OptDiscordEmb" name="OptDiscordEmb">
+                    <label for="OptDiscordEmb">Optimal Discord Embedding in URLs</label>
+
+                    <p>
+                    <details>
+                        <summary><b>What's Optimal Discord Embedding?</b></summary>
+                        <p>
+                            This option only applies when converting file names to URLs. Discord utilizes
+                            special variants of social media URLs for better embedding in messages containing links.
+                            Here are a few
+                            examples:
+                        <ul>
+                            <li>twitter.com ➡ fxtwitter.com</li>
+                            <li>instagram.com ➡ ddinstagram.com</li>
+                            <li>pixiv.net ➡ phixiv.net</li>
+                        </ul>
+                        These links redirect you the same page, so these variants exist purely for better embedding on
+                        Discord and
+                        other supported platforms.
+                        </p>
+                    </details>
+                    </p>
+                </fieldset>
+                <p><b style="font-size: large;">Select Conversion Type: </b>
+                    <select id="FileNameURL-Option">
+                        <option value="FileName_to_URL">File Name -> URL</option>
+                        <option value="URL_to_FileName">URL -> File Name</option>
+                    </select>
                 </p>
+
+                <p><b style="font-size: large;">Select Platform: </b>
+                    <select id="Platform">
+                        <option value="Twitter">Twitter / X</option>
+                        <option value="Tumblr">Tumblr</option>
+                        <option value="Bluesky">Bluesky</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Threads">Threads</option>
+                        <option value="Newgrounds">Newgrounds</option>
+                        <option value="Reddit">Reddit</option>
+                        <option value="DeviantArt">DeviantArt</option>
+                        <option value="Pixiv">Pixiv</option>
+                        <option value="FurAffinity">FurAffinity</option>
+                        <option value="Pillowfort">Pillowfort</option>
+                    </select>
+                </p>
+
+                <p>
+                    <b>NOTE:</b> If using
+                    <i style="color: deeppink">Instagram</i>,
+                    <i style="color: orange">Reddit</i>,
+                    <i style="color: dodgerblue">Pixiv</i>,
+                    <i style="color: brown">FurAffinity</i>, or
+                    <i style="color: lightblue">Pillowfort</i>
+                    combined with "URL -> File Name", it's recommended to input the account name below. This field will
+                    not be used in any other use case.
+                    <br>
+                    <input class="textInput" id="CustomAccName">
+                </p>
+                <fieldset>
+                    <legend>Output</legend>
+                    <ul id="Output-FileNameURL"></ul>
+                </fieldset>
             </fieldset>
         </form>
 
@@ -446,7 +633,9 @@
 
 <script src="scripts/showForm.js"></script>
 <script src="scripts/ffmpegShowHide.js"></script>
-<script src="scripts/fileHandler.js"></script>
+<script src="scripts/clipboardHandler.js"></script>
+<script src="scripts/removeLineBreaks.js"></script>
+<script src="scripts/fileListDisplay.js"></script>
 
 <!-- <script>
     let blob

@@ -10,22 +10,6 @@ function removeExt(fileName) {
     return fileNoExt
 }
 
-document.getElementById("fileInput").addEventListener("change", function (event) {
-    const files = event.target.files;
-
-    const fileList = document.getElementById("fileList");
-    fileList.textContent = ""; // Clear previous entries
-
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const fileName = file.name;
-
-        const fileEntry = document.createElement("li");
-        fileEntry.textContent = fileName;
-        fileList.appendChild(fileEntry);
-    }
-});
-
 function powerOp(PowerOp) {
     if (PowerOp === `Hibernate`) return `shutdown /h\n`
     if (PowerOp === `Shut Down`) return `Stop-Computer\n`
@@ -41,9 +25,9 @@ function ytdlpHelper(Thumbnail, Subtitles, Comments) {
 }
 
 const finalLine = `\necho 'Reached End of Script'`
-let commandStr = ``
-function scriptBuilder() {
-    commandStr = ``
+let outputStr = ``
+function outputStrBuilder() {
+    outputStr = ``
 
     if (mostRecentForm === `YT-DLP_GUI-FORM`) {
         let URLs = document.getElementById("textarea-YT-DLP_GUI").value.trim().split("\n")
@@ -73,33 +57,33 @@ function scriptBuilder() {
         for (URL of URLs) {
             if (Video) {
                 if (VidRes === `Best`) {
-                    commandStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
                 } else {
-                    commandStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
                 }
             }
 
             if (Audio) {
-                commandStr += `${baseStr} '${URL}' -x --audio-format mp3 `;
-                if (!Video) commandStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments)} `;
-                commandStr += `\n`;
+                outputStr += `${baseStr} '${URL}' -x --audio-format mp3 `;
+                if (!Video) outputStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments)} `;
+                outputStr += `\n`;
             }
 
             if (!(Video || Audio)) {
-                commandStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments)} --skip-download\n`;
+                outputStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments)} --skip-download\n`;
             }
         }
 
-        commandStr += removeNonASCII_PS
-        commandStr += powerOp(PowerOp)
-        commandStr += finalLine
+        outputStr += removeNonASCII_PS
+        outputStr += powerOp(PowerOp)
+        outputStr += finalLine
         return true
     }
 
     if (mostRecentForm === `FFMPEG_GUI-FORM`) {
-        commandStr += removeNonASCII_PS
+        outputStr += removeNonASCII_PS
         
-        const files = document.getElementById("fileInput").files;
+        const files = document.getElementById("fileInput-FFMPEG").files;
         if (files.length === 0) { alert("No files selected."); return false }
 
         let selectedFiles = []
@@ -149,7 +133,7 @@ function scriptBuilder() {
             }
             for (let i = 0; i < InputFileNames.length; i++) {
                 if (selectedFiles.includes(InputFileNames[i])) {
-                    commandStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy "${TempOutputFileNames[i].replaceAll(`$`, `\`$`)}"\n`
+                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy "${TempOutputFileNames[i].replaceAll(`$`, `\`$`)}"\n`
                 }
             }
             selectedFiles = TempOutputFileNames
@@ -213,34 +197,46 @@ function scriptBuilder() {
                 for (ext of OutputExtensions) {
                     if (document.getElementById("AppendToEnd").checked) outFile = `${removeExt(inFile)} (OUTPUT).${ext}`
                     else outFile = `(OUTPUT) ${removeExt(inFile)}.${ext}`
-                    commandStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
+                    outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
                 }
             } else {
                 let ext = inFile.split(`.`).pop();
                 if (document.getElementById("AppendToEnd").checked) outFile = `${inFile} (OUTPUT).${ext}`
                 else outFile = `(OUTPUT) ${inFile}`
-                commandStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
+                outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
             }
         }
 
         if (document.getElementById("TrimMedia").checked) {
-            commandStr += `# Remove Temporary Files\n`
+            outputStr += `# Remove Temporary Files\n`
             for (tempFile of TempOutputFileNames) {
-                commandStr += `Remove-Item -LiteralPath "${tempFile}"\n`
+                outputStr += `Remove-Item -LiteralPath "${tempFile}"\n`
             }
         }
 
         // Finalize Script
-        commandStr += powerOp(PowerOp);
-        commandStr += finalLine;
+        outputStr += powerOp(PowerOp);
+        outputStr += finalLine;
+        return true
+    }
+
+    if (mostRecentForm === `RemoveLineBreaks-FORM`) {
+        rlbOutput = document.getElementById("RemoveLineBreaks-Output").textContent;
+        console.log(rlbOutput)
+        if (rlbOutput.trim() === ``) {
+            alert("Output cannot be empty!");
+            return false
+        }
+
+        outputStr = rlbOutput
         return true
     }
 }
 
 document.getElementById("copyButton").addEventListener("click", function () {
-    if (scriptBuilder()) {
-        navigator.clipboard.writeText(commandStr);
-        alert("Commands copied to clipboard!");
+    if (outputStrBuilder()) {
+        navigator.clipboard.writeText(outputStr);
+        alert("Output copied to clipboard!");
     }
 })
 

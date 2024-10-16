@@ -19,11 +19,11 @@
                     onclick="showForm('YT-DLP_GUI-FORM')">
                     YT-DLP GUI
                 </button>
-                <!-- <button class="standardBtn" style="background-color: #004000; color: lime"
+                <button class="standardBtn" style="background-color: #004000; color: lime"
                     onclick="showForm('FFMPEG_GUI-FORM')">
                     FFMPEG GUI
                 </button>
-                <button class="standardBtn" onclick="showForm('RemoveLineBreaks-FORM')">
+                <!-- <button class="standardBtn" onclick="showForm('RemoveLineBreaks-FORM')">
                     Remove Line Breaks
                 </button>
                 <button class="standardBtn" onclick="showForm('FileName_UrlConverter-FORM')">
@@ -44,16 +44,16 @@
             </nav>
         </fieldset>
 
-        <ul>
+        <!-- <ul>
             <li>📋 = Copy Script to Clipboard</li>
-            <!-- <li>📜 = Download Script</li> -->
-            <!-- <li>🔡 =  Non-ASCII characters from all file names in folder.</li> -->
-        </ul>
+            <li>📜 = Download Script</li>
+            <li>🔡 =  Non-ASCII characters from all file names in folder.</li>
+        </ul> -->
     </header>
 
     <main>
-        <div style="margin-bottom: 10px;">
-            <input id="copyButton" type="button" value="📋">
+        <div style="margin-bottom: 10px; display: flex; justify-content: center">
+            <input id="copyButton" type="button" value="📋 Copy to Clipboard">
         </div>
         <form id="YT-DLP_GUI-FORM">
             <fieldset>
@@ -134,7 +134,7 @@
 
                 <fieldset>
                     <input type="file" id="fileInput" multiple />
-                    <div id="fileList"></div>
+                    <ul style="font-family: monospace; font-size: medium;" id="fileList"></ul>
                 </fieldset>
 
                 <h3>Append At End Option</h3>
@@ -261,7 +261,7 @@
                     <label for="CustomBitrate">Custom Bitrate</label>
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="CustomBitrate-Options">
-                    <input type="number" min="0" name="CustomBitrateNum">
+                    <input type="number" min="0" id="CustomBitrateNum">
                     kbps
                 </fieldset>
 
@@ -271,7 +271,7 @@
                     <label for="CustomFramerate">Custom Framerate</label>
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="CustomFramerate-Options">
-                    <input type="number" min="0" name="CustomFramerateNum">
+                    <input type="number" min="0" id="CustomFramerateNum">
                     FPS
                 </fieldset>
 
@@ -340,7 +340,7 @@
 
                 <div>
                     <input type="checkbox" name="ReverseMedia" id="ReverseMedia">
-                    <label for="ReverseMedia-FFMPEG">Reverse Media</label>
+                    <label for="ReverseMedia">Reverse Media</label>
                 </div>
                 <hr>
 

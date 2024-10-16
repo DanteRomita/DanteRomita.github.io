@@ -1,4 +1,4 @@
-const removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+const removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
 
 function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, ''); }
 
@@ -20,7 +20,7 @@ document.getElementById("fileInput").addEventListener("change", function (event)
         const file = files[i];
         const fileName = file.name;
 
-        const fileEntry = document.createElement("div");
+        const fileEntry = document.createElement("li");
         fileEntry.textContent = fileName;
         fileList.appendChild(fileEntry);
     }
@@ -108,7 +108,7 @@ function scriptBuilder() {
         let GraphicsCardOp = document.getElementById("GraphicsCardOp").value
 
         let InputFileNames = document.getElementById("InputFileNames").value.split("\n").filter(item => item !== '')
-        let OutputFileNames = InputFileNames.map((fileName, index) => {
+        let TempOutputFileNames = InputFileNames.map((fileName, index) => {
             let parts = fileName.split('.');
             let fileNameWithoutExtension = parts.slice(0, parts.length - 1).join('.');
             let extension = parts[parts.length - 1];
@@ -123,8 +123,8 @@ function scriptBuilder() {
 
         let CopyVideoCodec = document.getElementById("CopyVideoCodec").checked
         let CopyAudioCodec = document.getElementById("CopyAudioCodec").checked
-        let CustomBitrate = document.getElementById("CustomBitrate").checked
-        let CustomFramerate = document.getElementById("CustomFramerate").checked
+        let CustomBitrateNum = document.getElementById("CustomBitrateNum").value
+        let CustomFramerateNum = document.getElementById("CustomFramerateNum").value
 
         let TypeOfScaling
         if (document.getElementById("16x9_AspectRatios").checked) {
@@ -149,9 +149,10 @@ function scriptBuilder() {
             }
             for (let i = 0; i < InputFileNames.length; i++) {
                 if (selectedFiles.includes(InputFileNames[i])) {
-                    commandStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy "${OutputFileNames[i].replaceAll(`$`, `\`$`)}"\n`
+                    commandStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy "${TempOutputFileNames[i].replaceAll(`$`, `\`$`)}"\n`
                 }
             }
+            selectedFiles = TempOutputFileNames
         }
 
         let hwAccelStr = ``
@@ -199,8 +200,8 @@ function scriptBuilder() {
         if (AudioFilterOp === `RemoveAudio`) modifications += `-an `
         else if (!CopyAudioCodec && afFilters != ``) modifications += afStr
 
-        if (document.getElementById("CustomBitrate").checked && CustomBitrate !== ``) modifications += `-b:v ${CustomBitrate}k -bufsize ${CustomBitrate}k `
-        if (document.getElementById("CustomFramerate").checked && CustomFramerate !== ``) modifications += `-r ${CustomFramerate} `
+        if (document.getElementById("CustomBitrate").checked && CustomBitrateNum !== ``) modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `
+        if (document.getElementById("CustomFramerate").checked && CustomFramerateNum !== ``) modifications += `-r ${CustomFramerateNum} `
 
         modifications = modifications.trim()
 
@@ -219,6 +220,13 @@ function scriptBuilder() {
                 if (document.getElementById("AppendToEnd").checked) outFile = `${inFile} (OUTPUT).${ext}`
                 else outFile = `(OUTPUT) ${inFile}`
                 commandStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
+            }
+        }
+
+        if (document.getElementById("TrimMedia").checked) {
+            commandStr += `# Remove Temporary Files\n`
+            for (tempFile of TempOutputFileNames) {
+                commandStr += `Remove-Item -LiteralPath "${tempFile}"\n`
             }
         }
 

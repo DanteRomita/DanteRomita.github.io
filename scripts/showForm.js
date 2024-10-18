@@ -15,7 +15,7 @@ function showForm(formId) {
     }
 
     const copyButton = document.getElementById("copyButton");
-    if (formId === `RemoveNonASCII-FORM`) { copyButton.style.display = "none"; }
+    if (formId === `RemoveNonASCII-FORM` || formId === `ChangeLetterCase-FORM`) { copyButton.style.display = "none"; }
     else { copyButton.style.display = "block"; }
 }
 

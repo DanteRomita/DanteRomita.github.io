@@ -212,7 +212,7 @@ function fileUrlConverter() {
 }
 
 function handleChanges_FileNameURL() {
-    outputElement = document.getElementById("FileNameURL-Output")
+    let outputElement = document.getElementById("FileNameURL-Output")
     outputElement.textContent = ``
 
     let output

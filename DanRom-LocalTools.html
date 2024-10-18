@@ -43,12 +43,6 @@
                 </button>
             </nav>
         </fieldset>
-
-        <!-- <ul>
-            <li>📋 = Copy Script to Clipboard</li>
-            <li>📜 = Download Script</li>
-            <li>🔡 =  Non-ASCII characters from all file names in folder.</li>
-        </ul> -->
     </header>
 
     <main>
@@ -629,12 +623,28 @@
         <form id="UrlCleaner-FORM">
             <fieldset>
                 <legend>URL Cleaner</legend>
+                Enter the URLs to clean below:
+                <textarea id="UrlCleaner-Textarea" rows="3"></textarea>
+
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ut voluptatum aut officia. Dignissimos, molestiae.
-                    Molestias delectus ad impedit asperiores sequi nihil, a,
-                    quisquam ipsum iure quaerat suscipit ea illo cupiditate!
+                    Select the type of URL you want to clean:
+                    <select id="UrlCleaner-UrlType">
+                        <option value="Default">Default</option>
+                        <option value="Article">Article</option>
+                        <option value="Tumblr">Tumblr</option>
+                    </select>
                 </p>
+
+                <p>
+                    Check out <a
+                        href="https://www.allthescience.org/what-is-a-research-article.htm#:~:text=A%20research%20article%20is%20a%20written%20paper%20that,a%20general%20scope%20as%20a%20means%20of%20introduction.">this
+                        example</a> to see what a long article URL looks like.
+                </p>
+
+                <fieldset>
+                    <legend>Output</legend>
+                    <ul id="UrlCleaner-Output"></ul>
+                </fieldset>
             </fieldset>
         </form>
 
@@ -748,6 +758,7 @@
 <script src="scripts/removeNonASCII-Display.js"></script>
 <script src="scripts/changeLetterCase.js"></script>
 <script src="scripts/listifyDisplay.js"></script>
+<script src="scripts/urlCleanerDisplay.js"></script>
 
 <!-- <script>
     let blob

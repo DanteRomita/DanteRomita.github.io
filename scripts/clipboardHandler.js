@@ -260,6 +260,11 @@ function outputStrBuilder() {
         outputStr = listify()
         return true
     }
+    
+    if (mostRecentForm === `UrlCleaner-FORM`) {
+        outputStr = urlCleaner().join(`\n`)
+        return true
+    }
 }
 
 document.getElementById("copyButton").addEventListener("click", function () {

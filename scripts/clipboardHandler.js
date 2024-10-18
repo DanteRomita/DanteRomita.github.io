@@ -222,7 +222,6 @@ function outputStrBuilder() {
 
     if (mostRecentForm === `RemoveLineBreaks-FORM`) {
         rlbOutput = document.getElementById("RemoveLineBreaks-Output").textContent;
-        console.log(rlbOutput)
         if (rlbOutput.trim() === ``) {
             alert("Output cannot be empty!");
             return false
@@ -252,6 +251,15 @@ function outputStrBuilder() {
         // Handled in HTML file
     }
     */
+
+    // if (mostRecentForm === `ChangeLetterCase-FORM`) {
+    //     // Handled in HTML file
+    // }
+
+    if (mostRecentForm === `Listify-FORM`) {
+        outputStr = listify()
+        return true
+    }
 }
 
 document.getElementById("copyButton").addEventListener("click", function () {

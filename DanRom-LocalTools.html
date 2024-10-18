@@ -38,9 +38,9 @@
                 <button class="standardBtn" onclick="showForm('ChangeLetterCase-FORM')">
                     Change Letter Case
                 </button>
-                <!-- <button class="standardBtn" onclick="showForm('Listify-FORM')">
+                <button class="standardBtn" onclick="showForm('Listify-FORM')">
                     Listify
-                </button> -->
+                </button>
             </nav>
         </fieldset>
 
@@ -701,13 +701,28 @@
         <form id="Listify-FORM">
             <fieldset>
                 <legend>Listify</legend>
+                Enter Text to Listify:
+                <textarea id="Listify-Textarea" rows="10"></textarea>
+                
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias illo, ipsam officiis necessitatibus rem fugiat
-                    ratione ex beatae impedit eum cum sequi voluptatem
-                    excepturi delectus error minima aliquid nihil
-                    laboriosam.
+                    Choose Delimiter:
+                    <select id="Delimiter-Listify">
+                        <option value=" ">Space [ ] or NewLine [ \n ]</option>
+                        <option value=",">Comma [ , ]</option>
+                        <option value=";">Semicolon [ ; ]</option>
+                        <option value="|">Pipe [ | ]</option>
+                        <option value=":">Colon [ : ]</option>
+                        <option value="&">Ampersand [ & ]</option>
+                        <option value="*">Star [ * ]</option>
+                        <option value="-">Dash [ - ]</option>
+                        <option value="_">Underscore [ _ ]</option>
+                    </select>
                 </p>
+
+                <fieldset>
+                    <legend>Output</legend>
+                    <p id="Listify-Output"></p>
+                </fieldset>
             </fieldset>
         </form>
     </main>
@@ -732,6 +747,7 @@
 <script src="scripts/fileUrlConverter.js"></script>
 <script src="scripts/removeNonASCII-Display.js"></script>
 <script src="scripts/changeLetterCase.js"></script>
+<script src="scripts/listifyDisplay.js"></script>
 
 <!-- <script>
     let blob

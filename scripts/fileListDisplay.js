@@ -1,5 +1,5 @@
-document.querySelectorAll(".fileInput").forEach(function(inputElement) {
-    inputElement.addEventListener("change", function(event) {
+document.querySelectorAll(".fileInput").forEach(function (inputElement) {
+    inputElement.addEventListener("change", function (event) {
         const files = event.target.files;
         const fileListId = inputElement.id.replace("fileInput-", "fileList-"); // Get corresponding fileList ID
         const fileList = document.getElementById(fileListId);
@@ -16,3 +16,15 @@ document.querySelectorAll(".fileInput").forEach(function(inputElement) {
         }
     });
 });
+
+document.querySelectorAll(".clearFiles").forEach(function(clearBtn) {
+    clearBtn.addEventListener("click", function () {
+        let formType = clearBtn.id.split("-").pop();
+
+        const fileInputElement = document.getElementById(`fileInput-${formType}`);
+        const fileListElement = document.getElementById(`fileList-${formType}`);
+
+        fileInputElement.value = "";
+        fileListElement.textContent = "";
+    })
+})

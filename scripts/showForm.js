@@ -13,6 +13,10 @@ function showForm(formId) {
     } else {
         console.error(`Element with ID ${formId} not found.`);
     }
+
+    const copyButton = document.getElementById("copyButton");
+    if (formId === `RemoveNonASCII-FORM`) { copyButton.style.display = "none"; }
+    else { copyButton.style.display = "block"; }
 }
 
 if (localStorage.getItem("mostRecentForm")) {

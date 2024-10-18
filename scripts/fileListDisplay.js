@@ -11,7 +11,9 @@ document.querySelectorAll(".fileInput").forEach(function (inputElement) {
             const fileName = file.name;
 
             const fileEntry = document.createElement("li");
-            fileEntry.textContent = fileName;
+            if (inputElement.id === `fileInput-RemoveNonASCII`) fileEntry.textContent = removeNonASCII_JS(fileName);
+            else fileEntry.textContent = fileName;
+            
             fileList.appendChild(fileEntry);
         }
     });

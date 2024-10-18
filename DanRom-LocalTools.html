@@ -29,9 +29,9 @@
                 <button class="standardBtn" onclick="showForm('FileName_UrlConverter-FORM')">
                     File Name ↔ URL Converter
                 </button>
-                <!-- <button class="standardBtn" onclick="showForm('RemoveNonASCII-FORM')">
+                <button class="standardBtn" onclick="showForm('RemoveNonASCII-FORM')">
                     Remove Non-ASCII
-                </button> -->
+                </button>
                 <!-- <button class="standardBtn" onclick="showForm('UrlCleaner-FORM')">
                     URL Cleaner
                 </button> -->
@@ -134,7 +134,8 @@
 
                 <fieldset>
                     <input class="fileInput" type="file" id="fileInput-FFMPEG" multiple />
-                    <input class="clearFiles" id="clearFiles-FFMPEG" style="font-size: large;" type="button" id="clear-fileInput-FFMPEG" value="Clear">
+                    <input class="clearFiles" id="clearFiles-FFMPEG" style="font-size: large;" type="button"
+                        id="clear-fileInput-FFMPEG" value="Clear">
                     <ul style="font-family: monospace; font-size: medium;" id="fileList-FFMPEG"></ul>
                 </fieldset>
 
@@ -493,7 +494,8 @@
                 <fieldset style="margin-top: 10px;">
                     <fieldset>
                         <input class="fileInput" type="file" id="fileInput-FileNameURL" multiple>
-                        <input class="clearFiles" id="clearFiles-FileNameURL" style="font-size: large;" type="button" id="clear-fileInput-FileNameURL" value="Clear">
+                        <input class="clearFiles" id="clearFiles-FileNameURL" style="font-size: large;" type="button"
+                            id="clear-fileInput-FileNameURL" value="Clear">
                         <ul id="fileList-FileNameURL"></ul>
                     </fieldset>
 
@@ -517,7 +519,7 @@
                             examples:
                         <ul>
                             <li>x.com ➡ fixupx.com</li>
-                            <li>bsky.app ➡ bsyy.app</li> 
+                            <li>bsky.app ➡ bsyy.app</li>
                             <li>instagram.com ➡ ddinstagram.com</li>
                             <li>pixiv.net ➡ phixiv.net</li>
                         </ul>
@@ -574,12 +576,52 @@
             <fieldset>
                 <legend>Remove Non-ASCII</legend>
                 <p>
+                    You can copy a Powershell command, upload files, or enter text to remove non-ASCII characters from
+                    below.
+                </p>
+
+                <p>
+                    <input style="font-size: x-large" type="button" id="copyCommand_PS-RemoveNonASCII"
+                        value="Copy Powershell Command" onclick="navigator.clipboard.writeText(
+                            `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+                            ); alert('Powershell Command Copied!');">
+                </p>
+
+                <fieldset>
+                    <input class="fileInput" type="file" id="fileInput-RemoveNonASCII" multiple>
+                    <input class="clearFiles" id="clearFiles-RemoveNonASCII" style="font-size: large;" type="button"
+                        id="clear-fileInput-RemoveNonASCII" value="Clear">
+                    <ul id="fileList-RemoveNonASCII"></ul>
+                    <hr>
+                    <input style="font-size: x-large;" type="button" id="copyFileList-RemoveNonASCII"
+                        value="Copy File List" onclick="
+                    if (document.getElementById('fileInput-RemoveNonASCII').files.length === 0) { alert('No Files Uploaded.'); return; }
+                    navigator.clipboard.writeText(document.getElementById('fileList-RemoveNonASCII').innerText); alert('File List Copied!')
+                    ">
+                </fieldset>
+
+                <p>
+                    Enter text to remove non-ASCII characters from below:
+                    <textarea id="RemoveNonASCII-Textarea" rows="10"></textarea>
+                </p>
+
+                <p>
+                    <input style="font-size: x-large;" type="button" id="copyTextArea-RemoveNonASCII"
+                        value="Copy Text" onclick="navigator.clipboard.writeText(removeNonASCII_JS(document.getElementById('RemoveNonASCII-Textarea').value)); alert('Text Copied!')">
+                </p>
+
+                <fieldset>
+                    <legend>Output</legend>
+                    <p id="RemoveNonASCII-Output"><p>
+                </fieldset>
+
+                <!-- <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Molestias illo, ipsam officiis necessitatibus rem fugiat
                     ratione ex beatae impedit eum cum sequi voluptatem
                     excepturi delectus error minima aliquid nihil
                     laboriosam.
-                </p>
+                </p> -->
             </fieldset>
         </form>
 
@@ -640,6 +682,7 @@
 <script src="scripts/removeLineBreaks.js"></script>
 <script src="scripts/fileListDisplay.js"></script>
 <script src="scripts/fileUrlConverter.js"></script>
+<script src="scripts/removeNonASCII-Display.js"></script>
 
 <!-- <script>
     let blob

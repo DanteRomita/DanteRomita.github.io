@@ -43,12 +43,6 @@
                 </button>
             </nav>
         </fieldset>
-
-        <!-- <ul>
-            <li>📋 = Copy Script to Clipboard</li>
-            <li>📜 = Download Script</li>
-            <li>🔡 =  Non-ASCII characters from all file names in folder.</li>
-        </ul> -->
     </header>
 
     <main>
@@ -130,13 +124,19 @@
 
         <form id="FFMPEG_GUI-FORM">
             <fieldset>
-                <legend style="color: lime">FFMPEG GUI</legend>
-
                 <fieldset>
-                    <input class="fileInput" type="file" id="fileInput-FFMPEG" multiple />
-                    <input class="clearFiles" id="clearFiles-FFMPEG" style="font-size: large;" type="button"
-                        id="clear-fileInput-FFMPEG" value="Clear">
-                    <ul style="font-family: monospace; font-size: medium;" id="fileList-FFMPEG"></ul>
+                    <legend style="color: lime">FFMPEG GUI</legend>
+
+                    <fieldset>
+                        <input class="fileInput" type="file" id="fileInput-FFMPEG" multiple />
+                        <input class="clearFiles" id="clearFiles-FFMPEG" style="font-size: large;" type="button"
+                            id="clear-fileInput-FFMPEG" value="Clear">
+                        <ul style="font-family: monospace; font-size: medium;" id="fileList-FFMPEG"></ul>
+                    </fieldset>
+
+                    OR, you can input either all file names here (One item per line):
+                    <textarea id="textarea-FFMPEG" rows="10"></textarea>
+                    (If there is content in this textarea, files will be ignored.)
                 </fieldset>
 
                 <h3>Append At End Option</h3>
@@ -500,7 +500,7 @@
                     </fieldset>
 
                     <p>
-                        OR, you can input either all file names or all URLs here <b>(One Item per line)</b>:
+                        OR, you can input either all file names or all URLs here <b>(One item per line)</b>:
                         <textarea class="textInput" id="FileNamesOrURLs-Textarea" rows="10"></textarea>
                         (If there is content in this textarea, files will be ignored.)
                     </p>
@@ -615,14 +615,6 @@
                     <p id="RemoveNonASCII-Output">
                     <p>
                 </fieldset>
-
-                <!-- <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestias illo, ipsam officiis necessitatibus rem fugiat
-                    ratione ex beatae impedit eum cum sequi voluptatem
-                    excepturi delectus error minima aliquid nihil
-                    laboriosam.
-                </p> -->
             </fieldset>
         </form>
 
@@ -703,7 +695,7 @@
                 <legend>Listify</legend>
                 Enter Text to Listify:
                 <textarea id="Listify-Textarea" rows="10"></textarea>
-                
+
                 <p>
                     Choose Delimiter:
                     <select id="Delimiter-Listify">
@@ -748,39 +740,5 @@
 <script src="scripts/removeNonASCII-Display.js"></script>
 <script src="scripts/changeLetterCase.js"></script>
 <script src="scripts/listifyDisplay.js"></script>
-
-<!-- <script>
-    let blob
-    let objectURL
-    window.addEventListener('DOMContentLoaded', () => {
-        blob = new Blob(['Hello, world!'], { type: 'text/plain' });
-        objectURL = URL.createObjectURL(blob);
-
-        // const a = document.createElement("a");
-        // a.style.display = "none";
-        // a.href = objectURL;
-        // a.download = "file_paths.txt";
-        // document.body.appendChild(a);
-        // a.click();
-        // URL.revokeObjectURL(objectURL);
-        // document.body.removeChild(a);
-    });
-
-    document.getElementById("downloadButton").addEventListener("click", function () {
-        if (!scriptBuilder()) return
-
-        blob = new Blob(['Hello, world!'], { type: 'text/plain' });
-        objectURL = URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.style.display = "none";
-        a.href = objectURL;
-        a.download = "file_paths.txt";
-        document.body.appendChild(a);
-        a.click();
-        URL.revokeObjectURL(objectURL);
-        document.body.removeChild(a);
-    }); -->
-</script>
 
 </html>

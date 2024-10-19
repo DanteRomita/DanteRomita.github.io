@@ -36,7 +36,7 @@ input[type="button"] {
 }
 
 input[type="file"] {
-    font-size: large;
+    font-size: medium;
 }
 
 textarea {

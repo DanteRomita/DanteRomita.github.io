@@ -83,11 +83,14 @@ function outputStrBuilder() {
     if (mostRecentForm === `FFMPEG_GUI-FORM`) {
         outputStr += removeNonASCII_PS
 
+        const textareaFileList = document.getElementById("textarea-FFMPEG").value.trim().split(`\n`);
         const files = document.getElementById("fileInput-FFMPEG").files;
-        if (files.length === 0) { alert("No files selected."); return false }
+
+        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
 
         let selectedFiles = []
-        for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
+        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
+        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
 
         let GraphicsCardOp = document.getElementById("GraphicsCardOp").value
 

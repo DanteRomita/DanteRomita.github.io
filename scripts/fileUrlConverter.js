@@ -53,9 +53,9 @@ function fileUrlConverter() {
                         let account = file[0]
                         let id = file[1].split(`.`)[0]
 
-                        let embPrefix = `bsky`
-                        if (OptDiscordEmb) embPrefix = `bsyy`
-                        OutputItems.push(`https://${embPrefix}.app/profile/${account}.bsky.social/post/${id}`)
+                        let embPrefix = ``
+                        if (OptDiscordEmb) embPrefix = `c`
+                        OutputItems.push(`https://${embPrefix}bsky.app/profile/${account}.bsky.social/post/${id}`)
                     }
                     break;
                 case `Threads`:
@@ -86,7 +86,10 @@ function fileUrlConverter() {
                         let subreddit = file[1]
                         let id = file[2]
                         let postName = file[3].split(`.`)[0]
-                        OutputItems.push(`https://www.reddit.com/r/${subreddit}/comments/${id}/${postName}`)
+
+                        let embPrefix = `reddit`
+                        if (OptDiscordEmb) embPrefix = `rxddit`
+                        OutputItems.push(`https://www.${embPrefix}.com/r/${subreddit}/comments/${id}/${postName}`)
                     }
                     break;
                 case `DeviantArt`:

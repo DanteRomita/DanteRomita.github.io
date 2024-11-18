@@ -57,9 +57,9 @@ function outputStrBuilder() {
         for (URL of URLs) {
             if (Video) {
                 if (VidRes === `Best`) {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --recode-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
                 } else {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --remux-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --recode-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
                 }
             }
 

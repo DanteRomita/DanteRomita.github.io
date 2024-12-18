@@ -16,15 +16,16 @@ function powerOp(PowerOp) {
     return `\n`
 }
 
-function ytdlpHelper(Thumbnail, Subtitles, Comments) {
+function ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies) {
     let str = ``
     if (Thumbnail) str += `--write-thumbnail --convert-thumbnails png `
     if (Subtitles) str += `--write-subs --sub-langs 'en.*,ja' `
     if (Comments) str += `--write-comments `
+    if (Cookies) str += `--cookies cookies.txt `
     return str
 }
 
-const finalLine = `\necho 'Reached End of Script'`
+const finalLine = `\n# ---REACHED END OF SCRIPT---\n`
 let outputStr = ``
 function outputStrBuilder() {
     outputStr = ``
@@ -41,6 +42,8 @@ function outputStrBuilder() {
         let VidRes = document.getElementById("VideoResolution-YT-DLP").value
 
         let Channel = document.getElementById("Channel-YT-DLP").checked
+        let VidID = document.getElementById("VideoID-YT-DLP").checked
+        let Cookies = document.getElementById("UseCookies-YT-DLP").checked
 
         let PowerOp = document.getElementById("PowerOptions-YT-DLP").value
 
@@ -51,26 +54,30 @@ function outputStrBuilder() {
         }
 
         let baseStr = `yt-dlp -o `
-        if (Channel) baseStr += `'%(uploader)s - %(title)s.%(ext)s'`
+        if (Channel && VidID) baseStr += `'%(uploader)s - %(title)s [VidID-%(id)s].%(ext)s'`
+        else if (Channel) baseStr += `'%(uploader)s - %(title)s.%(ext)s'`
+        else if (VidID) baseStr += `'%(title)s [VidID-%(id)s].%(ext)s'`
         else baseStr += `'%(title)s.%(ext)s'`
 
+        let convertType = `recode`
+        if (document.getElementById("RemuxFiles-YT-DLP").checked) convertType = `remux`
         for (URL of URLs) {
             if (Video) {
                 if (VidRes === `Best`) {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --recode-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
                 } else {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --recode-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments)}\n`;
+                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
                 }
             }
 
             if (Audio) {
                 outputStr += `${baseStr} '${URL}' -x --audio-format mp3 `;
-                if (!Video) outputStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments)} `;
+                if (!Video) outputStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} `;
                 outputStr += `\n`;
             }
 
             if (!(Video || Audio)) {
-                outputStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments)} --skip-download\n`;
+                outputStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} --skip-download\n`;
             }
         }
 

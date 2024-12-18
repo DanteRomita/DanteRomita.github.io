@@ -53,9 +53,6 @@
             <fieldset>
                 <legend style="color: red">YT-DLP GUI</legend>
 
-                <script>
-                </script>
-
                 <a>Enter all channel, playlist and video URLs here
                     <b>(One URL per line)</b>.</a>
                 <br />
@@ -104,12 +101,31 @@
                         FPS will be determined automatically (Ex. 720p60
                         videos will be 60fps)
                     </li>
+                    <li>
+                        To use cookies, select the "Use Cookies" checkbox and ensure that a <b
+                            style="color: yellow">cookies.txt</b> file exists in the SAME FOLDER that you run the script
+                        in! It should also be in NETSCAPE format. You can easily download cookies via the open-source <a
+                            href="https://cookie-editor.com">Cookie-Editor</a> browser extension. Also, if the script
+                        doesn't work for certain videos the first time, try running it again and it may work the second
+                        time.
+                    </li>
                 </ul>
 
                 <h3>Misc. Settings</h3>
 
                 <input type="checkbox" name="Channel-YT-DLP" id="Channel-YT-DLP" />
-                <label for="Channel-YT-DLP">Include Channel Name in File</label>
+                <label for="Channel-YT-DLP">Include Channel Name in File { <b style="color: yellow">%(uploader)s - </b>
+                    %(title)s.%(ext)s }</label>
+                <br>
+                <input type="checkbox" name="VideoID-YT-DLP" id="VideoID-YT-DLP" />
+                <label for="VideoID-YT-DLP">Include Video ID in File { %(title)s <b
+                        style="color: yellow">[VidID-%(id)s]</b>.%(ext)s }</label>
+                <br>
+                <input type="checkbox" name="RemuxFiles-YT-DLP" id="RemuxFiles-YT-DLP" />
+                <label for="RemuxFiles-YT-DLP">Remux Files (Downloads files faster, but are less compatible)</label>
+                <br>
+                <input type="checkbox" name="UseCookies-YT-DLP" id="UseCookies-YT-DLP" />
+                <label for="UseCookies-YT-DLP">Use Cookies</label>
 
                 <h3>Power Options When Complete</h3>
 
@@ -384,12 +400,12 @@
                         <p>
                             <b>General File Name Format:</b>
                             <b style="color: green;">AccountName</b>-<b style="color: green;">ID</b>-<b
-                                style="color: grey;">WhateverElse</b>
+                                style="color: slategrey;">WhateverElse</b>
                         </p>
                         <p>
                         <ul>
                             <li>
-                                <b style="color: grey;">WhateverElse</b>
+                                <b style="color: slategrey;">WhateverElse</b>
                                 will be removed as it doesn't matter what comes after the ID.
                             </li>
                             <li>Supported platforms that follow the general convention are as follows:
@@ -412,6 +428,12 @@
                                 image ID when
                                 downloading an image from Instagram.
                                 This design is intentional as it's the easiest way to identify the image author!</i>
+                        <ul>
+                            <li>
+                                <b>Instagram File Name Format: </b>AccountName~IG~<b style="color: deeppink">ID</b>~IG~WhateverElse
+                                </b>
+                            </li>
+                        </ul>
                         </p>
                         <p>
                             <b style="color: orange">Newgrounds:</b>

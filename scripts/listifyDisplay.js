@@ -1,4 +1,5 @@
 function listify_basic(textToListify, delimiter) {
+    console.log(textToListify)
     return `- ${textToListify.replaceAll(delimiter, `\n- `)}`
 }
 

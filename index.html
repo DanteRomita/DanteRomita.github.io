@@ -1,11 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dante Romita's Website</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
-    <h1>Under Construction</h1>
+
+<body class="has-text-white" style="margin:2%">
+    <header>
+        <h1 style="color:cyan" class="title has-text-centered is-size-1">Dante Romita's Website</h1>
+        <nav class="box nav-wrapper">
+            <a href="https://github.com/DanteRomita">
+                <button class="button nav-btn" style="background-color: #f0f6fc; color:#171515">GitHub</button>
+                <!-- style="background-color: #f0f6fc; color:#171515" -->
+            </a>
+            <a href="https://www.linkedin.com/in/dante-romita/">
+                <button class="button nav-btn" style="background-color: #0077b5">LinkedIn</button>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-margin">
+            <div class="box has-background-info-dark has-text-white">
+                <h2 class="title has-text-centered">About Me</h2>
+                <p class="content">
+                    Welcome to my website! I'm currently a Computer Science Master's student at <a
+                        href="https://www.torontomu.ca">Toronto Metropolitan University</a> after having previously
+                    achieved my
+                    Bachelor's degree, also at TMU! This is my landing page for all information about me, as well as
+                    links to my various profiles both professional and personal. This page will also serve as portfolio
+                    for all my projects. Check them out below or visit my links above to learn more!
+                </p>
+            </div>
+        </section>
+        <section class="section-margin">
+            <h2 class="title has-text-centered">My Projects</h2>
+            <p class="content has-text-centered">
+                To check out my projects, simply click either the title of the project or its corresponding image below!
+            </p>
+            <div class="columns">
+                <div class="column">
+                    <div class="box has-text-white" style="background-color: #000020">
+                        <h3 class="title has-text-centered has-text-weight-bold is-size-4">
+                            <a style="color:#79a1e8" href=DanRom-LocalTools.html>DanRom LocalTools</a>
+                        </h3>
+
+                        <div class="content center-custom">
+                            <a href=DanRom-LocalTools.html>
+                                <img src="images/favicon.png" class="image is-128x128" alt="DanRom LocalTools">
+                            </a>
+                        </div>
+
+                        <article>
+                            <p class="content">
+                                This project is a suite of tools which greatly assists me in my day-to-day workflow.
+                                It's also entirely client-side with no server component while also being hosted entirely
+                                on GitHub Pages, meaning there's nothing to download, so only copy/pasting is needed!
+                            </p>
+                            <h4 class="subtitle">Script Building</h4>
+                            <p class="content">
+                                One of the most useful type of tools in this collection is scripting building with an
+                                intuitive, easy-to-use interface! There are many excellent open-source tools out there,
+                                but a large subset of them are also command-line only. If GUIs for these programs do
+                                exist, many do not encapsulate enough of the useful, regularly used features these
+                                programs provide.
+                            </p>
+                            <b class="box has-background-warning has-text-black">
+                                IMPORTANT: Ensure that the programs are installed on your device <u>before</u> using
+                                these tools, or they won't work! It is recommended to install these programs such that
+                                you can run them from the command line in any directory.
+                            </b>
+                            <div class="card has-background-primary-dark has-text-white">
+                                <header class="card-header">
+                                    <p class="card-header-title">Supported Programs</p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <ul>
+                                            <li>
+                                                <a class="bold-underline" style="color:red"
+                                                    href="https://github.com/yt-dlp/yt-dlp">YT-DLP</a>
+                                                (An open-source tool for downloading YouTube videos)
+                                            </li>
+                                            <li><a class="bold-underline" style="color:lime"
+                                                    href="https://ffmpeg.org">FFMPEG</a> (An open-source tool for
+                                                multimedia processing)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box has-text-white">
+                        <h3 class="title has-text-centered has-text-weight-bold is-size-4">Romita Recommends</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
 </body>
+
 </html>

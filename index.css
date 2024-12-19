@@ -1,0 +1,22 @@
+.nav-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    margin: 2px
+}
+
+.section-margin {
+    margin-top: 24px
+}
+
+.center-custom {
+    display: flex; justify-content: center; align-items: center;
+}
+
+.bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+}

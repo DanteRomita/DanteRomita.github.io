@@ -1,12 +1,22 @@
-function listify() {
-    let textToListify = document.getElementById("Listify-Textarea").value.trim().replace(/\s+/g, ' ')
-    let delimiter = document.getElementById("Delimiter-Listify").value
+function listify_basic(textToListify, delimiter) {
     return `- ${textToListify.replaceAll(delimiter, `\n- `)}`
 }
 
+function listify_newLine(textToListify) {
+    lines = textToListify.split(`\n`)
+    return lines.map(line => `- ${line}`)
+}
+
 function handleChanges_Listify() {
+    let textToListify = document.getElementById("Listify-Textarea").value.trim()//.replace(/\s+/g, ' ')
+
     document.getElementById("Listify-Output").textContent = ``
-    let displayText = listify().split(`\n`)
+    let delimiter = document.getElementById("Delimiter-Listify").value
+    let displayText
+
+    if (delimiter === `NewLine`) displayText = listify_newLine(textToListify)
+    else displayText = listify_basic(textToListify, delimiter).split(`\n`)
+
     for (line of displayText) {
         let li = document.createElement(`li`)
         li.textContent = line

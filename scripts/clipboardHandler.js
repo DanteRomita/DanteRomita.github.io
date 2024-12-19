@@ -267,7 +267,7 @@ function outputStrBuilder() {
     // }
 
     if (mostRecentForm === `Listify-FORM`) {
-        outputStr = listify()
+        outputStr = listify_basic()
         return true
     }
 }

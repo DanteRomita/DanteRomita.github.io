@@ -159,8 +159,8 @@ function outputStrBuilder() {
         let modifications = ``
 
         if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} -preset slow -cq 28 -b:v 0 `
-        if (CopyVideoCodec) modifications += `-c:v copy `
-        if (CopyAudioCodec) modifications += `-c:a copy `
+        if (CopyVideoCodec) modifications += `-c:v copy `; else modifications += `-map 0:v `
+        if (CopyAudioCodec) modifications += `-c:a copy `; else modifications += `-map 0:a `
 
         let vfFilters = ``
         let afFilters = ``

@@ -143,7 +143,7 @@ function outputStrBuilder() {
             }
             for (let i = 0; i < InputFileNames.length; i++) {
                 if (selectedFiles.includes(InputFileNames[i])) {
-                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`
+                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy -map 0:v -map 0:a "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`
                 }
             }
             selectedFiles = TempOutputItems

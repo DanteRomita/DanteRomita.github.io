@@ -115,8 +115,12 @@ function outputStrBuilder() {
 
         let AudioFilterOp = document.getElementById("AudioFilterOp").value
 
+        let VideoMapping = document.getElementById("VideoMapping").checked
+        let AudioMapping = document.getElementById("AudioMapping").checked
+
         let CopyVideoCodec = document.getElementById("CopyVideoCodec").checked
         let CopyAudioCodec = document.getElementById("CopyAudioCodec").checked
+
         let CustomBitrateNum = document.getElementById("CustomBitrateNum").value
         let CustomFramerateNum = document.getElementById("CustomFramerateNum").value
 
@@ -143,7 +147,7 @@ function outputStrBuilder() {
             }
             for (let i = 0; i < InputFileNames.length; i++) {
                 if (selectedFiles.includes(InputFileNames[i])) {
-                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -vcodec copy -acodec copy -map 0:v -map 0:a "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`
+                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -c:v copy -c:a copy -map 0:v -map 0:a "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`
                 }
             }
             selectedFiles = TempOutputItems
@@ -159,8 +163,12 @@ function outputStrBuilder() {
         let modifications = ``
 
         if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} -preset slow -cq 28 -b:v 0 `
-        if (CopyVideoCodec) modifications += `-c:v copy `; else modifications += `-map 0:v `
-        if (CopyAudioCodec) modifications += `-c:a copy `; else modifications += `-map 0:a `
+
+        if (CopyVideoCodec) modifications += `-c:v copy `
+        if (CopyAudioCodec) modifications += `-c:a copy `
+
+        if (VideoMapping) modifications += `-map 0:v `
+        if (AudioMapping) modifications += `-map 0:a `
 
         let vfFilters = ``
         let afFilters = ``

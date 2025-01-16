@@ -175,8 +175,8 @@
 
                 <h3>Graphics Card Options</h3>
                 <p>
-                    Select the graphics card you want to use. <b>NOTE: </b> Selecting this option will IGNORE the "Copy
-                    Video Codec" option below!
+                    Select the graphics card you want to use. <b>NOTE: </b> Selecting this option will cause the `Copy
+                    Video Codec` option below to be IGNORED!
                 </p>
                 </div>
 
@@ -256,6 +256,21 @@
                 </fieldset>
 
                 <div>
+                    <input type="checkbox" name="VideoAudioMapping" id="VideoAudioMapping" onclick="ffmpegShowHide('VideoAudioMapping')">
+                    <label for="VideoAudioMapping">Video / Audio Mapping</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="VideoAudioMapping-Options">
+                    Selecting these options will ensure that all video and/or audio streams are mapped correctly and should be enabled if you want to keep all of the audio tracks of your input files. <b>Otherwise, only the first video and audio track will be retained in the output file!</b>
+
+                    <p>
+                        <input type="checkbox" name="VideoMapping" id="VideoMapping">
+                        <label for="VideoMapping">Use Video Mapping</label>
+                        <input type="checkbox" name="AudioMapping" id="AudioMapping">
+                        <label for="AudioMapping">Use Audio Mapping</label>
+                    </p>
+                </fieldset>
+
+                <div>
                     <input type="checkbox" name="CopyCodecs" id="CopyCodecs" onclick="ffmpegShowHide('CopyCodecs')">
                     <label for="CopyCodecs">Copy Codecs</label>
                 </div>
@@ -265,10 +280,15 @@
                     <input type="checkbox" name="CopyAudioCodec" id="CopyAudioCodec">
                     <label for="CopyAudioCodec">Copy Audio Codec</label>
 
-                    <p><b>NOTE: </b>Selecting these options will cause the following options to be ignored:</p>
+                    <p><b>NOTE:</b></p>
                     <ul>
-                        <li>Custom Resolution (Affects Video Only)</li>
-                        <li>Reverse Media</li>
+                        <li>
+                            Selecting these options will cause the following options to be ignored:
+                            <ul>
+                                <li>Custom Resolution (Affects Video Only)</li>
+                                <li>Reverse Media</li>
+                            </ul>
+                        </li>
                     </ul>
                 </fieldset>
 
@@ -430,7 +450,8 @@
                                 This design is intentional as it's the easiest way to identify the image author!</i>
                         <ul>
                             <li>
-                                <b>Instagram File Name Format: </b>AccountName~IG~<b style="color: deeppink">ID</b>~IG~WhateverElse
+                                <b>Instagram File Name Format: </b>AccountName~IG~<b
+                                    style="color: deeppink">ID</b>~IG~WhateverElse
                                 </b>
                             </li>
                         </ul>

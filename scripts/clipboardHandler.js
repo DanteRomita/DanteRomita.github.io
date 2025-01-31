@@ -173,7 +173,7 @@ function outputStrBuilder() {
         let vfFilters = ``
         let afFilters = ``
 
-        if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm=I=-89:TP=-1,`
+        if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
 
         if (document.getElementById("CustomResolution").checked) {
             if (TypeOfScaling === `16x9`) {

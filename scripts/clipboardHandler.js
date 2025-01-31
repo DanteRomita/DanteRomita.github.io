@@ -173,7 +173,7 @@ function outputStrBuilder() {
         let vfFilters = ``
         let afFilters = ``
 
-        if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
+        if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm=I=-89:TP=-1,`
 
         if (document.getElementById("CustomResolution").checked) {
             if (TypeOfScaling === `16x9`) {
@@ -192,8 +192,8 @@ function outputStrBuilder() {
         }
 
         // Remove the trailing comma from the filters if they are not empty
-        vfFilters = vfFilters.replace(/(^,)|(,$)/g, "")
-        afFilters = afFilters.replace(/(^,)|(,$)/g, "")
+        vfFilters = vfFilters.replace(/(^,)|(,$)/g, ``)
+        afFilters = afFilters.replace(/(^,)|(,$)/g, ``)
 
         let vfStr = `-vf "${vfFilters}" `
         let afStr = `-af "${afFilters}" `

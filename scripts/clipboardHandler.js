@@ -54,9 +54,9 @@ function outputStrBuilder() {
         }
 
         let baseStr = `yt-dlp -o `
-        if (Channel && VidID) baseStr += `'%(uploader)s - %(title)s [VidID-%(id)s].%(ext)s'`
+        if (Channel && VidID) baseStr += `'%(uploader)s - %(title)s [VidID~%(id)s].%(ext)s'`
         else if (Channel) baseStr += `'%(uploader)s - %(title)s.%(ext)s'`
-        else if (VidID) baseStr += `'%(title)s [VidID-%(id)s].%(ext)s'`
+        else if (VidID) baseStr += `'%(title)s [VidID~%(id)s].%(ext)s'`
         else baseStr += `'%(title)s.%(ext)s'`
 
         let convertType = `recode`

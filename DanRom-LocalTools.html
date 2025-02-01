@@ -119,7 +119,7 @@
                 <br>
                 <input type="checkbox" name="VideoID-YT-DLP" id="VideoID-YT-DLP" />
                 <label for="VideoID-YT-DLP">Include Video ID in File { %(title)s <b
-                        style="color: yellow">[VidID-%(id)s]</b>.%(ext)s }</label>
+                        style="color: yellow">[VidID~%(id)s]</b>.%(ext)s }</label>
                 <br>
                 <input type="checkbox" name="RemuxFiles-YT-DLP" id="RemuxFiles-YT-DLP" />
                 <label for="RemuxFiles-YT-DLP">Remux Files (Downloads files faster, but are less compatible)</label>
@@ -256,11 +256,14 @@
                 </fieldset>
 
                 <div>
-                    <input type="checkbox" name="VideoAudioMapping" id="VideoAudioMapping" onclick="ffmpegShowHide('VideoAudioMapping')">
+                    <input type="checkbox" name="VideoAudioMapping" id="VideoAudioMapping"
+                        onclick="ffmpegShowHide('VideoAudioMapping')">
                     <label for="VideoAudioMapping">Video / Audio Mapping</label>
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="VideoAudioMapping-Options">
-                    Selecting these options will ensure that all video and/or audio streams are mapped correctly and should be enabled if you want to keep all of the audio tracks of your input files. <b>Otherwise, only the first video and audio track will be retained in the output file!</b>
+                    Selecting these options will ensure that all video and/or audio streams are mapped correctly and
+                    should be enabled if you want to keep all of the audio tracks of your input files. <b>Otherwise,
+                        only the first video and audio track will be retained in the output file!</b>
 
                     <p>
                         <input type="checkbox" name="VideoMapping" id="VideoMapping">
@@ -440,6 +443,22 @@
                         </ul>
 
                         <p>
+                            <b style="color: dodgerblue">Bluesky:</b>
+                            Underscores are the delimiters in the file name [ _ ]. Otherwise, the naming convention is
+                            the same.
+                            <br>
+                            <b style="color: dodgerblue">Pixiv:</b>
+                            Only IDs matter, with underscores as delimiters in the file name [ _ ]. Otherwise, the
+                            naming convention
+                            is the same.
+                        <ul>
+                            <li>
+                                <b>Bluesky + Pixiv File Name Format: </b>AccountName_<b
+                                    style="color: dodgerblue">ID</b>_WhateverElse
+                            </li>
+                        </ul>
+                        </p>
+                        <p>
                             <b style="color: deeppink">Instagram:</b>
                             Only the ID matters in the file name, and <i style="color: deeppink">~IG~</i> replaces the
                             dash in the
@@ -494,18 +513,6 @@
                             <li>
                                 <b>DeviantArt File Name Format: </b><b style="color: #00e59b">AccountName</b>-<b
                                     style="color: #00e59b">PostNameAndID</b>
-                            </li>
-                        </ul>
-                        </p>
-                        <p>
-                            <b style="color: dodgerblue">Pixiv:</b>
-                            Only IDs matter, with underscores as delimiters in the file name [ _ ]. Otherwise, the
-                            naming convention
-                            is the same.
-                        <ul>
-                            <li>
-                                <b>Pixiv File Name Format: </b>AccountName_<b
-                                    style="color: dodgerblue">ID</b>_WhateverElse
                             </li>
                         </ul>
                         </p>

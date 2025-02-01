@@ -25,7 +25,7 @@ function fileUrlConverter() {
             if (Platform === `Instagram`) delimiter = `~IG~`
             if (Platform === `Newgrounds`) delimiter = `~NG~`
             if (Platform === `DeviantArt`) delimiter = `~DA~`
-            if (Platform === `Pixiv`) delimiter = `_`
+            if (Platform === `Bluesky` || Platform === `Pixiv`) delimiter = `_`
             if (Platform === `FurAffinity`) delimiter = `.`
 
             InputItems = InputItems.map(str => str.split(delimiter))
@@ -143,7 +143,7 @@ function fileUrlConverter() {
                     for (url of InputItems) {
                         let account = url[2].split(`.`)[0]
                         let id = url[4]
-                        OutputItems.push(`${account}-${id}-BLUESKY`)
+                        OutputItems.push(`${account}_${id}_BLUESKY`)
                     }
                     break;
                 case `Threads`:

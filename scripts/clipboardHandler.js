@@ -134,6 +134,8 @@ function outputStrBuilder() {
         let ScaleType = document.getElementById("ScaleType").value
         let ScaleMultiplier = document.getElementById("ScaleMultiplier").value
 
+        let SpeedMultiplier = document.getElementById("SpeedMultiplier").value
+
         let NumLoops = document.getElementById("NumLoops").value
         let ReverseMedia = document.getElementById("ReverseMedia").checked
 
@@ -191,6 +193,12 @@ function outputStrBuilder() {
             afFilters += `areverse,`
         }
 
+        if (document.getElementById("ChangeSpeed").checked &&
+            SpeedMultiplier !== ``) {
+            vfFilters += `setpts=PTS/${SpeedMultiplier},`
+            afFilters += `atempo=${SpeedMultiplier},`
+        }
+
         // Remove the trailing comma from the filters if they are not empty
         vfFilters = vfFilters.replace(/(^,)|(,$)/g, ``)
         afFilters = afFilters.replace(/(^,)|(,$)/g, ``)
@@ -235,6 +243,69 @@ function outputStrBuilder() {
         // Finalize Script
         outputStr += powerOp(PowerOp);
         outputStr += finalLine;
+        return true
+    }
+
+    if (mostRecentForm === `AudioAndImageToVideo-FORM`) {
+        outputStr += removeNonASCII_PS
+
+        const textareaFileList = document.getElementById("textarea-AAITV").value.trim().split(`\n`);
+        const files = document.getElementById("fileInput-AAITV").files;
+
+        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
+
+        let selectedFiles = []
+        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
+        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
+
+        NormalizeAudio = document.getElementById("NormalizeAudio-AAITV").checked
+        UseBlackImage = document.getElementById("UseBlackImage").checked
+
+        for (f of selectedFiles) {
+            inFile = removeExt(f)
+            f.replaceAll(`$`, `\`$`)
+            if (f.split(`.`).pop() == `mp3`) {
+                pngStr = UseBlackImage ? `_black.jfif` : `${inFile}.png`
+                normalizeStr = NormalizeAudio ? `-af "loudnorm"` : ``
+                outputStr += `ffmpeg -loop 1 -i "${pngStr}" -i "${inFile}.mp3" ${normalizeStr} -pix_fmt yuv420p -shortest "${inFile}.mp4"\n`
+            } else {
+                alert(`Ensure that ONLY MP3 files are uploaded/entered.`)
+                return false
+            }
+        }
+
+        let PowerOp = document.getElementById("PowerOptions-AAITV").value
+        outputStr += powerOp(PowerOp);
+        outputStr += finalLine
+
+        return true
+    }
+
+    if (mostRecentForm === `AddMP3CoverImages-FORM`) {
+        outputStr += removeNonASCII_PS
+
+        const textareaFileList = document.getElementById("textarea-MP3Cover").value.trim().split(`\n`);
+        const files = document.getElementById("fileInput-MP3Cover").files;
+
+        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
+
+        let selectedFiles = []
+        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
+        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
+
+        for (mp3File of selectedFiles) {
+            if (mp3File.split(`.`).pop() == `mp3`) {
+                outputStr += `ffmpeg -i "${mp3File}" -i "${removeExt(mp3File)}.png" -c copy -map 0 -map 1 -metadata:s:v comment="Cover (Front)" "(COVER-ADDED) ${mp3File}"\n`
+            } else {
+                alert(`Ensure that ONLY MP3 files are uploaded/entered.`)
+                return false
+            }
+        }
+
+        let PowerOp = document.getElementById("PowerOptions-MP3Cover").value
+        outputStr += powerOp(PowerOp);
+        outputStr += finalLine
+
         return true
     }
 

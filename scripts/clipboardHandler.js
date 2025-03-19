@@ -265,7 +265,7 @@ function outputStrBuilder() {
             inFile = removeExt(f)
             f.replaceAll(`$`, `\`$`)
             if (f.split(`.`).pop() == `mp3`) {
-                pngStr = UseBlackImage ? `_black.jfif` : `${inFile}.png`
+                pngStr = UseBlackImage ? `_black.jpg` : `${inFile}.png`
                 normalizeStr = NormalizeAudio ? `-af "loudnorm"` : ``
                 outputStr += `ffmpeg -loop 1 -i "${pngStr}" -i "${inFile}.mp3" ${normalizeStr} -pix_fmt yuv420p -shortest "${inFile}.mp4"\n`
             } else {

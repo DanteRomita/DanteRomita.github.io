@@ -88,7 +88,7 @@ function fileUrlConverter() {
                         let postName = file[3].split(`.`)[0]
 
                         let embPrefix = `reddit`
-                        if (OptDiscordEmb) embPrefix = `rxddit`
+                        if (OptDiscordEmb) embPrefix = `vxreddit`
                         OutputItems.push(`https://www.${embPrefix}.com/r/${subreddit}/comments/${id}/${postName}`)
                     }
                     break;

@@ -69,9 +69,9 @@ function fileUrlConverter() {
                     for (file of InputItems) {
                         let id = file[1].split(`.`)[0]
 
-                        let embPrefix = ``
-                        if (OptDiscordEmb) embPrefix = `dd`
-                        OutputItems.push(`https://www.${embPrefix}instagram.com/p/${id}`)
+                        let embSuffix = ``
+                        if (OptDiscordEmb) embSuffix = `ez`
+                        OutputItems.push(`https://www.instagram${embSuffix}.com/p/${id}`)
                     }
                     break;
                 case `Newgrounds`:

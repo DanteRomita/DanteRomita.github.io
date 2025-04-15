@@ -53,9 +53,9 @@ function fileUrlConverter() {
                         let account = file[0]
                         let id = file[1].split(`.`)[0]
 
-                        let embPrefix = ``
-                        if (OptDiscordEmb) embPrefix = `c`
-                        OutputItems.push(`https://${embPrefix}bsky.app/profile/${account}.bsky.social/post/${id}`)
+                        let embDomain = `bsky`
+                        if (OptDiscordEmb) embDomain = `bskx`
+                        OutputItems.push(`https://${embDomain}.app/profile/${account}.bsky.social/post/${id}`)
                     }
                     break;
                 case `Threads`:

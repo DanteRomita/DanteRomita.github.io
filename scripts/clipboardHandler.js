@@ -164,7 +164,8 @@ function outputStrBuilder() {
         // Handle modification parameters for output files
         let modifications = ``
 
-        if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} -preset slow -cq 28 -b:v 0 `
+        if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} `
+        if (GraphicsCardOp === `h264_nvenc`) modifications += `-preset slow -cq 28 -b:v 0 `
 
         if (CopyVideoCodec) modifications += `-c:v copy `
         if (CopyAudioCodec) modifications += `-c:a copy `

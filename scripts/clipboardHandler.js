@@ -68,7 +68,7 @@ function outputStrBuilder() {
         else baseStr += `'%(title)s.%(ext)s'`
 
         let convertType = `recode`
-        if (document.getElementById("RemuxFiles-YT-DLP").checked) convertType = `remux`
+        if (document.getElementById("RemuxFiles-YT-DLP").checked || iOS_Mode) convertType = `remux`
         for (URL of URLs) {
             if (Video) {
                 if (VidRes === `Best`) {

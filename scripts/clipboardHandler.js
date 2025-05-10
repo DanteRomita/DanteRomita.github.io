@@ -1,4 +1,5 @@
-const removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+const removeNonASCII_PS_CONST = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+let removeNonASCII_PS = ``
 
 function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, ''); }
 
@@ -28,6 +29,11 @@ function ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies) {
 const finalLine = `\n# ---REACHED END OF SCRIPT---\n`
 let outputStr = ``
 function outputStrBuilder() {
+    let iOS_Mode = document.getElementById("iOS_Mode").checked
+    console.log(`iOS_Mode: ${iOS_Mode}`)
+    if (iOS_Mode) {removeNonASCII_PS = `# ${removeNonASCII_PS_CONST}`}
+    else removeNonASCII_PS = removeNonASCII_PS_CONST
+
     outputStr = ``
 
     if (mostRecentForm === `YT-DLP_GUI-FORM`) {
@@ -115,15 +121,21 @@ function outputStrBuilder() {
 
         let AudioFilterOp = document.getElementById("AudioFilterOp").value
 
+        let VideoAudioMapping = document.getElementById("VideoAudioMapping").checked
         let VideoMapping = document.getElementById("VideoMapping").checked
         let AudioMapping = document.getElementById("AudioMapping").checked
 
+        let CopyCodecs = document.getElementById("CopyCodecs").checked
         let CopyVideoCodec = document.getElementById("CopyVideoCodec").checked
         let CopyAudioCodec = document.getElementById("CopyAudioCodec").checked
 
+        let CustomBitrate = document.getElementById("CustomBitrate").checked
         let CustomBitrateNum = document.getElementById("CustomBitrateNum").value
+
+        let CustomFramerate = document.getElementById("CustomFramerate").checked
         let CustomFramerateNum = document.getElementById("CustomFramerateNum").value
 
+        let CustomResolution = document.getElementById("CustomResolution").checked
         let TypeOfScaling
         if (document.getElementById("16x9_AspectRatios").checked) {
             TypeOfScaling = "16x9"
@@ -134,9 +146,12 @@ function outputStrBuilder() {
         let ScaleType = document.getElementById("ScaleType").value
         let ScaleMultiplier = document.getElementById("ScaleMultiplier").value
 
+        let ChangeSpeed = document.getElementById("ChangeSpeed").checked
         let SpeedMultiplier = document.getElementById("SpeedMultiplier").value
 
+        let LoopMedia = document.getElementById("LoopMedia").checked
         let NumLoops = document.getElementById("NumLoops").value
+
         let ReverseMedia = document.getElementById("ReverseMedia").checked
 
         let PowerOp = document.getElementById("PowerOptions-FFMPEG").value
@@ -159,7 +174,7 @@ function outputStrBuilder() {
         if (GraphicsCardOp === `h264_nvenc`) hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`
 
         let loopStr = ``
-        if (NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`
+        if (LoopMedia && NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`
 
         // Handle modification parameters for output files
         let modifications = ``
@@ -167,18 +182,18 @@ function outputStrBuilder() {
         if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} `
         if (GraphicsCardOp === `h264_nvenc`) modifications += `-preset slow -cq 28 -b:v 0 `
 
-        if (CopyVideoCodec) modifications += `-c:v copy `
-        if (CopyAudioCodec) modifications += `-c:a copy `
+        if (CopyCodecs && CopyVideoCodec) modifications += `-c:v copy `
+        if (CopyCodecs && CopyAudioCodec) modifications += `-c:a copy `
 
-        if (VideoMapping) modifications += `-map 0:v `
-        if (AudioMapping) modifications += `-map 0:a `
+        if (VideoAudioMapping && VideoMapping) modifications += `-map 0:v `
+        if (VideoAudioMapping && AudioMapping) modifications += `-map 0:a `
 
         let vfFilters = ``
         let afFilters = ``
 
         if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
 
-        if (document.getElementById("CustomResolution").checked) {
+        if (CustomResolution) {
             if (TypeOfScaling === `16x9`) {
                 vfFilters += `scale=${Preset_16x9_Dimensions},`
             } else if (TypeOfScaling === `CustomScaling`) {
@@ -194,8 +209,7 @@ function outputStrBuilder() {
             afFilters += `areverse,`
         }
 
-        if (document.getElementById("ChangeSpeed").checked &&
-            SpeedMultiplier !== ``) {
+        if (ChangeSpeed && SpeedMultiplier !== ``) {
             vfFilters += `setpts=PTS/${SpeedMultiplier},`
             afFilters += `atempo=${SpeedMultiplier},`
         }
@@ -211,8 +225,8 @@ function outputStrBuilder() {
         if (AudioFilterOp === `RemoveAudio`) modifications += `-an `
         else if (!CopyAudioCodec && afFilters != ``) modifications += afStr
 
-        if (document.getElementById("CustomBitrate").checked && CustomBitrateNum !== ``) modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `
-        if (document.getElementById("CustomFramerate").checked && CustomFramerateNum !== ``) modifications += `-r ${CustomFramerateNum} `
+        if (CustomBitrate && CustomBitrateNum !== ``) modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `
+        if (CustomFramerate && CustomFramerateNum !== ``) modifications += `-r ${CustomFramerateNum} `
 
         modifications = modifications.trim()
 

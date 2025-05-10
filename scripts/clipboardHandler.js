@@ -1,4 +1,4 @@
-const removeNonASCII_PS_CONST = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+const CONST_removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
 let removeNonASCII_PS = ``
 
 function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, ''); }
@@ -31,8 +31,8 @@ let outputStr = ``
 function outputStrBuilder() {
     let iOS_Mode = document.getElementById("iOS_Mode").checked
     console.log(`iOS_Mode: ${iOS_Mode}`)
-    if (iOS_Mode) {removeNonASCII_PS = `# ${removeNonASCII_PS_CONST}`}
-    else removeNonASCII_PS = removeNonASCII_PS_CONST
+    if (iOS_Mode) {removeNonASCII_PS = ``}
+    else removeNonASCII_PS = CONST_removeNonASCII_PS
 
     outputStr = ``
 

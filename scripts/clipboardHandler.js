@@ -26,13 +26,15 @@ function ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies) {
     return str
 }
 
-const finalLine = `\n# ---REACHED END OF SCRIPT---\n`
+const CONST_finalLine = `\n# ---REACHED END OF SCRIPT---\n`
+let finalLine = ``
+
 let outputStr = ``
 function outputStrBuilder() {
     let iOS_Mode = document.getElementById("iOS_Mode").checked
     console.log(`iOS_Mode: ${iOS_Mode}`)
-    if (iOS_Mode) {removeNonASCII_PS = ``}
-    else removeNonASCII_PS = CONST_removeNonASCII_PS
+    if (iOS_Mode) {removeNonASCII_PS = ``; finalLine = ``}
+    else {removeNonASCII_PS = CONST_removeNonASCII_PS; finalLine = CONST_finalLine}
 
     outputStr = ``
 

@@ -16,6 +16,7 @@ function fileUrlConverter() {
     InputItems = InputItems.map(str => str.replace(`https://`, ``))
     let ConversionType = document.getElementById("FileNameURL-ConversionType").value
     let Platform = document.getElementById("FileNameURL-Platform").value
+    let AppendBskyDotSocial = document.getElementById("AppendBskyDotSocial").checked
     let OptDiscordEmb = document.getElementById("OptDiscordEmb").checked
 
     try {
@@ -53,9 +54,12 @@ function fileUrlConverter() {
                         let account = file[0]
                         let id = file[1].split(`.`)[0]
 
+                        let profileDomainStr = ``
+                        if (AppendBskyDotSocial) profileDomainStr = `.bsky.social`
+
                         let embDomain = `bsky`
                         if (OptDiscordEmb) embDomain = `bskx`
-                        OutputItems.push(`https://${embDomain}.app/profile/${account}.bsky.social/post/${id}`)
+                        OutputItems.push(`https://${embDomain}.app/profile/${account}${profileDomainStr}/post/${id}`)
                     }
                     break;
                 case `Threads`:
@@ -141,7 +145,7 @@ function fileUrlConverter() {
                     break;
                 case `Bluesky`:
                     for (url of InputItems) {
-                        let account = url[2].split(`.`)[0]
+                        let account = url[2]
                         let id = url[4]
                         OutputItems.push(`${account}_${id}_BLUESKY`)
                     }
@@ -238,6 +242,7 @@ function handleChanges_FileNameURL() {
 
 const fileInput_FileNameURL_Element = document.getElementById("fileInput-FileNameURL")
 const FileNamesOrURLs_Textarea_Element = document.getElementById("FileNamesOrURLs-Textarea")
+const AppendBskyDotSocial_Element = document.getElementById("AppendBskyDotSocial")
 const DiscordEmb_Element = document.getElementById("OptDiscordEmb")
 const ConversionType_Element = document.getElementById("FileNameURL-ConversionType")
 const Platform_Element = document.getElementById("FileNameURL-Platform")
@@ -245,6 +250,7 @@ const CustomAccName_Element = document.getElementById("CustomAccName")
 
 fileInput_FileNameURL_Element.addEventListener('change', handleChanges_FileNameURL);
 FileNamesOrURLs_Textarea_Element.addEventListener('input', handleChanges_FileNameURL);
+AppendBskyDotSocial_Element.addEventListener('change', handleChanges_FileNameURL);
 DiscordEmb_Element.addEventListener('change', handleChanges_FileNameURL);
 ConversionType_Element.addEventListener('change', handleChanges_FileNameURL);
 Platform_Element.addEventListener('change', handleChanges_FileNameURL);

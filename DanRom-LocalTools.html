@@ -638,7 +638,7 @@
                         <input class="fileInput" type="file" id="fileInput-FileNameURL" multiple>
                         <input class="clearFiles" id="clearFiles-FileNameURL" style="font-size: large;" type="button"
                             id="clear-fileInput-FileNameURL" value="Clear">
-                        <ul id="fileList-FileNameURL"></ul>
+                        <ul style="font-size: small;" id="fileList-FileNameURL"></ul>
                     </fieldset>
 
                     <p>
@@ -647,7 +647,13 @@
                         (If there is content in this textarea, files will be ignored.)
                     </p>
                 </fieldset>
+                <h3>Misc Options</h3>
                 <fieldset>
+                    <input type="checkbox" id="AppendBskyDotSocial" name="AppendBskyDotSocial" checked>
+                    <label for="AppendBskyDotSocial">
+                        Append `bsky.social` to Bluesky URLs
+                    </label>
+                    <p>(Useful to disable for custom Bluesky handles or when `bsky.social` is already in the file name. Only applies when converting Bluesky filenames to URLs.)</p>
                     <input type="checkbox" id="OptDiscordEmb" name="OptDiscordEmb">
                     <label for="OptDiscordEmb">Optimal Discord Embedding in URLs</label>
 
@@ -710,7 +716,7 @@
                 </p>
                 <fieldset>
                     <legend>Output</legend>
-                    <ul id="FileNameURL-Output"></ul>
+                    <ul style="font-size: small;" id="FileNameURL-Output"></ul>
                 </fieldset>
             </fieldset>
         </form>

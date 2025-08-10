@@ -199,10 +199,10 @@
 
                 <hr>
                 <p>
-                    For the following sections below, check the boxes if you want to include the corresponding
+                    Check the boxes if you want to include the corresponding
                     option. If an option's checkbox is not checked, it will not be used.
                     <b>
-                        The default functionality assumed is an input an output of the same file type.
+                        The default functionality assumed is an input an output of the same file type, and <b style="color: orange">not all options are compatible with one another when running the FFMPEG command</b>!
                     </b>
                 </p>
 
@@ -222,7 +222,7 @@
                                     in the script file).</li>
                             </ul>
                         </li>
-                        <li>If this option is selected, <b>you must upload your files AND place them in the textarea
+                        <li>If this option is selected, <b>you must upload your files (or place them in the textarea) AND place them in the textarea
                                 below for them to be processed.</b></li>
                         <li>Trimmed Media will be placed in the same folder as the original file.</li>
                     </ul>
@@ -404,6 +404,19 @@
                     <input type="checkbox" name="ReverseMedia" id="ReverseMedia">
                     <label for="ReverseMedia">Reverse Media</label>
                 </div>
+
+                <div>
+                    <input type="checkbox" name="ExtractFrame" id="ExtractFrame" onclick="ffmpegShowHide('ExtractFrame')">
+                    <label for="ExtractFrame">Extract Frame</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="ExtractFrame-Options">
+                    Enter the timestamp of the frame you would like to extract. This assumes you have only video files, and will return the frame at the given timestamp (Ex. 01:23:45.678). <b>Checking this box will ensure no other options apply!</b>
+                    <br><input type="text" class="textInput" id="ExtractFrameTime" name="ExtractFrameTime">
+                    <p style="color: yellow;">
+                        <b>TIP: </b> If you would like to extract a frame from a long video file, trim it first such that it is only a few seconds long, then use the timestamp of that trimmed video file! Extracting a frame late into a long video takes a long time.
+                    </p>
+                </fieldset>
+
                 <hr>
 
                 <h3>Power Options When Complete</h3>

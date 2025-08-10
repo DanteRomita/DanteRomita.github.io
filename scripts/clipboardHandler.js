@@ -156,6 +156,8 @@ function outputStrBuilder() {
 
         let ReverseMedia = document.getElementById("ReverseMedia").checked
 
+        let ExtractFrameTime = document.getElementById("ExtractFrameTime").value
+
         let PowerOp = document.getElementById("PowerOptions-FFMPEG").value
 
         // Trim media first if selected (Least Computationally Expensive)
@@ -236,13 +238,16 @@ function outputStrBuilder() {
             inFile.replaceAll(`$`, `\`$`)
 
             let outFile
-            if (document.getElementById("ConvertFileType").checked && OutputExtensions.length > 0) { // Use corresponding extensions in OutputExtensions
+            if (document.getElementById("ConvertFileType").checked && !(document.getElementById("ExtractFrame").checked) && OutputExtensions.length > 0) { // Use corresponding extensions in OutputExtensions
                 for (ext of OutputExtensions) {
                     if (document.getElementById("AppendToEnd").checked) outFile = `${removeExt(inFile)} (OUTPUT).${ext}`
                     else outFile = `(OUTPUT) ${removeExt(inFile)}.${ext}`
                     outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
                 }
-            } else {
+            } else if (document.getElementById("ExtractFrame").checked) {
+                outputStr = `ffmpeg -i "${inFile}" -ss "${ExtractFrameTime}" -vframes 1 "(FRAME) ${removeExt(inFile)}.png"\n`
+            }
+            else {
                 let ext = inFile.split(`.`).pop();
                 if (document.getElementById("AppendToEnd").checked) outFile = `${inFile} (OUTPUT).${ext}`
                 else outFile = `(OUTPUT) ${inFile}`

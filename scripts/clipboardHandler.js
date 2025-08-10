@@ -369,10 +369,14 @@ function outputStrBuilder() {
 }
 
 document.getElementById("copyButton").addEventListener("click", function () {
+    const copyStatusText = document.getElementById("copyStatusText")
+    copyStatusText.textContent = "Not Copied! View alert or check input."
+    copyStatusText.style.color = "red"
     if (outputStrBuilder()) {
         navigator.clipboard.writeText(outputStr);
-        alert("Output copied to clipboard!");
-    }
+        copyStatusText.textContent = "Copied!"
+        copyStatusText.style.color = "lime"
+    } 
 })
 
 // document.getElementById("downloadButton").addEventListener("click", function () {

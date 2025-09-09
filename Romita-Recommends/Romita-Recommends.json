@@ -1,0 +1,481 @@
+[
+    {
+        "_NAME": "Vivaldi",
+        "description": "A fast and secure browser with a focus on privacy and security.",
+        "iconPath": "https://vivaldi.com/favicon.ico",
+        "platforms": [
+            "Windows",
+            "Linux",
+            "macOS",
+            "Android",
+            "iOS"
+        ],
+        "pricingModel": "Free",
+        "tags": [
+            "Web Browser",
+            "Privacy"
+        ],
+        "type": "Application",
+        "url": "https://vivaldi.com/"
+    },
+    {
+        "_NAME": "Obsidian",
+        "description": "A knowledge base that works on top of a local folder of plain text Markdown files.",
+        "iconPath": "https://obsidian.md/favicon.ico",
+        "platforms": [
+            "Windows",
+            "Linux",
+            "macOS",
+            "Android",
+            "iOS"
+        ],
+        "pricingModel": "Free",
+        "tags": [
+            "Knowledge Base",
+            "Markdown Editor",
+            "Note Taking",
+            "Text Editor",
+            "Cross-Platform"
+        ],
+        "type": "Application",
+        "url": "https://obsidian.md/"
+    },
+    {
+        "_NAME": "Visual Studio Code",
+        "description": "A code editor redefined and optimized for development.",
+        "iconPath": "http://www.whatimade.today/content/images/2021/03/vscode.png",
+        "platforms": [
+            "Windows",
+            "Linux",
+            "macOS"
+        ],
+        "pricingModel": "Free",
+        "tags": [
+            "Code Editor"
+        ],
+        "type": "Application",
+        "url": "https://code.visualstudio.com/"
+    },
+    {
+        "_NAME": "DaVinci Resolve",
+        "description": "The world's most advanced video post-production solution.",
+        "iconPath": "https://pnghq.com/wp-content/uploads/davinci-resolve-17-logo-png-picture-300x300.png",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ],
+        "pricingModel": "Free, Single Purchase",
+        "tags": [
+            "Video Editor",
+            "Cross-Platform"
+        ],
+        "type": "Application",
+        "url": "https://www.blackmagicdesign.com/products/davinciresolve"
+    },
+    {
+        "_NAME": "YT-DLP",
+        "description": "A cross-platform command-line program to download videos from YouTube.com and other video platforms.",
+        "iconPath": "https://avatars.githubusercontent.com/u/79589310?s=200&v=4",
+        "pricingModel": "Free and Open Source",
+        "tags": [
+            "Video Downloader"
+        ],
+        "type": "Application",
+        "url": "https://github.com/yt-dlp/yt-dlp",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "Android",
+            "iOS"
+        ]
+    },
+    {
+        "_NAME": "FFMPEG",
+        "description": "A cross-platform solution to record, convert and stream audio and video.",
+        "iconPath": "https://ffmpeg.org/favicon.ico",
+        "pricingModel": "Free and Open Source",
+        "tags": [
+            "Video Converter"
+        ],
+        "type": "Application",
+        "url": "https://ffmpeg.org",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "Android",
+            "iOS"
+        ]
+    },
+    {
+        "_NAME": "AmpCC",
+        "description": "The best collection of online media downloader tools without pesky & potentially dangerous ads!",
+        "iconPath": "https://pbs.twimg.com/profile_images/1793087544881524736/ipbDDtt-_400x400.png",
+        "platforms": [
+            "All Web Browsers"
+        ],
+        "pricingModel": "Free",
+        "tags": [
+            "Video Downloader"
+        ],
+        "type": "Website",
+        "url": "https://amp4.cc"
+    },
+    {
+        "_NAME": "GitHub Pages",
+        "description": "The world's most popular hosting service for GitHub Pages.",
+        "iconPath": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        "pricingModel": "Free",
+        "tags": [
+            "Web Hosting"
+        ],
+        "type": "Web Service",
+        "url": "https://pages.github.com/",
+        "platforms": [
+            "N/A"
+        ]
+    },
+    {
+        "_NAME": "HuggingChat",
+        "description": "The world's most advanced chatbot.",
+        "iconPath": "https://huggingface.co/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Chatbot"
+        ],
+        "type": "Website",
+        "url": "https://huggingchat.com/",
+        "platforms": [
+            "All Web Browsers"
+        ]
+    },
+    {
+        "_NAME": "Tab For A Cause",
+        "description": "Raising money for charity through the power of tabs.",
+        "iconPath": "https://tab.gladly.io/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Website"
+        ],
+        "type": "Website",
+        "url": "https://tab.gladly.io",
+        "platforms": [
+            "All Web Browsers"
+        ]
+    },
+    {
+        "_NAME": "WFDownloader",
+        "description": "A free bulk multimedia downloader!",
+        "iconPath": "https://wfdownloader.xyz/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Downloader",
+            "Media Tools"
+        ],
+        "type": "Application",
+        "url": "https://wfdownloader.xyz/",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ]
+    },
+    {
+        "_NAME": "TeraCopy",
+        "description": "The world's most advanced file copier.",
+        "iconPath": "https://www.nesabamedia.com/wp-content/uploads/2019/06/Teracopy-Logo-1.png",
+        "pricingModel": "Free",
+        "tags": [
+            "File Copier"
+        ],
+        "type": "Application",
+        "url": "https://www.codesector.com/teracopy",
+        "platforms": [
+            "Windows",
+            "macOS"
+        ]
+    },
+    {
+        "_NAME": "Waifu2x-Extension-GUI",
+        "description": "Photo/Video/GIF enlargement and Video frame interpolation using machine learning",
+        "iconPath": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/raw/master/.github/README/ICON.png",
+        "pricingModel": "Free",
+        "tags": [
+            "Image Enlarger",
+            "Image Converter",
+            "Video Converter",
+            "Upscaler"
+        ],
+        "type": "Application",
+        "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI",
+        "platforms": [
+            "Windows"
+        ]
+    },
+    {
+        "_NAME": "WizTree",
+        "description": "File visualizer.",
+        "iconPath": "https://www.diskanalyzer.com/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "File Visualizer"
+        ],
+        "type": "Application",
+        "url": "https://www.diskanalyzer.com",
+        "platforms": [
+            "Windows"
+        ]
+    },
+    {
+        "_NAME": "TreeSize Free",
+        "description": "File visualizer.",
+        "iconPath": "https://www.jam-software.com/sites/default/files/2017-10/TreeSize-Free.png",
+        "pricingModel": "Free, Purchase Options",
+        "tags": [
+            "File Visualizer"
+        ],
+        "type": "Application",
+        "url": "https://www.jam-software.com/treesize_free",
+        "platforms": [
+            "Windows"
+        ]
+    },
+    {
+        "_NAME": "Ultrasearch",
+        "description": "File search tool.",
+        "iconPath": "https://www.jam-software.com/sites/default/files/2020-09/UltraSearch_Professional.png",
+        "pricingModel": "Free, Purchase Options",
+        "tags": [
+            "File Search Tool"
+        ],
+        "type": "Application",
+        "url": "https://www.jam-software.com/ultrasearch",
+        "platforms": [
+            "Windows"
+        ]
+    },
+    {
+        "_NAME": "Everything",
+        "description": "File search tool.",
+        "iconPath": "https://www.voidtools.com/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "File Search Tool"
+        ],
+        "type": "Application",
+        "url": "https://www.voidtools.com/support/everything/",
+        "platforms": [
+            "Windows"
+        ]
+    },
+    {
+        "_NAME": "MP3Gain",
+        "description": "MP3 Volume Normalizer Tool.",
+        "iconPath": "https://mp3gain.sourceforge.net/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Audio"
+        ],
+        "type": "Application",
+        "url": "https://mp3gain.sourceforge.net",
+        "platforms": [
+            "Windows",
+            "macOS"
+        ]
+    },
+    {
+        "_NAME": "Deskflow",
+        "description": "A free and open source keyboard and mouse sharing app.",
+        "iconPath": "https://avatars.githubusercontent.com/u/181782356",
+        "pricingModel": "Free",
+        "tags": [
+            "Keyboard and Mouse Sharing",
+            "Cross-Platform"
+        ],
+        "type": "Application",
+        "url": "https://deskflow.com/",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux"
+        ]
+    },
+    {
+        "_NAME": "Ente Auth",
+        "description": "Open source 2FA authenticator, with end-to-end encrypted backups.",
+        "iconPath": "https://play-lh.googleusercontent.com/jl_cSsom5TPkeF2bvupXW1Tgq-Vj9v8GzSixzVNzT4BG1CraSndlP_VANi5E5Ns2fw",
+        "pricingModel": "Free and Open Source",
+        "tags": [
+            "2FA",
+            "Authenticator",
+            "Security",
+            "Cross-Platform",
+            "Open Source"
+        ],
+        "type": "Application",
+        "url": "https://ente.io/auth/",
+        "platforms": [
+            "Windows",
+            "macOS",
+            "Linux",
+            "Android",
+            "iOS"
+        ]
+    },
+    {
+        "_NAME": "Bitwarden",
+        "description": "The world's most advanced password manager.",
+        "iconPath": "https://bitwarden.com/favicon.ico",
+        "platforms": [
+            "All Web Browsers",
+            "Windows",
+            "macOS",
+            "Linux",
+            "iOS",
+            "Android"
+        ],
+        "pricingModel": "Free, Subscription",
+        "tags": [
+            "Password Manager"
+        ],
+        "type": "Application",
+        "url": "https://bitwarden.com/"
+    },
+    {
+        "_NAME": "MyBib",
+        "description": "A citation machine editor.",
+        "iconPath": "https://www.mybib.com/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Citation"
+        ],
+        "type": "Application",
+        "url": "https://www.mybib.com/",
+        "platforms": [
+            "All Web Browsers"
+        ]
+    },
+    {
+        "_NAME": "AlternativeTo",
+        "description": "A crowd-sourced and free site that helps you find better apps and services. This website is key inspiration for this website!",
+        "iconPath": "https://alternativeto.net/favicon.ico",
+        "platforms": [
+            "All Web Browsers"
+        ],
+        "pricingModel": "Free",
+        "tags": [
+            "Alternative",
+            "Crowd-Sourced"
+        ],
+        "type": "Website",
+        "url": "https://alternativeto.net/"
+    },
+    {
+        "_NAME": "Ecosia",
+        "description": "A search engine dedicated to planting trees.",
+        "iconPath": "https://www.ecosia.org/favicon.ico",
+        "pricingModel": "Free",
+        "type": "Website",
+        "url": "https://www.ecosia.org/"
+    },
+    {
+        "_NAME": "Linux Mint",
+        "description": "My current favourite Linux distro.",
+        "iconPath": "https://www.linuxmint.com/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Linux",
+            "Operating System",
+            "OS"
+        ],
+        "type": "Operating System",
+        "url": "https://www.linuxmint.com/",
+        "platforms": [
+            "N/A"
+        ]
+    },
+    {
+        "_NAME": "AntiDupl.NET",
+        "description": "Similar Picture Finder.",
+        "iconPath": "./Romita-Recommends/icons/AntiDupl.NET.ico",
+        "platforms": [
+            "Windows"
+        ],
+        "pricingModel": "Free and Open Source",
+        "tags": [
+            "Picture Finder"
+        ],
+        "type": "Application",
+        "url": "https://ermig1979.github.io/AntiDupl/english/index.html"
+    },
+    {
+        "_NAME": "OneCommander",
+        "description": "My modern file manager application of choice.",
+        "iconPath": "https://i-cdn.apsgo.com/cdn/aAqrzAuZr0yWyhieHWeXgDwUjutksQTxuB42qBDG.png",
+        "pricingModel": "Free, Single Purchase",
+        "tags": [
+            "File Manager"
+        ],
+        "type": "Application",
+        "url": "https://onecommander.com/"
+    },
+    {
+        "_NAME": "Documents By Readdle",
+        "description": "The ultimate file browser app for all Apple devices.",
+        "iconPath": "https://cdn-rdstaticassets.readdle.com/assets/readdle/modern_2019/products/documents/common/icons/logo-stillframe.jpg",
+        "pricingModel": "Free, In-App Purchases",
+        "tags": [
+            "File Manager",
+            "PDF Reader",
+            "Video Player",
+            "Auido Player",
+            "Image Viewer"
+        ],
+        "type": "Application",
+        "url": "https://readdle.com/documents"
+    },
+    {
+        "_NAME": "MEGA",
+        "description": "A secure cloud storage service.",
+        "iconPath": "https://mega.nz/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Cloud Storage"
+        ],
+        "type": "Application",
+        "url": "https://mega.nz/"
+    },
+    {
+        "_NAME": "Trello",
+        "description": "A project management tool.",
+        "iconPath": "https://trello.com/favicon.ico",
+        "pricingModel": "Free",
+        "tags": [
+            "Project Management",
+            "Task Management",
+            "To-Do List",
+            "Planning",
+            "Organization",
+            "Collaboration",
+            "Teamwork",
+            "Agile",
+            "Scrum",
+            "Kanban"
+        ],
+        "type": "Application",
+        "url": "https://trello.com/"
+    },
+    {
+        "_NAME": "Neocities",
+        "description": "A social network of over a million websites dedicated to bringing back the lost individual creativity of the web. This service offer free static web hosting and website creation tools.",
+        "iconPath": "https://neocities.org/favicon.ico",
+        "pricingModel": "Free, Subscription (Supporter-Based)",
+        "tags": [
+            "Web Hosting"
+        ],
+        "type": "Web Service",
+        "url": "https://neocities.org/"
+    }
+]

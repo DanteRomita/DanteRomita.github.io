@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+
+    .icon {
+        width: 50px;
+        height: auto;
+    }
+
+    .pricing {
+        text-align: center;
+    }
+</style>
+
+<body style="background-color: #a0a0a0;">
+
+    <h3>Sort By:</h3>
+    <div style="margin-bottom: 10px; display: flex; justify-content: center">
+        <button data-column-index="0">Name</button>
+        <button data-column-index="2">Type</button>
+        <button data-column-index="3">Pricing Model</button>
+    </div>
+
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Icon</th>
+                <th>Type</th>
+                <th>Pricing Model</th>
+                <th>Platforms</th>
+                <th>My Description</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody id="main-table-body"></tbody>
+    </table>
+
+</body>
+
+<script src="Romita-Recommends/Romita-Recommends.js"></script>
+
+</script>
+
+</html>

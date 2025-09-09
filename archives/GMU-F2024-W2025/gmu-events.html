@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Makers Union</title>
+    <link rel="icon" href="./assets/images/gmu-branding/GMU-Logo.png">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <header>
+        <script>
+            fetch("commonHTML/header.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("header").innerHTML = data
+                })
+        </script>
+    </header>
+
+    <div id="customNav">
+        <script>
+            fetch("commonHTML/customNav.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("#customNav").innerHTML = data
+                })
+        </script>
+    </div>
+
+    <main>
+        <h2 class="center card-panel grey darken-4">
+            Explore GMU's Exciting Events!
+        </h2>
+
+        <article class="grey darken-3 card-panel">
+            <p>
+                We host several different types of events here at GMU, each of which provide unique opportunities for
+                networking, collaboration, education, and loads of fun. These events contribute to ensuring the game
+                development experience just as fun as playing the games themselves! Whether you're looking to simply
+                learn more about game development, participate in game development, establish industry connections,
+                GMU-organized events have plenty to offer for everyone! Check out our event types below:
+            </p>
+
+            <ul>
+                <li><a href="#GameJams">Game Jams</a></li>
+                <!-- <li><a href="#Item2">Item 2</a></li>
+                <li><a href="#Item3">Item 3</a></li>
+                <li><a href="#Item4">Item 4</a></li>
+                <li><a href="#Item5">Item 5</a></li> -->
+            </ul>
+
+            <p>
+                <b>
+                    The best way to keep up with the latest events at GMU is to check out our <a
+                        href="#footer">socials</a>, particularly our <a href="https://discord.gg/MDc6Cf7QFz">Discord</a>
+                    server!
+                </b>
+            </p>
+
+            <!-- <aside class="grey-text">
+                Last Updated: 2025-01-13
+            </aside> -->
+        </article>
+
+        <div id="GameJams" class="teal darken-4 card-panel">
+            <h3 class="center">Game Jams</h3>
+            <article>
+                <p>
+                    Game Jams are a key cornerstone event type here at GMU, one where we providing a platform for
+                    students to their game development skills! In these action-packed, fast-paced events, students aim
+                    to develop a game in a short amount of time (usually a few days in our case) from start-to-finish!
+                </p>
+                <p>
+                    We host both virtual and in-person Game Jams, so you can choose which environment works best for
+                    you. Some prefer the remote workflow while others thrive in a studio setting. Explore the Game Jam
+                    events we've hosted in the past to learn more about the experiences, opportunities and final
+                    products of them, ready-to-play!
+                </p>
+            </article>
+
+            <div class="row">
+                <div class="col s12 xl6">
+                    <article class="indigo darken-4 card-panel">
+                        <details>
+                            <summary style="font-size: x-large;">Winter 2025 Game Jam (In-Person)</summary>
+                            <p>
+                                This is the first official in-person Game Jam hosted by GMU, taking place during
+                                <b>January 17-19, 2025</b>! Content will be added here when it becomes available, and a
+                                lot of it, so stay tuned!
+                            </p>
+
+                            <details>
+                                <summary>Game Entries</summary>
+                                <div style="color: brown;" class="card-panel yellow accent-4">
+                                    <div class="center">
+                                        <h5>Judges' Pick: "Fandemonium" by [NAME HERE]</h5>
+                                        <a href="https://natsirtmo.itch.io/fandemonium">
+                                            <button class="btn waves-effect pink darken-4">Play/Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            Play as Crystal, an up-and-coming idol who's had their concert stolen by
+                                            their rival, Sapphire!
+
+                                            Use your irresistible idol energy to grow your fandom, push through
+                                            Sapphire's tasteless audience and reclaim your spotlight!
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Trailer + Screenshots</summary>
+                                        <div class="youtube-video-container">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/Z1kc9CcHL8g" frameborder="0"
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div style="margin-top: 10px;">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NDY0My8xOTQzNzAyNi5wbmc=/original/c87pkg.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NDY0My8xOTQzNzAyOS5wbmc=/original/rvZG3p.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NDY0My8xOTQzODM4OS5wbmc=/original/IJuK1R.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NDY0My8xOTQ0MDAxMC5wbmc=/original/s9qRcD.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NDY0My8xOTQ0MDAxMy5wbmc=/original/C0onTW.png">
+                                        </div>
+                                    </details>
+                                </div>
+                                <div style="background-color: silver; color: black" class="card-panel">
+                                    <div class="center">
+                                        <h5>Runner-Up Pick: "Sprout" by [NAME HERE]</h5>
+                                        <a href="https://voxaidna.itch.io/sprout">
+                                            <button class="btn waves-effect grey darken-3">Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            After a stray asteroid strikes his starship, incapacitating its captain and
+                                            setting the ship off-course, it's up to Sprout (a small sentient plant) to
+                                            find a way into the cockpit by exploring the ship, avoiding its persistent
+                                            robot crew, growing more Sprouts, and working together to safely land the
+                                            ship on their destination planet, <i>BleeBlar Prime</i>.
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1nLzE5NDQ0MTE1LmpwZWc=/original/Sw9x0t.jpeg">
+                                        </div>
+                                    </details>
+                                </div>
+                                <div style="color: darkgreen" class="card-panel green lighten-3">
+                                    <div class="center">
+                                        <h5>People's Choice: "Raising The Dead" by [NAME HERE]</h5>
+                                        <a href="https://thereanimator57.itch.io/raising-the-dead">
+                                            <button class="btn waves-effect green darken-4">Play/Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            Raising the Dead is a point and click adventure game where you play as
+                                            Granny, a necromancer giving new life to a skeleton. Through the course of
+                                            the game your skeleton will go through events each day causing them to bloom
+                                            and grow in different ways. Each day you'll play through mini games, losing
+                                            the mini games will harm your skeleton. Be careful to not let them get too
+                                            hurt!
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTMzMy8xOTQzNjY4NC5naWY=/original/nRsl0J.gif">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTMzMy8xOTQzNjcyMS5wbmc=/original/U9IgTh.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTMzMy8xOTQzOTI1Ny5wbmc=/original/T33gA9.png">
+                                        </div>
+                                    </details>
+                                </div>
+                                <div style="color: maroon" class="card-panel orange lighten-3">
+                                    <div class="center">
+                                        <h5>Runner-Up Choice: "Bamboo Shooter"</h5>
+                                        <a href="">
+                                            <button class="btn waves-effect brown darken-3">Play/Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            [DESCRIPTION HERE]
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <!-- Images Here -->
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <h5 class="center">Honourable Entries</h5>
+                                <div style="color: plum" class="black card-panel">
+                                    <div class="center">
+                                        <h6>"EvoCavern" - A Starry Sprites Production</h6>
+                                        <a href="https://obsidiosteel.itch.io/evocavern">
+                                            <button class="btn waves-effect purple darken-4">Play/Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            In this 2D roguelike shooter, you must evolve to adapt to your surroundings.
+                                            Navigate the cave and outsmart flying unibats that will target you from the
+                                            moment you spawn. In order to level up to get stronger, you must kill them
+                                            to gain experience. When you level up, items are dropped that can increase
+                                            your stats. While your health is replenished each round, unibat damage
+                                            scales with each one killed.
+                                        </p>
+                                        <p><i>
+                                                Will you evolve to survive, or become a victim of the caverns?
+                                            </i></p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTc5OS8xOTQ0NTIxNi5wbmc=/original/5N3%2FBO.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTc5OS8xOTQ0NTIxNy5wbmc=/original/h7zG8%2F.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTc5OS8xOTQ0NTIxOC5wbmc=/original/CionOP.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI1NTc5OS8xOTQ0NTIyNi5wbmc=/original/K6FD9j.png">
+                                        </div>
+                                    </details>
+                                </div>
+                                <div style="color: #d05858;" class="black card-panel">
+                                    <div class="center">
+                                        <h6>"How NOT to Train Your Dragon" by [NAME HERE]</h6>
+                                        <a href="https://jarit.itch.io/htntyd">
+                                            <button class="btn waves-effect red darken-4">Play/Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            A virtual pet simulator where you are challenged to grow Goober (a dragon)
+                                            while trying not to kill it (optional). You need to earn coins in order to
+                                            buy food (Goober gets reallly hungry) and other supplementary items to
+                                            maintain good balance of three main attributes of Goober - health, hunger
+                                            and fun. As you can see, earning coins is the most important thing for the
+                                            Goober to stay alive and fully functionable. Minigames and gambling (the
+                                            most favorite thing for Goober) are going to be the main source of money.
+                                            But beware, playing minigames is going to affect health of Goober
+                                            negatievely, so you need to balance playing minigames with other activities.
+                                            The primary goal of the player is to unlock all of the endings.
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI2NzYxOC8xOTU5MDk4My5wbmc=/original/NMiPBG.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI2NzYxOC8xOTU5MDk4Mi5wbmc=/original/H0YIfi.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI2NzYxOC8xOTU5MDk4NS5wbmc=/original/XQuaNw.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI2NzYxOC8xOTU5MDk4MS5wbmc=/original/WZoUpO.png">
+                                            <img class="event-imgs materialboxed"
+                                                src="https://img.itch.zone/aW1hZ2UvMzI2NzYxOC8xOTU5MDk4NC5wbmc=/original/gyVi8J.png">
+                                        </div>
+                                    </details>
+                                </div>
+                                <div style="color: #ffb33e;" class="black card-panel">
+                                    <div class="center">
+                                        <h6>"Cult of the Yipee" by Duong Vu</h6>
+                                        <a
+                                            href="https://drive.google.com/file/d/1uqp3n2VHA_Bezey1okhKgng4QPMECmyF/view?usp=sharing">
+                                            <button style="color: maroon;" class="btn waves-effect orange lighten-2">Download</button>
+                                        </a>
+                                    </div>
+
+                                    <article>
+                                        <p>
+                                            [DESCRIPTION HERE]
+                                        </p>
+                                    </article>
+
+                                    <details>
+                                        <summary>Screenshots</summary>
+                                        <div>
+                                            <!-- Images Here -->
+                                        </div>
+                                    </details>
+                                </div>
+                            </details>
+
+                            <details>
+                                <summary>Event Highlights</summary>
+                            </details>
+
+                        </details>
+                    </article>
+                </div>
+
+                <div class="col s12 xl6">
+                    <section class="brown darken-4 card-panel">
+                        <details>
+                            <summary style="font-size: x-large;">Fall 2024 Game Jam (Virtual)</summary>
+
+                            <p>This is the first official Game Jam hosted by GMU! Each team create these entire games in
+                                3 days during Fall Reading Week.</p>
+
+
+                            <div style="color: brown;" class="card-panel yellow accent-4">
+                                <div class="center">
+                                    <h5>1st Place: "Rave" by Team Dennis</h5>
+                                    <a href="https://dennsi.itch.io/rave">
+                                        <button class="btn waves-effect pink darken-4">Play/Download</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        Welcome to RAVE, the coolest underground dance party ever! You'll never leave
+                                        even
+                                        if you try!
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Screenshots</summary>
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDk4Ni5wbmc=/original/ScT1kY.png">
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDczMy5wbmc=/original/5uOcZy.png">
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDg0MS5wbmc=/original/7INHqM.png">
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDg0Mi5wbmc=/original/Ko%2B4Ff.png">
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDg0My5wbmc=/original/jKTAKN.png">
+                                    <img class="event-imgs materialboxed"
+                                        src="https://img.itch.zone/aW1hZ2UvMzA0OTc4NC8xODI0NDg0MC5wbmc=/original/hfBoOH.png">
+                                </details>
+
+                            </div>
+
+                            <div style="background-color: silver; color: black" class="card-panel">
+                                <div class="center">
+                                    <h5>2nd Place: "Dead Centre" by The Council of Death</h5>
+                                    <a href="https://thereanimator57.itch.io/deadcentre">
+                                        <button class="btn waves-effect grey darken-3">Play</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        Enter if you dare into the carnival game from hell. Shoot your shot and try to
+                                        maintain your sanity as you enter Dead Centre!
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Screenshots</summary>
+                                    <div>
+                                        <!-- Images Here -->
+                                    </div>
+                                </details>
+                            </div>
+
+                            <div style="background-color: #f1a592; color: maroon" class="card-panel">
+                                <h5 class="center">3rd Place: "Anomaly" by Spoopy Inc</h5>
+                                <div class="center">
+                                    <a href="https://taiyo10.itch.io/anomaly">
+                                        <button class="btn waves-effect red darken-4">Play/Download</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        <b>Welcome to <i>Anomaly</i></b>—a game of deception, strategy, and dark fantasy
+                                        where the line between human and monster is razor-thin 🔪.
+                                    </p>
+
+                                    <p>
+                                        As the Gatekeeper, <i>you</i> are the first—and only—line of defense. Phantom
+                                        Hollow
+                                        is a city shrouded in mystery, an ancient haven where supernatural beings
+                                        thrive,
+                                        and no human has ever been allowed to set foot. But times have changed. Humans,
+                                        desperate and determined, have started infiltrating the city's gates, wearing
+                                        monstrous disguises, trying to blend in with the creatures of the night 🌃.
+                                    </p>
+
+                                    <p>
+                                        Your mission is clear: <b>Find the humans. Stop them at all costs. 🧟</b>
+                                    </p>
+
+                                    <p>
+                                        In <i>Anomaly</i>, every day brings a new test of your intuition, your attention
+                                        to
+                                        detail, and your ability to see beyond the mask. Civilians—monstrous beings of
+                                        all
+                                        shapes and forms—will approach the gate, each with their own story. Some may
+                                        have
+                                        horns, claws, or even wings, but are they truly who they say they are? Or is
+                                        there
+                                        something more human hidden beneath?
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Screenshots</summary>
+                                    <div>
+                                        <!-- Images Here -->
+                                    </div>
+                                </details>
+                            </div>
+                            <h5 class="center">Honourable Entries</h5>
+
+                            <div class="black card-panel">
+                                <div class="center">
+                                    <h6>"Clocking Out" by John, Jonathan, Daniel and Shaheed</h6>
+                                    <a href="https://obsidiosteel.itch.io/clocking-out">
+                                        <button class="btn waves-effect grey darken-3">Play/Download</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        Tired after a long shift at work, you rest your head in the break room while
+                                        waiting for the bus. When you wake up, you find out that you've overslept:
+                                        the store is now closed, and you are <b>"alone"</b>...
+                                    </p>
+
+                                    <p>
+                                        Surely it's as simple as walking out the main entrance, right? If this isn't
+                                        the case, you may need to find a second way out of the store. But, there's
+                                        no reason you'd need to do this, and there's certainly no reason the manager
+                                        would still be in the store with you...
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Screenshots</summary>
+                                    <div>
+                                        <img class="event-imgs materialboxed"
+                                            src="https://img.itch.zone/aW1hZ2UvMzA0OTY3Ny8xODI0MjQ2NC5wbmc=/original/fu%2FC9X.png">
+                                        <img class="event-imgs materialboxed"
+                                            src="https://img.itch.zone/aW1hZ2UvMzA0OTY3Ny8xODI0MjQ2My5wbmc=/original/FnMVk6.png">
+                                        <img class="event-imgs materialboxed"
+                                            src="https://img.itch.zone/aW1hZ2UvMzA0OTY3Ny8xODI0MjQ2MS5wbmc=/original/rXPe3s.png">
+                                        <img class="event-imgs materialboxed"
+                                            src="https://img.itch.zone/aW1hZ2UvMzA0OTY3Ny8xODI0MjQ2Mi5wbmc=/original/dFCDVK.png">
+                                    </div>
+                                </details>
+                            </div>
+
+                            <div class="black card-panel" style="color: burlywood">
+                                <div class="center">
+                                    <h6>"The Lot" by Tristan, Adam, Sam, Sophie, Isaac, and Sander</h6>
+                                    <a href="https://natsirtmo.itch.io/the-lot">
+                                        <button class="btn waves-effect brown darken-3">Play</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        'The Lot' is an atmospheric walking simulator set in an eerie underground
+                                        parking lot. The game is a subtle take on horror and is deeply inspired by
+                                        the concept of liminality. It takes place in an infinite loop, and as such
+                                        there is no finite ending. Each level of the parking lot is slightly
+                                        different to the last.
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Trailer + Screenshots</summary>
+                                    <div class="youtube-video-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/SZ_1YdmbRmg"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </details>
+                            </div>
+
+                            <div class="black card-panel" style="color: lime;">
+                                <div class="center">
+                                    <h6>"The True Guide" by Peter, Garv, Abdul, Andy, and Ayaan</h6>
+                                    <a href="https://pt50hgm.itch.io/thetrueguide">
+                                        <button class="btn waves-effect green darken-4">Play/Download</button>
+                                    </a>
+                                </div>
+
+                                <article>
+                                    <p>
+                                        You're trapped in dark maze, with only a flashlight and your best companion,
+                                        your dog that can smell the way out! Follow your dog and let you guide each
+                                        other! But be careful...
+                                    </p>
+                                </article>
+
+                                <details>
+                                    <summary>Screenshots</summary>
+                                    <div>
+                                        <img class="event-imgs materialboxed"
+                                            src="assets/images/gmu-events/game-jams/2024-fall/the-true-guide/dogmaze1.png">
+                                        <img class="event-imgs materialboxed"
+                                            src="assets/images/gmu-events/game-jams/2024-fall/the-true-guide/dogmaze2.png">
+                                        <img class="event-imgs materialboxed"
+                                            src="assets/images/gmu-events/game-jams/2024-fall/the-true-guide/dogmaze3.png">
+                                </details>
+                            </div>
+                        </details>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="footer" class="black page-footer">
+        <script>
+            fetch("commonHTML/footer.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("footer").innerHTML = data
+                })
+        </script>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems);
+    });
+</script>
+
+</html>

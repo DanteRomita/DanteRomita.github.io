@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Makers Union</title>
+    <link rel="icon" href="./assets/images/gmu-branding/GMU-Logo.png">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <header>
+        <script>
+            fetch("commonHTML/header.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("header").innerHTML = data
+                })
+        </script>
+    </header>
+
+    <div id="customNav">
+        <script>
+            fetch("commonHTML/customNav.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("#customNav").innerHTML = data
+                })
+        </script>
+    </div>
+    <main>
+        <h2 class="center card-panel transparent">
+            Dedicated to experiential learning and interdisciplinary collaboration. Let's make great things!
+        </h2>
+
+        <div class="row">
+            <div class="col s12 l6">
+                <article class="grey darken-3 card-panel">
+                    <h3>Who We Are</h3>
+                    <p>
+                        We are a leading student-led game development studio at <a href="https://www.torontomu.ca">Toronto Metropolitan University</a>! Game design
+                        philosophies,
+                        creativity, and a desire to create immersive experiences for all to enjoy are the core key
+                        pillars here at GMU.
+                    </p>
+                    <p>
+                        We consist of passionate, dedicated volunteers, spanning across many (if not, all) of TMU's
+                        faculties! Our belief is that every current and aspiring member has something unique they can
+                        contribute to our projects, as well as our culture at large!
+                    </p>
+                </article>
+            </div>
+            <div class="col s12 l6">
+                <article class="grey darken-3 card-panel">
+                    <h3>What We Do</h3>
+                    <p>
+                        GMU has two main missions:
+                    <ol>
+                        <li>Teach students game development skills (Total beginners welcome!).</li>
+                        <li>Create one incredible game per year with our student-led team!
+                    </ol>
+                    </p>
+                    <p>
+                        We have weekly meetings which run in
+                        <a href="https://www.torontomu.ca/the-catalyst/">
+                            The Catalyst (Rogers Communication Centre, 2nd Floor)</a>.
+                        This is a creative, open space where collaboration, innovation, and motivation thrive in a
+                        variety of ways!
+                    </p>
+                    <p>
+                        In terms of student learning, we run weekly tutorials covering a variety of topics, each of
+                        which thoroughly contribute to the interdisciplinary nature of game design. From how to pitch a
+                        game to a plethora of game design paradigms (Mechanics, Levels, Models & more!), each tutorial
+                        delivers valuable insights & actionable foresight. We also use this space to welcome guests
+                        across the video game industry, which give presentations, connecting students and establish
+                        concrete networking opportunities!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </main>
+    <footer class="black page-footer">
+        <script>
+            fetch("commonHTML/footer.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("footer").innerHTML = data
+                })
+        </script>
+    </footer>
+</body>
+
+</html>

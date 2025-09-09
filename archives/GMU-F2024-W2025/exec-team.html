@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Makers Union</title>
+    <link rel="icon" href="./assets/images/gmu-branding/GMU-Logo.png">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <header>
+        <script>
+            fetch("commonHTML/header.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("header").innerHTML = data
+                })
+        </script>
+    </header>
+
+    <div id="customNav">
+        <script>
+            fetch("commonHTML/customNav.htm")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.querySelector("#customNav").innerHTML = data
+                })
+        </script>
+    </div>
+    <main>
+        <h2 class="center card-panel transparent">
+            The GMU Exec Team!
+        </h2>
+
+
+        <article class="grey darken-3 card-panel">
+            <p>
+                Here, you can learn all about GMU's current executives! Much like all of our members, each executive
+                on our team
+                brings a creative, unique set of skills, experience, and passion to our game-development culture! We
+                have four distinct executive categories for you to check out:
+
+            <ul>
+                <li><a href="#DirectorExecs">Directors</a></li>
+                <li><a href="#DeveloperExecs">Development Team</a></li>
+                <li><a href="#OperationsExecs">Operations</a></li>
+                <li><a href="#FilmCrewExecs">Film Crew</a></li>
+            </ul>
+
+            </p>
+            <p>
+                To learn more about how exactly each executive member contributes to our team, or if you'd like to learn
+                more about each executive category in general, check out our sections below!
+            </p>
+            <!-- <aside class="grey-text">
+                Last Updated: 2024-12-05
+            </aside> -->
+        </article>
+
+        <div id="DirectorExecs" class="teal darken-4 card-panel">
+            <h3 class="center">DIRECTORS</h3>
+            <p class="card-panel black">
+                Our directors are responsible for managing the departments and ensuring cohesive operations. They help
+                maintain communication across departments, organize meetings, and oversee quality control. Assistant
+                Directors assist the Main Director in administrative tasks.
+            </p>
+            <section class="row" id="Directors">
+        </div>
+
+        <div id="DeveloperExecs" class="blue-grey darken-4 card-panel">
+            <h3 class="center">DEVELOPMENT TEAM</h3>
+            <p class="card-panel black">
+                Our development team is responsible for running student-led tutorials and workshops. They guide students
+                throughout the game
+                development process and have share their insights with their corresponding departments, as well as
+                engage in cross-department communication to keep everyone informed and up to date with the development's
+                progression.
+            </p>
+            <section class="row" id="Developers">
+        </div>
+
+        <div id="OperationsExecs" class="indigo darken-4 card-panel">
+            <h3 class="center">OPERATIONS TEAM</h3>
+            <p class="card-panel black">
+                The operations team plan, coordinate, and manage events, handling logistics, budgeting, and day-of
+                operations to create engaging experiences for the members of GMU.
+            </p>
+            <section class="row" id="Operations">
+        </div>
+
+        <div id="FilmCrewExecs" class="purple darken-4 card-panel">
+            <h3 class="center">FILM CREW</h3>
+            <p class="card-panel black">
+                The Film Crew captures GMU's journey from pitch to product. The videos we produce showcase the talent,
+                creativity, and hard work of our members to the world!
+            </p>
+            <section class="row" id="FilmCrew">
+        </div>
+
+        <footer class="black page-footer">
+            <script>
+                fetch("commonHTML/footer.htm")
+                    .then((response) => response.text())
+                    .then((data) => {
+                        document.querySelector("footer").innerHTML = data
+                    })
+            </script>
+        </footer>
+    </main>
+</body>
+<script src="scripts/exec-team.js"></script>
+
+</html>

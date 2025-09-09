@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900&display=swap");
+
+html,
+body {
+    background-color: #222222;
+    font-family: "Work Sans", sans-serif;
+    color: white;
+    word-wrap: break-word;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+    /* background-color: #000040; */
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #007dff;
+}
+
+p,
+ol,
+ul {
+    font-size: 12pt
+}
+
+summary {
+    font-weight: bold;
+    font-size: 14pt
+}
+
+a {
+    text-decoration: underline
+}
+
+a:visited {
+    color: lightpink
+}
+
+a:link {
+    color: skyblue
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+span {
+    text-align: left;
+}
+
+span>b {
+    background-color: #000000aa;
+    padding: 4px;
+    font-weight: 600;
+    font-size: 16pt
+}
+
+/* .text-center {
+    text-align: center;
+} */
+
+.event-imgs {
+    width: 99%;
+    border: solid 4px;
+    margin-bottom: 8px;
+}
+
+.nav-btn {
+    font-weight: 500;
+    color: white;
+    font-size: x-large;
+    font-family: "Work Sans", sans-serif;
+    margin: 6px 0;
+    box-shadow: 0 6px black;
+}
+
+.nav-btn:hover {
+    box-shadow: 0 6px black;
+    color: greenyellow;
+    font-style: underline;
+}
+
+.nav-btn:active {
+    box-shadow: 0 3px black;
+    transform: translateY(4px);
+    color: yellow
+}
+
+/* .card-title {
+    text-shadow: -1pt -1pt 0 black,
+        1pt -1pt 0 black,
+        -1pt 1pt 0 black,
+        1pt 1pt 0 black;
+} */
+
+.youtube-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.youtube-video-container::after {
+    display: block;
+    content: "";
+    padding-top: 56.25%;
+}
+
+.youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-title-text {
+    font-weight: bold;
+}
+
+h1 {
+    margin: 20px;
+    padding: 10px;
+    font-size: 32pt;
+}
+
+@media only screen and (min-width: 601px) {
+    h1 {
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    h2 {
+        font-size: 42pt;
+    }
+
+    .gmu-logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        /* This makes the logo's height match the header's height */
+        width: auto;
+        /* Maintain the aspect ratio of the logo */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        margin-top: 10px;
+        padding: 0;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 28pt;
+    }
+
+    .gmu-logo {
+        width: 102px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    header {
+        align-items: center;
+    }
+}

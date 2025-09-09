@@ -43,7 +43,7 @@
     {
         "_NAME": "Visual Studio Code",
         "description": "A code editor redefined and optimized for development.",
-        "iconPath": "http://www.whatimade.today/content/images/2021/03/vscode.png",
+        "iconPath": "./Romita-Recommends/icons/vscode.png",
         "platforms": [
             "Windows",
             "Linux",
@@ -58,8 +58,8 @@
     },
     {
         "_NAME": "DaVinci Resolve",
-        "description": "The world's most advanced video post-production solution.",
-        "iconPath": "https://pnghq.com/wp-content/uploads/davinci-resolve-17-logo-png-picture-300x300.png",
+        "description": "Placeholder",
+        "iconPath": "./Romita-Recommends/icons/DaVinci_Resolve_Studio.png",
         "platforms": [
             "Windows",
             "macOS",
@@ -125,7 +125,7 @@
     },
     {
         "_NAME": "GitHub Pages",
-        "description": "The world's most popular hosting service for GitHub Pages.",
+        "description": "Static website hosting.",
         "iconPath": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
         "pricingModel": "Free",
         "tags": [
@@ -184,7 +184,7 @@
     },
     {
         "_NAME": "TeraCopy",
-        "description": "The world's most advanced file copier.",
+        "description": "File Management Tool for Windows",
         "iconPath": "https://www.nesabamedia.com/wp-content/uploads/2019/06/Teracopy-Logo-1.png",
         "pricingModel": "Free",
         "tags": [
@@ -326,7 +326,7 @@
     },
     {
         "_NAME": "Bitwarden",
-        "description": "The world's most advanced password manager.",
+        "description": "Password Manager",
         "iconPath": "https://bitwarden.com/favicon.ico",
         "platforms": [
             "All Web Browsers",
@@ -359,7 +359,7 @@
     },
     {
         "_NAME": "AlternativeTo",
-        "description": "A crowd-sourced and free site that helps you find better apps and services. This website is key inspiration for this website!",
+        "description": "A crowd-sourced and free site that helps you find better apps and services. It's THE key inspiration for creating this website!",
         "iconPath": "https://alternativeto.net/favicon.ico",
         "platforms": [
             "All Web Browsers"

@@ -1,7 +1,7 @@
 {
     "Directors": {
         "Maeve Fitzgerald": {
-            "imagePath": "./assets/images/exec-team/directors/maeve-fitzgerald.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/directors/maeve-fitzgerald.png",
             "role": "Main Director + Producer",
             "description": "As director and producer of GMU, I'm the one who ensures everything that needs doing gets done. Whether handled personally or through delegation to our capable team of execs, I ensure that we meet student group regulations and funding requirements, that we always have a space to meet and work. I connect with industry guests and bring them in to talk to students, I collaborate with TMU organizations and outside sponsors to improve students' experience. I ensure that our development team has everything they need to create the best game possible to showcase the full extent of their skills. It's an immense job, but nothing can match the joy I get from seeing students thrive in this community we've created.",
             "links": [
@@ -12,7 +12,7 @@
             ]
         },
         "Emma Ko": {
-            "imagePath": "./assets/images/exec-team/directors/emma-ko.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/directors/emma-ko.png",
             "role": "Assistant Director",
             "description": "Hi! I'm Emma Ko, the Assistant Director at GMU. I'm a third-year Marketing Management student at TRSM and I'm super excited to support the GMU team. I'm always happy to meet new people, try new things, and make new friends :) Feel free to reach out to me on Instagram @em.mako or Discord @makopie.",
             "links": [
@@ -27,7 +27,7 @@
             ]
         },
         "Manan Auluck": {
-            "imagePath": "./assets/images/exec-team/directors/manan-auluck.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/directors/manan-auluck.png",
             "role": "Assistant Director",
             "description": "Hello there! I'm Manan Auluck, the assistant director at GMU. I'm a 2nd-year computer science student at TMU. I'm thrilled to be here! I can't wait to meet so many new people and make the most of all the opportunities. If you have any inquiries about GMU, feel free to reach out to me on Discord - @yoyo_bs1.",
             "links": [
@@ -44,7 +44,7 @@
     },
     "Developers": {
         "Thomas Imada": {
-            "imagePath": "./assets/images/exec-team/developers/thomas-imada.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/thomas-imada.png",
             "role": "Programming Lead",
             "description": "Hi I'm Thomas, the programming lead for the GMU! I'm a third year computer science student born and raised in Toronto. Over the years I've always been interested in programming, starting from Minecraft command blocks, to terminal based programs to now game programming. Outside of school, my main hobbies are Olympic Weightlifting, soccer and speed cubing (solving Rubik's cubes as fast as possible).",
             "links": [
@@ -55,43 +55,43 @@
             ]
         },
         "Michael Latka": {
-            "imagePath": "./assets/images/exec-team/developers/michael-latka.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/michael-latka.png",
             "role": "Programming Producer",
             "description": "",
             "links": []
         },
         "Victoria Do": {
-            "imagePath": "./assets/images/exec-team/developers/victoria-do.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/victoria-do.png",
             "role": "Art Lead",
             "description": "",
             "links": []
         },
         "Victoria Ouryvski": {
-            "imagePath": "./assets/images/exec-team/developers/victoria-ouryvski.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/victoria-ouryvski.png",
             "role": "Art Producer",
             "description": "4th year Computer Science student with a great passion for all things Art and Code!! I love the creation process and what better way to combine my love for Art and Programming than with making video games!!",
             "links": []
         },
         "Cassandra Matchett": {
-            "imagePath": "./assets/images/exec-team/developers/cassandra-matchett.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/cassandra-matchett.png",
             "role": "Writing Lead",
             "description": "",
             "links": []
         },
         "Stevie Zouri": {
-            "imagePath": "./assets/images/exec-team/developers/stevie-zouri.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/stevie-zouri.png",
             "role": "Writing Producer",
             "description": "",
             "links": []
         },
         "Isabella Greco-Danells": {
-            "imagePath": "./assets/images/exec-team/developers/isabella-greco-danells.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/isabella-greco-danells.png",
             "role": "Game Design Lead",
             "description": "",
             "links": []
         },
         "Tristan Meyer Odell": {
-            "imagePath": "./assets/images/exec-team/developers/tristan-meyer-odell.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/tristan-meyer-odell.png",
             "role": "Game Design Producer",
             "description": "",
             "links": [
@@ -102,31 +102,31 @@
             ]
         },
         "Ethan Wong": {
-            "imagePath": "./assets/images/exec-team/developers/ethan-wong.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/ethan-wong.png",
             "role": "Sound Design Lead",
             "description": "",
             "links": []
         },
         "Ayanna Seesahai": {
-            "imagePath": "./assets/images/exec-team/developers/ayanna-seesahai.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/ayanna-seesahai.png",
             "role": "Sound Design Producer",
             "description": "",
             "links": []
         },
         "Patrik Ago": {
-            "imagePath": "./assets/images/exec-team/developers/patrik-ago.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/patrik-ago.png",
             "role": "UI Lead",
             "description": "",
             "links": []
         },
         "Prapti Gosain": {
-            "imagePath": "./assets/images/exec-team/developers/prapti-gosain.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/prapti-gosain.png",
             "role": "UI Producer",
             "description": "",
             "links": []
         },
         "Hannah Nicoletta": {
-            "imagePath": "./assets/images/exec-team/developers/hannah-nicoletta.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/hannah-nicoletta.png",
             "role": "Accessibility Lead",
             "description": "Hi! I'm Hannah - a musician, artist, and programmer who, more than anything, just loves to make stuff. I'm a Master of Digital Media student currently working towards the video game industry, as I move from creating soundtracks and art to creating a game of my own. At the end of the day, whether it's drawing on a napkin or coding at my computer, you can find me happily creating.",
             "links": [
@@ -145,7 +145,7 @@
             ]
         },
         "Eamon Boily": {
-            "imagePath": "./assets/images/exec-team/developers/eamon-boily.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/developers/eamon-boily.png",
             "role": "QA Lead",
             "description": "I love making games both physical and digital. One of my biggest interests in game making is creating simple games that still allow for depth and complexity. In QA, our goal is to take the first iterations of a game and polish it until it becomes a finished product. We achieve this goal through rigorous play-testing and by working close with the other development teams. QA is a vital role in any game development studio and can make or break the user experience.",
             "links": []
@@ -153,7 +153,7 @@
     },
     "Operations": {
         "Dante Romita": {
-            "imagePath": "./assets/images/exec-team/operations/dante-romita.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/operations/dante-romita.png",
             "role": "Webmaster",
             "description": "Greetings! I'm producer of this very website! I'm currently in a Computer Science Graduate program here at TMU and am working towards obtaining a master's degree. There's an abundance of rich intersectionality  between computer science, web development and game design, which I've always been fascinated and enamoured by. My goal here as GMU's webmaster is to make your experience navigating this website as enjoyable as possible, so do check out all of our links above, as well as my own links below!",
             "links": [
@@ -168,25 +168,25 @@
             ]
         },
         "Edward Sword": {
-            "imagePath": "./assets/images/exec-team/operations/edward-sword.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/operations/edward-sword.png",
             "role": "Finance / Accountant",
             "description": "",
             "links": []
         },
         "Emaan Iqbal": {
-            "imagePath": "./assets/images/exec-team/operations/emaan-iqbal.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/operations/emaan-iqbal.png",
             "role": "Head of Marketing",
             "description": "",
             "links": []
         },
         "Marco Luis Policarpio": {
-            "imagePath": "./assets/images/exec-team/operations/marco-luis-policarpio.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/operations/marco-luis-policarpio.png",
             "role": "Events Executive",
             "description": "",
             "links": []
         },
         "Emmett Abdulhadi": {
-            "imagePath": "./assets/images/exec-team/operations/emmett-abdulhadi.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/operations/emmett-abdulhadi.png",
             "role": "Events Executive",
             "description": "Hi! My name is Mehmet, or you can call me Emmett! I'm one of the events executives at GMU. I'm a 4th year architectural science student here at TMU. I'm interested in game design and finding ways to connect architecture with the gaming experience.",
             "links": [
@@ -199,7 +199,7 @@
     },
     "Film Crew": {
         "Evan Kadoch": {
-            "imagePath": "./assets/images/exec-team/film-crew/evan-kadoch.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/film-crew/evan-kadoch.png",
             "role": "Video Editor",
             "description": "Hi there! I'm Evan, a video editor in RTA Media Production, and am also the video editor for GMU! I love games, movies and music. Any video you see posted from GMU including game trailers have been edited by me :).",
             "links": [
@@ -214,7 +214,7 @@
             ]
         },
         "Alisha Pereira": {
-            "imagePath": "./assets/images/exec-team/film-crew/alisha-pereira.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/film-crew/alisha-pereira.png",
             "role": "Writer",
             "description": "With a background in producing scripted fiction television and a passion for exploring digital storytelling, I bring a blend of industry experience and skills I'm learning as a graduate student in the Master of Digital Media program to ideate and script engaging content for GMU.",
             "links": [
@@ -225,13 +225,13 @@
             ]
         },
         "Zoreb Malick": {
-            "imagePath": "./assets/images/exec-team/film-crew/zoreb-malick.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/film-crew/zoreb-malick.png",
             "role": "Director",
             "description": "",
             "links": []
         },
         "Nitya Shinde": {
-            "imagePath": "./assets/images/exec-team/film-crew/nitya-shinde.png",
+            "imagePath": "https://dan-a-rama.neocities.org/github-website-images/GMU-F2024-W2025/exec-team/film-crew/nitya-shinde.png",
             "role": "Cinematographer",
             "description": "I'm a digital marketer with a passion for creative technologies. My expertise lies in graphic design and capturing art in a creative way, where I find particular excitement in syncing visuals to music. These skills, rooted in my love for art, allow me to craft immersive experiences that are both artistic and innovative.",
             "links": []

@@ -111,7 +111,7 @@
     },
     {
         "_NAME": "AmpCC",
-        "description": "The best collection of online media downloader tools without pesky & potentially dangerous ads!",
+        "description": "The best collection of online media downloader tools I can find, all without pesky & dangerous ads!",
         "iconPath": "https://pbs.twimg.com/profile_images/1793087544881524736/ipbDDtt-_400x400.png",
         "platforms": [
             "All Web Browsers"
@@ -157,7 +157,8 @@
         "iconPath": "https://tab.gladly.io/favicon.ico",
         "pricingModel": "Free",
         "tags": [
-            "Website"
+            "Website",
+            "Good Cause"
         ],
         "type": "Website",
         "url": "https://tab.gladly.io",
@@ -378,11 +379,18 @@
         "iconPath": "https://www.ecosia.org/favicon.ico",
         "pricingModel": "Free",
         "type": "Website",
-        "url": "https://www.ecosia.org/"
+        "url": "https://www.ecosia.org/",
+        "tags": [
+            "Search Engine",
+            "Good Cause"
+        ],
+        "platforms": [
+            "All Web Browsers"
+        ]
     },
     {
         "_NAME": "Linux Mint",
-        "description": "My current favourite Linux distro.",
+        "description": "My favorite Linux distribution!",
         "iconPath": "https://www.linuxmint.com/favicon.ico",
         "pricingModel": "Free",
         "tags": [
@@ -419,7 +427,10 @@
             "File Manager"
         ],
         "type": "Application",
-        "url": "https://onecommander.com/"
+        "url": "https://onecommander.com/",
+        "platforms": [
+            "Windows"
+        ]
     },
     {
         "_NAME": "Documents By Readdle",
@@ -434,7 +445,11 @@
             "Image Viewer"
         ],
         "type": "Application",
-        "url": "https://readdle.com/documents"
+        "url": "https://readdle.com/documents",
+        "platforms": [
+            "macOS",
+            "iOS"
+        ]
     },
     {
         "_NAME": "MEGA",
@@ -445,7 +460,13 @@
             "Cloud Storage"
         ],
         "type": "Application",
-        "url": "https://mega.nz/"
+        "url": "https://mega.nz/",
+        "platforms": [
+            "All Web Browsers",
+            "Windows",            
+            "macOS",
+            "Linux"
+        ]
     },
     {
         "_NAME": "Trello",
@@ -465,7 +486,12 @@
             "Kanban"
         ],
         "type": "Application",
-        "url": "https://trello.com/"
+        "url": "https://trello.com/",
+        "platforms": [
+            "All Web Browsers",
+            "iOS",
+            "Android"
+        ]
     },
     {
         "_NAME": "Neocities",
@@ -477,5 +503,30 @@
         ],
         "type": "Web Service",
         "url": "https://neocities.org/"
+    },
+    {
+        "_NAME": "Overleaf",
+        "description": "A free online LaTeX editor",
+        "iconPath": "https://overleaf.com/favicon.ico",
+        "pricingModel": "Free, Subscription",
+        "tags": [
+            "LaTeX"
+        ],
+        "type": "Application",
+        "url": "https://www.overleaf.com/"
+    },
+    {
+        "_NAME": "NewPipe",
+        "description": "A free, open-source YouTube client for Android.",
+        "iconPath": "https://newpipe.net/favicon.ico",
+        "pricingModel": "Free and Open Source",
+        "tags": [
+            "YouTube Client"
+        ],
+        "type": "Application",
+        "url": "https://newpipe.net/",
+        "platforms": [
+            "Android"
+        ]
     }
 ]

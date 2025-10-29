@@ -317,7 +317,7 @@ function outputStrBuilder() {
 
         for (mp3File of selectedFiles) {
             if (mp3File.split(`.`).pop() == `mp3`) {
-                outputStr += `ffmpeg -i "${mp3File}" -i "${removeExt(mp3File)}.png" -c copy -map 0 -map 1 -metadata:s:v comment="Cover (Front)" "(COVER-ADDED) ${mp3File}"\n`
+                outputStr += `ffmpeg -i "${mp3File}" -i "${removeExt(mp3File)}.png" -c copy -map 0 -map 1 -metadata:s:v comment="Cover (Front)" "${removeExt(mp3File)} (COVER-ADDED).mp3"\n`
             } else {
                 alert(`Ensure that ONLY MP3 files are uploaded/entered.`)
                 return false

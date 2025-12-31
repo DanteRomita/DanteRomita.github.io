@@ -158,6 +158,8 @@ function outputStrBuilder() {
 
         let ExtractFrameTime = document.getElementById("ExtractFrameTime").value
 
+        let VolumeMultiplier = document.getElementById("VolumeMultiplierValue").value
+
         let PowerOp = document.getElementById("PowerOptions-FFMPEG").value
 
         // Trim media first if selected (Least Computationally Expensive)
@@ -216,6 +218,10 @@ function outputStrBuilder() {
         if (ChangeSpeed && SpeedMultiplier !== ``) {
             vfFilters += `setpts=PTS/${SpeedMultiplier},`
             afFilters += `atempo=${SpeedMultiplier},`
+        }
+
+        if (VolumeMultiplier) {
+            afFilters += `volume=${VolumeMultiplier},`
         }
 
         // Remove the trailing comma from the filters if they are not empty

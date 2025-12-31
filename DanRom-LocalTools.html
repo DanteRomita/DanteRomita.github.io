@@ -418,6 +418,18 @@
                     </p>
                 </fieldset>
 
+                <div>
+                    <input type="checkbox" name="VolumeMultiplier"
+                    id="VolumeMultiplier" onclick="ffmpegShowHide('VolumeMultiplier')">
+                    <label for="VolumeMultiplier">Volume Multiplier</label>
+                </div>
+
+                <fieldset class="ffmpeg-fieldset" id="VolumeMultiplier-Options">
+                    Enter the desired volume multiplier of your media.
+                    <br><input type="number" class="textInput" step="any" id="VolumeMultiplierValue" name="VolumeMultiplierValue"
+                        min="0">
+                </fieldset>
+
                 <hr>
 
                 <h3>Power Options When Complete</h3>

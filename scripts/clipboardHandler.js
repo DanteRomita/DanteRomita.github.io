@@ -1,7 +1,7 @@
-const CONST_removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+const CONST_removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','_')) }\n`
 let removeNonASCII_PS = ``
 
-function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, ''); }
+function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, '_'); }
 
 function removeExt(fileName) {
     fileStrList = fileName.split(`.`)

@@ -33,8 +33,8 @@ let outputStr = ``
 function outputStrBuilder() {
     let iOS_Mode = document.getElementById("iOS_Mode").checked
     console.log(`iOS_Mode: ${iOS_Mode}`)
-    if (iOS_Mode) {removeNonASCII_PS = ``; finalLine = ``}
-    else {removeNonASCII_PS = CONST_removeNonASCII_PS; finalLine = CONST_finalLine}
+    if (iOS_Mode) { removeNonASCII_PS = ``; finalLine = `` }
+    else { removeNonASCII_PS = CONST_removeNonASCII_PS; finalLine = CONST_finalLine }
 
     outputStr = ``
 
@@ -133,6 +133,9 @@ function outputStrBuilder() {
 
         let CustomBitrate = document.getElementById("CustomBitrate").checked
         let CustomBitrateNum = document.getElementById("CustomBitrateNum").value
+
+        let CustomAudioBitrate = document.getElementById("CustomAudioBitrate").checked
+        let CustomAudioBitrateNum = document.getElementById("CustomAudioBitrateNum").value
 
         let CustomFramerate = document.getElementById("CustomFramerate").checked
         let CustomFramerateNum = document.getElementById("CustomFramerateNum").value
@@ -236,6 +239,9 @@ function outputStrBuilder() {
         else if (!CopyAudioCodec && afFilters != ``) modifications += afStr
 
         if (CustomBitrate && CustomBitrateNum !== ``) modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `
+
+        if (CustomAudioBitrate && CustomAudioBitrateNum !== ``) modifications += `-b:a ${CustomAudioBitrateNum}k `
+
         if (CustomFramerate && CustomFramerateNum !== ``) modifications += `-r ${CustomFramerateNum} `
 
         modifications = modifications.trim()
@@ -387,7 +393,7 @@ document.getElementById("copyButton").addEventListener("click", function () {
         navigator.clipboard.writeText(outputStr);
         copyStatusText.textContent = "Copied!"
         copyStatusText.style.color = "lime"
-    } 
+    }
 })
 
 // document.getElementById("downloadButton").addEventListener("click", function () {

@@ -177,11 +177,17 @@
 
                 <h3>Audio Options</h3>
                 <select id="AudioFilterOp" name="AudioFilterOp">
-                    <option value="NormalizeAudio" selected>Normalize Audio</option>
-                    <option value="NoAudioFilters">No Audio Filters</option>
+                    <option value="NoAudioFilters" selected>No Audio Filters</option>
+                    <option value="NormalizeAudio">Normalize Audio</option>
                     <option value="RemoveAudio">Remove Audio</option>
                 </select>
+                <h4>NOTES:</h4>
+                    <ul>
+                        <li>This option will be IGNORED if `Copy Audio Codec` is checked.</li>
+                        <li><b>"Normalize Audio"</b> will only perform a single pass of `loudnorm` normalization. You can use <a href="https://github.com/slhck/ffmpeg-normalize">ffmpeg-normalize</a> if you'd like to do a full two-pass normalization process instead, among other.</li>
+                    </ul>
                 <p>
+                    
                     <b>NOTE: </b> This option will be IGNORED if `Copy Audio Codec` is checked.
                 </p>
 
@@ -311,12 +317,23 @@
                 <div>
                     <input type="checkbox" name="CustomBitrate" id="CustomBitrate"
                         onclick="ffmpegShowHide('CustomBitrate')">
-                    <label for="CustomBitrate">Custom Bitrate</label>
+                    <label for="CustomBitrate">Custom Video Bitrate</label>
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="CustomBitrate-Options">
                     <input type="number" min="0" id="CustomBitrateNum">
                     kbps
                 </fieldset>
+
+                <div>
+                    <input type="checkbox" name="CustomAudioBitrate" id="CustomAudioBitrate"
+                        onclick="ffmpegShowHide('CustomAudioBitrate')">
+                    <label for="CustomAudioBitrate">Custom Audio Bitrate</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="CustomAudioBitrate-Options">
+                    <input type="number" min="0" id="CustomAudioBitrateNum">
+                    kbps
+                </fieldset>
+                </div>
 
                 <div>
                     <input type="checkbox" name="CustomFramerate" id="CustomFramerate"

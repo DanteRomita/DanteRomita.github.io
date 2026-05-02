@@ -776,7 +776,7 @@
                 <p>
                     <input style="font-size: x-large" type="button" id="copyCommand_PS-RemoveNonASCII"
                         value="Copy Powershell Command" onclick="navigator.clipboard.writeText(
-                            `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','')) }\n`
+                            `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','_')) }\n`
                             ); alert('Powershell Command Copied!');">
                 </p>
 

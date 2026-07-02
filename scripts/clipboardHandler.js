@@ -181,6 +181,7 @@ function outputStrBuilder() {
 
         let hwAccelStr = ``
         if (GraphicsCardOp === `h264_nvenc`) hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`
+        if (GraphicsCardOp === `h264_vaapi`) hwAccelStr = `-init_hw_device vaapi=gpu:/dev/dri/renderD128 -hwaccel vaapi -hwaccel_device gpu`
 
         let loopStr = ``
         if (LoopMedia && NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`
@@ -199,6 +200,8 @@ function outputStrBuilder() {
 
         let vfFilters = ``
         let afFilters = ``
+
+        if (GraphicsCardOp === `h264_vaapi`) vfFilters += `format=nv12,hwupload=extra_hw_frames=64`
 
         if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
 

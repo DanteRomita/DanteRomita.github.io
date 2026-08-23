@@ -182,12 +182,14 @@
                     <option value="RemoveAudio">Remove Audio</option>
                 </select>
                 <h4>NOTES:</h4>
-                    <ul>
-                        <li>This option will be IGNORED if `Copy Audio Codec` is checked.</li>
-                        <li><b>"Normalize Audio"</b> will only perform a single pass of `loudnorm` normalization. You can use <a href="https://github.com/slhck/ffmpeg-normalize">ffmpeg-normalize</a> if you'd like to do a full two-pass normalization process instead, among other.</li>
-                    </ul>
+                <ul>
+                    <li>This option will be IGNORED if `Copy Audio Codec` is checked.</li>
+                    <li><b>"Normalize Audio"</b> will only perform a single pass of `loudnorm` normalization. You can
+                        use <a href="https://github.com/slhck/ffmpeg-normalize">ffmpeg-normalize</a> if you'd like to do
+                        a full two-pass normalization process instead, among other.</li>
+                </ul>
                 <p>
-                    
+
                     <b>NOTE: </b> This option will be IGNORED if `Copy Audio Codec` is checked.
                 </p>
 
@@ -210,7 +212,9 @@
                     Check the boxes if you want to include the corresponding
                     option. If an option's checkbox is not checked, it will not be used.
                     <b>
-                        The default functionality assumed is an input an output of the same file type, and <b style="color: orange">not all options are compatible with one another when running the FFMPEG command</b>!
+                        The default functionality assumed is an input an output of the same file type, and <b
+                            style="color: orange">not all options are compatible with one another when running the
+                            FFMPEG command</b>!
                     </b>
                 </p>
 
@@ -230,7 +234,8 @@
                                     in the script file).</li>
                             </ul>
                         </li>
-                        <li>If this option is selected, <b>you must upload your files (or place them in the textarea) AND place them in the textarea
+                        <li>If this option is selected, <b>you must upload your files (or place them in the textarea)
+                                AND place them in the textarea
                                 below for them to be processed.</b></li>
                         <li>Trimmed Media will be placed in the same folder as the original file.</li>
                     </ul>
@@ -425,27 +430,32 @@
                 </div>
 
                 <div>
-                    <input type="checkbox" name="ExtractFrame" id="ExtractFrame" onclick="ffmpegShowHide('ExtractFrame')">
+                    <input type="checkbox" name="ExtractFrame" id="ExtractFrame"
+                        onclick="ffmpegShowHide('ExtractFrame')">
                     <label for="ExtractFrame">Extract Frame</label>
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="ExtractFrame-Options">
-                    Enter the timestamp of the frame you would like to extract. This assumes you have only video files, and will return the frame at the given timestamp (Ex. 01:23:45.678). <b>Checking this box will ensure no other options apply!</b>
+                    Enter the timestamp of the frame you would like to extract. This assumes you have only video files,
+                    and will return the frame at the given timestamp (Ex. 01:23:45.678). <b>Checking this box will
+                        ensure no other options apply!</b>
                     <br><input type="text" class="textInput" id="ExtractFrameTime" name="ExtractFrameTime">
                     <p style="color: yellow;">
-                        <b>TIP: </b> If you would like to extract a frame from a long video file, trim it first such that it is only a few seconds long, then use the timestamp of that trimmed video file! Extracting a frame late into a long video takes a long time.
+                        <b>TIP: </b> If you would like to extract a frame from a long video file, trim it first such
+                        that it is only a few seconds long, then use the timestamp of that trimmed video file!
+                        Extracting a frame late into a long video takes a long time.
                     </p>
                 </fieldset>
 
                 <div>
-                    <input type="checkbox" name="VolumeMultiplier"
-                    id="VolumeMultiplier" onclick="ffmpegShowHide('VolumeMultiplier')">
+                    <input type="checkbox" name="VolumeMultiplier" id="VolumeMultiplier"
+                        onclick="ffmpegShowHide('VolumeMultiplier')">
                     <label for="VolumeMultiplier">Volume Multiplier</label>
                 </div>
 
                 <fieldset class="ffmpeg-fieldset" id="VolumeMultiplier-Options">
                     Enter the desired volume multiplier of your media.
-                    <br><input type="number" class="textInput" step="any" id="VolumeMultiplierValue" name="VolumeMultiplierValue"
-                        min="0">
+                    <br><input type="number" class="textInput" step="any" id="VolumeMultiplierValue"
+                        name="VolumeMultiplierValue" min="0">
                 </fieldset>
 
                 <hr>
@@ -698,7 +708,8 @@
                     <label for="AppendBskyDotSocial">
                         Append `bsky.social` to Bluesky URLs
                     </label>
-                    <p>(Useful to disable for custom Bluesky handles or when `bsky.social` is already in the file name. Only applies when converting Bluesky filenames to URLs.)</p>
+                    <p>(Useful to disable for custom Bluesky handles or when `bsky.social` is already in the file name.
+                        Only applies when converting Bluesky filenames to URLs.)</p>
                     <input type="checkbox" id="OptDiscordEmb" name="OptDiscordEmb">
                     <label for="OptDiscordEmb">Optimal Discord Embedding in URLs</label>
 
@@ -778,7 +789,7 @@
                     <input style="font-size: x-large" type="button" id="copyCommand_PS-RemoveNonASCII"
                         value="Copy Powershell Command" onclick="navigator.clipboard.writeText(
                             `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','_')) }\n`
-                            ); alert('Powershell Command Copied!');">
+                            );">
                 </p>
 
                 <fieldset>
@@ -790,7 +801,7 @@
                     <input style="font-size: x-large;" type="button" id="copyFileList-RemoveNonASCII"
                         value="Copy File List" onclick="
                     if (document.getElementById('fileInput-RemoveNonASCII').files.length === 0) { alert('No Files Uploaded.'); return; }
-                    navigator.clipboard.writeText(document.getElementById('fileList-RemoveNonASCII').innerText); alert('File List Copied!')
+                    navigator.clipboard.writeText(document.getElementById('fileList-RemoveNonASCII').innerText);
                     ">
                 </fieldset>
 
@@ -801,7 +812,7 @@
 
                 <p>
                     <input style="font-size: x-large;" type="button" id="copyTextArea-RemoveNonASCII" value="Copy Text"
-                        onclick="navigator.clipboard.writeText(removeNonASCII_JS(document.getElementById('RemoveNonASCII-Textarea').value)); alert('Text Copied!')">
+                        onclick="navigator.clipboard.writeText(removeNonASCII_JS(document.getElementById('RemoveNonASCII-Textarea').value));">
                 </p>
 
                 <fieldset>

@@ -163,6 +163,8 @@ function outputStrBuilder() {
 
         let VolumeMultiplier = document.getElementById("VolumeMultiplierValue").value
 
+        let DaVinci_Resolve_Linux = document.getElementById("DaVinci_Resolve_Linux").checked
+
         let PowerOp = document.getElementById("PowerOptions-FFMPEG").value
 
         // Trim media first if selected (Least Computationally Expensive)
@@ -180,8 +182,8 @@ function outputStrBuilder() {
         }
 
         let hwAccelStr = ``
-        if (GraphicsCardOp === `h264_nvenc`) hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`
-        if (GraphicsCardOp === `h264_vaapi`) hwAccelStr = `-init_hw_device vaapi=gpu:/dev/dri/renderD128 -hwaccel vaapi -hwaccel_device gpu`
+        if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux) hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`
+        if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux) hwAccelStr = `-init_hw_device vaapi=gpu:/dev/dri/renderD128 -hwaccel vaapi -hwaccel_device gpu`
 
         let loopStr = ``
         if (LoopMedia && NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`
@@ -189,11 +191,13 @@ function outputStrBuilder() {
         // Handle modification parameters for output files
         let modifications = ``
 
-        if (GraphicsCardOp !== `None_UseCPU`) modifications += `-c:v ${GraphicsCardOp} `
-        if (GraphicsCardOp === `h264_nvenc`) modifications += `-preset slow -cq 28 -b:v 0 `
+        if (GraphicsCardOp !== `None_UseCPU` && !DaVinci_Resolve_Linux) modifications += `-c:v ${GraphicsCardOp} `
+        if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux) modifications += `-preset slow -cq 28 -b:v 0 `
 
-        if (CopyCodecs && CopyVideoCodec) modifications += `-c:v copy `
-        if (CopyCodecs && CopyAudioCodec) modifications += `-c:a copy `
+        if (CopyCodecs && CopyVideoCodec && !DaVinci_Resolve_Linux) modifications += `-c:v copy `
+        if (CopyCodecs && CopyAudioCodec && !DaVinci_Resolve_Linux) modifications += `-c:a copy `
+
+        if (DaVinci_Resolve_Linux) modifications += `-c:v mpeg4 -q:v 0 -c:a flac `
 
         if (VideoAudioMapping && VideoMapping) modifications += `-map 0:v `
         if (VideoAudioMapping && AudioMapping) modifications += `-map 0:a `
@@ -201,7 +205,7 @@ function outputStrBuilder() {
         let vfFilters = ``
         let afFilters = ``
 
-        if (GraphicsCardOp === `h264_vaapi`) vfFilters += `format=nv12,hwupload=extra_hw_frames=64`
+        if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux) vfFilters += `format=nv12,hwupload=extra_hw_frames=64`
 
         if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
 

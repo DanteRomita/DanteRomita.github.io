@@ -451,11 +451,44 @@
                         onclick="ffmpegShowHide('VolumeMultiplier')">
                     <label for="VolumeMultiplier">Volume Multiplier</label>
                 </div>
-
                 <fieldset class="ffmpeg-fieldset" id="VolumeMultiplier-Options">
                     Enter the desired volume multiplier of your media.
                     <br><input type="number" class="textInput" step="any" id="VolumeMultiplierValue"
                         name="VolumeMultiplierValue" min="0">
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" name="DaVinci_Resolve_Linux" id="DaVinci_Resolve_Linux"
+                        onclick="ffmpegShowHide('DaVinci_Resolve_Linux')">
+                    <label for="DaVinci_Resolve_Linux">DaVinci Resolve Linux Conversion</label>
+                </div>
+                <fieldset class="ffmpeg-fieldset" id="DaVinci_Resolve_Linux-Options">
+                    This option converts your existing media to codecs compatible with DaVinci Resolve on
+                    Linux. This option uses the following codecs, which retain high quality while maintaining a
+                    reasonable file size:
+
+                    <ul>
+                        <li>
+                            <b>Video Codec:</b>
+                            MPEG4 (-c:v mpeg4 -q:v 0)
+                        </li>
+                        <li>
+                            <b>Audio Codec:</b>
+                            FLAC (-c:a flac)
+                        </li>
+                    </ul>
+
+                    <p style="color: orange">
+                        <b>NOTE: </b>
+                        Selecting this option will ignore any graphics card & codec settings selected. This is a CPU-only operation!
+                    </p>
+
+                    <p style="color: yellow;">
+                        <b>IMPORTANT: </b>
+                        This option should be used <b><u>only on video files!</u></b>
+                        For audio files, simply convert them all to WAV files via `Choose Files` and use the `Convert
+                        File Type` option.
+                    </p>
                 </fieldset>
 
                 <hr>

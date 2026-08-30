@@ -464,24 +464,8 @@
                 </div>
                 <fieldset class="ffmpeg-fieldset" id="DaVinci_Resolve_Linux-Options">
                     This option converts your existing media to codecs compatible with DaVinci Resolve on
-                    Linux. This option uses the following codecs, which retain high quality while maintaining a
-                    reasonable file size:
-
-                    <ul>
-                        <li>
-                            <b>Video Codec:</b>
-                            MPEG4 (-c:v mpeg4 -q:v 0)
-                        </li>
-                        <li>
-                            <b>Audio Codec:</b>
-                            FLAC (-c:a flac)
-                        </li>
-                    </ul>
-
-                    <p style="color: orange">
-                        <b>NOTE: </b>
-                        Selecting this option will ignore any graphics card & codec settings selected. This is a CPU-only operation!
-                    </p>
+                    Linux. This option uses the `MPEG4` video codec, which retain high quality while maintaining a
+                    reasonable file size.
 
                     <p style="color: yellow;">
                         <b>IMPORTANT: </b>
@@ -489,6 +473,44 @@
                         For audio files, simply convert them all to WAV files via `Choose Files` and use the `Convert
                         File Type` option.
                     </p>
+
+                    <p style="color: orange">
+                        <b>NOTES: </b>
+                    </p>
+                    <ul style="color: orange">
+                        <li>
+                            Selecting this option will ignore any graphics card & any other codec settings selected.
+                            This is a CPU-only operation!
+                        </li>
+                        <li>
+                            From my testing as of August 2026, DaVinci Resolve currently does not play nice with the
+                            `Normalize Audio` function.
+                            If you wish to normalize audio for this use case, first install <a href="">pipx</a>, then
+                            install <a href="">ffmpeg-normalize</a> via the following command:
+                            <ul>
+                                <li style="color: lime">
+                                    pipx install ffmpeg-normalize
+                                </li>
+                            </ul>
+                            <b>
+                                Therefore, <u>the `Audio Option` dropdown above will also be ignored if this option is
+                                    checked.</u>
+                                Use the <u>dropdown</u> below instead!
+                            </b>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Choose your desired audio codec, copy an existing codec if it's already in a
+                        Resolve-compatible format, or remove audio here if you wish to keep audio in a separate file(s):
+                    </p>
+
+                    <select id="DR_Linux_AudioOption" name="DR_Linux_AudioOption">
+                        <option value="REMOVE" style="color: red">Remove Audio</option>
+                        <option value="copy" style="color: yellow">COPY</option>
+                        <option value="flac">FLAC</option>
+                        <option value="pcm_s16le">PCM_S16LE</option>
+                    </select>
                 </fieldset>
 
                 <hr>

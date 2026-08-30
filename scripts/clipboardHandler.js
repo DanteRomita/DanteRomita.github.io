@@ -1,407 +1,504 @@
-const CONST_removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','_')) }\n`
-let removeNonASCII_PS = ``
+const CONST_removeNonASCII_PS = `Get-ChildItem -File | ForEach-Object { Rename-Item -LiteralPath $_ -NewName ( [RegEx]::Replace($_.Name, '[^\\x00-\\x7F]','_')) }\n`;
+let removeNonASCII_PS = ``;
 
-function removeNonASCII_JS(str) { return str.replace(/[^\x00-\x7F]/g, '_'); }
+function removeNonASCII_JS(str) {
+  return str.replace(/[^\x00-\x7F]/g, "_");
+}
 
 function removeExt(fileName) {
-    fileStrList = fileName.split(`.`)
-    fileStrList.pop()
-    let fileNoExt = ``
-    for (str of fileStrList) { fileNoExt += str }
-    return fileNoExt
+  fileStrList = fileName.split(`.`);
+  fileStrList.pop();
+  let fileNoExt = ``;
+  for (str of fileStrList) {
+    fileNoExt += str;
+  }
+  return fileNoExt;
 }
 
 function powerOp(PowerOp) {
-    if (PowerOp === `Hibernate`) return `shutdown /h\n`
-    if (PowerOp === `Shut Down`) return `Stop-Computer\n`
-    return `\n`
+  if (PowerOp === `Hibernate`) return `shutdown /h\n`;
+  if (PowerOp === `Shut Down`) return `Stop-Computer\n`;
+  return `\n`;
 }
 
 function ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies) {
-    let str = ``
-    if (Thumbnail) str += `--write-thumbnail --convert-thumbnails png `
-    if (Subtitles) str += `--write-subs --sub-langs 'en.*,ja' `
-    if (Comments) str += `--write-comments `
-    if (Cookies) str += `--cookies cookies.txt `
-    return str
+  let str = ``;
+  if (Thumbnail) str += `--write-thumbnail --convert-thumbnails png `;
+  if (Subtitles) str += `--write-subs --sub-langs 'en.*,ja' `;
+  if (Comments) str += `--write-comments `;
+  if (Cookies) str += `--cookies cookies.txt `;
+  return str;
 }
 
-const CONST_finalLine = `\n# ---REACHED END OF SCRIPT---\n`
-let finalLine = ``
+const CONST_finalLine = `\n# ---REACHED END OF SCRIPT---\n`;
+let finalLine = ``;
 
-let outputStr = ``
+let outputStr = ``;
 function outputStrBuilder() {
-    let iOS_Mode = document.getElementById("iOS_Mode").checked
-    console.log(`iOS_Mode: ${iOS_Mode}`)
-    if (iOS_Mode) { removeNonASCII_PS = ``; finalLine = `` }
-    else { removeNonASCII_PS = CONST_removeNonASCII_PS; finalLine = CONST_finalLine }
+  let iOS_Mode = document.getElementById("iOS_Mode").checked;
+  console.log(`iOS_Mode: ${iOS_Mode}`);
+  if (iOS_Mode) {
+    removeNonASCII_PS = ``;
+    finalLine = ``;
+  } else {
+    removeNonASCII_PS = CONST_removeNonASCII_PS;
+    finalLine = CONST_finalLine;
+  }
 
-    outputStr = ``
+  outputStr = ``;
 
-    if (mostRecentForm === `YT-DLP_GUI-FORM`) {
-        let URLs = document.getElementById("textarea-YT-DLP_GUI").value.trim().split("\n")
+  if (mostRecentForm === `YT-DLP_GUI-FORM`) {
+    let URLs = document
+      .getElementById("textarea-YT-DLP_GUI")
+      .value.trim()
+      .split("\n");
 
-        let Video = document.getElementById("Video-YT-DLP").checked
-        let Audio = document.getElementById("Audio-YT-DLP").checked
-        let Thumbnail = document.getElementById("Thumbnail-YT-DLP").checked
-        let Subtitles = document.getElementById("Subtitles-YT-DLP").checked
-        let Comments = document.getElementById("Comments-YT-DLP").checked
+    let Video = document.getElementById("Video-YT-DLP").checked;
+    let Audio = document.getElementById("Audio-YT-DLP").checked;
+    let Thumbnail = document.getElementById("Thumbnail-YT-DLP").checked;
+    let Subtitles = document.getElementById("Subtitles-YT-DLP").checked;
+    let Comments = document.getElementById("Comments-YT-DLP").checked;
 
-        let VidRes = document.getElementById("VideoResolution-YT-DLP").value
+    let VidRes = document.getElementById("VideoResolution-YT-DLP").value;
 
-        let Channel = document.getElementById("Channel-YT-DLP").checked
-        let VidID = document.getElementById("VideoID-YT-DLP").checked
-        let Cookies = document.getElementById("UseCookies-YT-DLP").checked
+    let Channel = document.getElementById("Channel-YT-DLP").checked;
+    let VidID = document.getElementById("VideoID-YT-DLP").checked;
+    let Cookies = document.getElementById("UseCookies-YT-DLP").checked;
 
-        let PowerOp = document.getElementById("PowerOptions-YT-DLP").value
+    let PowerOp = document.getElementById("PowerOptions-YT-DLP").value;
 
-        // Guard clauses
-        if (URLs[0] === "") { alert("No URLs entered."); return false }
-        if (!Video && !Audio && !Thumbnail && !Subtitles && !Comments) {
-            alert("No content selected."); return false
-        }
-
-        let baseStr = `yt-dlp -o `
-        if (Channel && VidID) baseStr += `'%(uploader)s - %(title)s [VidID~%(id)s].%(ext)s'`
-        else if (Channel) baseStr += `'%(uploader)s - %(title)s.%(ext)s'`
-        else if (VidID) baseStr += `'%(title)s [VidID~%(id)s].%(ext)s'`
-        else baseStr += `'%(title)s.%(ext)s'`
-
-        let convertType = `recode`
-        if (document.getElementById("RemuxFiles-YT-DLP").checked || iOS_Mode) convertType = `remux`
-        for (URL of URLs) {
-            if (Video) {
-                if (VidRes === `Best`) {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
-                } else {
-                    outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
-                }
-            }
-
-            if (Audio) {
-                outputStr += `${baseStr} '${URL}' -x --audio-format mp3 `;
-                if (!Video) outputStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} `;
-                outputStr += `\n`;
-            }
-
-            if (!(Video || Audio)) {
-                outputStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} --skip-download\n`;
-            }
-        }
-
-        outputStr += removeNonASCII_PS
-        outputStr += powerOp(PowerOp)
-        outputStr += finalLine
-        return true
+    // Guard clauses
+    if (URLs[0] === "") {
+      alert("No URLs entered.");
+      return false;
+    }
+    if (!Video && !Audio && !Thumbnail && !Subtitles && !Comments) {
+      alert("No content selected.");
+      return false;
     }
 
-    if (mostRecentForm === `FFMPEG_GUI-FORM`) {
-        outputStr += removeNonASCII_PS
+    let baseStr = `yt-dlp -o `;
+    if (Channel && VidID)
+      baseStr += `'%(uploader)s - %(title)s [VidID~%(id)s].%(ext)s'`;
+    else if (Channel) baseStr += `'%(uploader)s - %(title)s.%(ext)s'`;
+    else if (VidID) baseStr += `'%(title)s [VidID~%(id)s].%(ext)s'`;
+    else baseStr += `'%(title)s.%(ext)s'`;
 
-        const textareaFileList = document.getElementById("textarea-FFMPEG").value.trim().split(`\n`);
-        const files = document.getElementById("fileInput-FFMPEG").files;
-
-        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
-
-        let selectedFiles = []
-        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
-        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
-
-        let GraphicsCardOp = document.getElementById("GraphicsCardOp").value
-
-        let InputFileNames = document.getElementById("InputFileNames").value.split("\n").filter(item => item !== '')
-        let TempOutputItems = InputFileNames.map((fileName, index) => {
-            let parts = fileName.split('.');
-            let fileNameWithoutExtension = parts.slice(0, parts.length - 1).join('.');
-            let extension = parts[parts.length - 1];
-            return `(TRIMMED) ${fileNameWithoutExtension} {${index + 1}}.${extension}`;
-        });
-        let StartTimes = document.getElementById("StartTimes").value.split("\n").filter(item => item !== '')
-        let EndTimes = document.getElementById("EndTimes").value.split("\n").filter(item => item !== '')
-
-        let OutputExtensions = document.getElementById("OutputExtensions").value.split("\n").filter(item => item !== "")
-
-        let AudioFilterOp = document.getElementById("AudioFilterOp").value
-
-        let VideoAudioMapping = document.getElementById("VideoAudioMapping").checked
-        let VideoMapping = document.getElementById("VideoMapping").checked
-        let AudioMapping = document.getElementById("AudioMapping").checked
-
-        let CopyCodecs = document.getElementById("CopyCodecs").checked
-        let CopyVideoCodec = document.getElementById("CopyVideoCodec").checked
-        let CopyAudioCodec = document.getElementById("CopyAudioCodec").checked
-
-        let CustomBitrate = document.getElementById("CustomBitrate").checked
-        let CustomBitrateNum = document.getElementById("CustomBitrateNum").value
-
-        let CustomAudioBitrate = document.getElementById("CustomAudioBitrate").checked
-        let CustomAudioBitrateNum = document.getElementById("CustomAudioBitrateNum").value
-
-        let CustomFramerate = document.getElementById("CustomFramerate").checked
-        let CustomFramerateNum = document.getElementById("CustomFramerateNum").value
-
-        let CustomResolution = document.getElementById("CustomResolution").checked
-        let TypeOfScaling
-        if (document.getElementById("16x9_AspectRatios").checked) {
-            TypeOfScaling = "16x9"
-        } else if (document.getElementById("CustomScaling").checked) {
-            TypeOfScaling = "CustomScaling"
+    let convertType = `recode`;
+    if (document.getElementById("RemuxFiles-YT-DLP").checked || iOS_Mode)
+      convertType = `remux`;
+    for (URL of URLs) {
+      if (Video) {
+        if (VidRes === `Best`) {
+          outputStr += `${baseStr} '${URL}' -f bestvideo[ext=mp4]+bestaudio/best/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
+        } else {
+          outputStr += `${baseStr} '${URL}' -f bestvideo[height=${VidRes}][ext=mp4]+bestaudio/best[height=${VidRes}]/best[ext=mp4]/best --embed-chapters --${convertType}-video mp4 ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)}\n`;
         }
-        let Preset_16x9_Dimensions = document.getElementById("Preset_16x9_Dimensions").value
-        let ScaleType = document.getElementById("ScaleType").value
-        let ScaleMultiplier = document.getElementById("ScaleMultiplier").value
+      }
 
-        let ChangeSpeed = document.getElementById("ChangeSpeed").checked
-        let SpeedMultiplier = document.getElementById("SpeedMultiplier").value
+      if (Audio) {
+        outputStr += `${baseStr} '${URL}' -x --audio-format mp3 `;
+        if (!Video)
+          outputStr += `${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} `;
+        outputStr += `\n`;
+      }
 
-        let LoopMedia = document.getElementById("LoopMedia").checked
-        let NumLoops = document.getElementById("NumLoops").value
-
-        let ReverseMedia = document.getElementById("ReverseMedia").checked
-
-        let ExtractFrameTime = document.getElementById("ExtractFrameTime").value
-
-        let VolumeMultiplier = document.getElementById("VolumeMultiplierValue").value
-
-        let DaVinci_Resolve_Linux = document.getElementById("DaVinci_Resolve_Linux").checked
-
-        let PowerOp = document.getElementById("PowerOptions-FFMPEG").value
-
-        // Trim media first if selected (Least Computationally Expensive)
-        if (document.getElementById("TrimMedia").checked) {
-            if (InputFileNames.length !== StartTimes.length || InputFileNames.length !== EndTimes.length) {
-                alert("TRIM MEDIA: Number of input files, start times, and end times must be the same.")
-                return false
-            }
-            for (let i = 0; i < InputFileNames.length; i++) {
-                if (selectedFiles.includes(InputFileNames[i])) {
-                    outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -c:v copy -c:a copy -map 0:v -map 0:a "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`
-                }
-            }
-            selectedFiles = TempOutputItems
-        }
-
-        let hwAccelStr = ``
-        if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux) hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`
-        if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux) hwAccelStr = `-init_hw_device vaapi=gpu:/dev/dri/renderD128 -hwaccel vaapi -hwaccel_device gpu`
-
-        let loopStr = ``
-        if (LoopMedia && NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`
-
-        // Handle modification parameters for output files
-        let modifications = ``
-
-        if (GraphicsCardOp !== `None_UseCPU` && !DaVinci_Resolve_Linux) modifications += `-c:v ${GraphicsCardOp} `
-        if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux) modifications += `-preset slow -cq 28 -b:v 0 `
-
-        if (CopyCodecs && CopyVideoCodec && !DaVinci_Resolve_Linux) modifications += `-c:v copy `
-        if (CopyCodecs && CopyAudioCodec && !DaVinci_Resolve_Linux) modifications += `-c:a copy `
-
-        if (DaVinci_Resolve_Linux) modifications += `-c:v mpeg4 -q:v 0 -c:a flac `
-
-        if (VideoAudioMapping && VideoMapping) modifications += `-map 0:v `
-        if (VideoAudioMapping && AudioMapping) modifications += `-map 0:a `
-
-        let vfFilters = ``
-        let afFilters = ``
-
-        if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux) vfFilters += `format=nv12,hwupload=extra_hw_frames=64`
-
-        if (AudioFilterOp === `NormalizeAudio`) afFilters += `loudnorm,`
-
-        if (CustomResolution) {
-            if (TypeOfScaling === `16x9`) {
-                vfFilters += `scale=${Preset_16x9_Dimensions},`
-            } else if (TypeOfScaling === `CustomScaling`) {
-                vfFilters += `scale=iw*${ScaleMultiplier}:ih*${ScaleMultiplier}:-1`
-                if (ScaleType !== `None`) vfFilters += `:flags=${ScaleType},`
-            }
-
-            if (OutputExtensions.includes(`gif`)) vfFilters += `split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse,`
-        }
-
-        if (ReverseMedia) {
-            vfFilters += `reverse,`
-            afFilters += `areverse,`
-        }
-
-        if (ChangeSpeed && SpeedMultiplier !== ``) {
-            vfFilters += `setpts=PTS/${SpeedMultiplier},`
-            afFilters += `atempo=${SpeedMultiplier},`
-        }
-
-        if (VolumeMultiplier) {
-            afFilters += `volume=${VolumeMultiplier},`
-        }
-
-        // Remove the trailing comma from the filters if they are not empty
-        vfFilters = vfFilters.replace(/(^,)|(,$)/g, ``)
-        afFilters = afFilters.replace(/(^,)|(,$)/g, ``)
-
-        let vfStr = `-vf "${vfFilters}" `
-        let afStr = `-af "${afFilters}" `
-
-        if (!CopyVideoCodec && vfFilters != ``) modifications += vfStr
-        if (AudioFilterOp === `RemoveAudio`) modifications += `-an `
-        else if (!CopyAudioCodec && afFilters != ``) modifications += afStr
-
-        if (CustomBitrate && CustomBitrateNum !== ``) modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `
-
-        if (CustomAudioBitrate && CustomAudioBitrateNum !== ``) modifications += `-b:a ${CustomAudioBitrateNum}k `
-
-        if (CustomFramerate && CustomFramerateNum !== ``) modifications += `-r ${CustomFramerateNum} `
-
-        modifications = modifications.trim()
-
-        for (inFile of selectedFiles) {
-            inFile.replaceAll(`$`, `\`$`)
-
-            let outFile
-            if (document.getElementById("ConvertFileType").checked && !(document.getElementById("ExtractFrame").checked) && OutputExtensions.length > 0) { // Use corresponding extensions in OutputExtensions
-                for (ext of OutputExtensions) {
-                    if (document.getElementById("AppendToEnd").checked) outFile = `${removeExt(inFile)} (OUTPUT).${ext}`
-                    else outFile = `(OUTPUT) ${removeExt(inFile)}.${ext}`
-                    outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
-                }
-            } else if (document.getElementById("ExtractFrame").checked) {
-                outputStr = `ffmpeg -i "${inFile}" -ss "${ExtractFrameTime}" -vframes 1 "(FRAME) ${removeExt(inFile)}.png"\n`
-            }
-            else {
-                let ext = inFile.split(`.`).pop();
-                if (document.getElementById("AppendToEnd").checked) outFile = `${inFile} (OUTPUT).${ext}`
-                else outFile = `(OUTPUT) ${inFile}`
-                outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`
-            }
-        }
-
-        if (document.getElementById("TrimMedia").checked) {
-            outputStr += `# Remove Temporary Files\n`
-            for (tempFile of TempOutputItems) {
-                outputStr += `Remove-Item -LiteralPath "${tempFile}"\n`
-            }
-        }
-
-        // Finalize Script
-        outputStr += powerOp(PowerOp);
-        outputStr += finalLine;
-        return true
+      if (!(Video || Audio)) {
+        outputStr += `${baseStr} '${URL}' ${ytdlpHelper(Thumbnail, Subtitles, Comments, Cookies)} --skip-download\n`;
+      }
     }
 
-    if (mostRecentForm === `AudioAndImageToVideo-FORM`) {
-        outputStr += removeNonASCII_PS
+    outputStr += removeNonASCII_PS;
+    outputStr += powerOp(PowerOp);
+    outputStr += finalLine;
+    return true;
+  }
 
-        const textareaFileList = document.getElementById("textarea-AAITV").value.trim().split(`\n`);
-        const files = document.getElementById("fileInput-AAITV").files;
+  if (mostRecentForm === `FFMPEG_GUI-FORM`) {
+    outputStr += removeNonASCII_PS;
 
-        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
+    const textareaFileList = document
+      .getElementById("textarea-FFMPEG")
+      .value.trim()
+      .split(`\n`);
+    const files = document.getElementById("fileInput-FFMPEG").files;
 
-        let selectedFiles = []
-        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
-        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
-
-        NormalizeAudio = document.getElementById("NormalizeAudio-AAITV").checked
-        UseBlackImage = document.getElementById("UseBlackImage").checked
-
-        for (f of selectedFiles) {
-            inFile = removeExt(f)
-            f.replaceAll(`$`, `\`$`)
-            if (f.split(`.`).pop() == `mp3`) {
-                pngStr = UseBlackImage ? `_black.jpg` : `${inFile}.png`
-                normalizeStr = NormalizeAudio ? `-af "loudnorm"` : ``
-                outputStr += `ffmpeg -loop 1 -i "${pngStr}" -i "${inFile}.mp3" ${normalizeStr} -pix_fmt yuv420p -shortest "${inFile}.mp4"\n`
-            } else {
-                alert(`Ensure that ONLY MP3 files are uploaded/entered.`)
-                return false
-            }
-        }
-
-        let PowerOp = document.getElementById("PowerOptions-AAITV").value
-        outputStr += powerOp(PowerOp);
-        outputStr += finalLine
-
-        return true
+    if (files.length === 0 && textareaFileList[0] === ``) {
+      alert("No file names found.");
+      return false;
     }
 
-    if (mostRecentForm === `AddMP3CoverImages-FORM`) {
-        outputStr += removeNonASCII_PS
+    let selectedFiles = [];
+    if (textareaFileList[0] !== ``)
+      for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f));
+    else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name));
 
-        const textareaFileList = document.getElementById("textarea-MP3Cover").value.trim().split(`\n`);
-        const files = document.getElementById("fileInput-MP3Cover").files;
+    let GraphicsCardOp = document.getElementById("GraphicsCardOp").value;
 
-        if (files.length === 0 && textareaFileList[0] === ``) { alert("No file names found."); return false }
+    let InputFileNames = document
+      .getElementById("InputFileNames")
+      .value.split("\n")
+      .filter((item) => item !== "");
+    let TempOutputItems = InputFileNames.map((fileName, index) => {
+      let parts = fileName.split(".");
+      let fileNameWithoutExtension = parts.slice(0, parts.length - 1).join(".");
+      let extension = parts[parts.length - 1];
+      return `(TRIMMED) ${fileNameWithoutExtension} {${index + 1}}.${extension}`;
+    });
+    let StartTimes = document
+      .getElementById("StartTimes")
+      .value.split("\n")
+      .filter((item) => item !== "");
+    let EndTimes = document
+      .getElementById("EndTimes")
+      .value.split("\n")
+      .filter((item) => item !== "");
 
-        let selectedFiles = []
-        if (textareaFileList[0] !== ``) for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f))
-        else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name))
+    let OutputExtensions = document
+      .getElementById("OutputExtensions")
+      .value.split("\n")
+      .filter((item) => item !== "");
 
-        for (mp3File of selectedFiles) {
-            if (mp3File.split(`.`).pop() == `mp3`) {
-                outputStr += `ffmpeg -i "${mp3File}" -i "${removeExt(mp3File)}.png" -c copy -map 0 -map 1 -metadata:s:v comment="Cover (Front)" "${removeExt(mp3File)} (COVER-ADDED).mp3"\n`
-            } else {
-                alert(`Ensure that ONLY MP3 files are uploaded/entered.`)
-                return false
-            }
+    let AudioFilterOp = document.getElementById("AudioFilterOp").value;
+
+    let VideoAudioMapping =
+      document.getElementById("VideoAudioMapping").checked;
+    let VideoMapping = document.getElementById("VideoMapping").checked;
+    let AudioMapping = document.getElementById("AudioMapping").checked;
+
+    let CopyCodecs = document.getElementById("CopyCodecs").checked;
+    let CopyVideoCodec = document.getElementById("CopyVideoCodec").checked;
+    let CopyAudioCodec = document.getElementById("CopyAudioCodec").checked;
+
+    let CustomBitrate = document.getElementById("CustomBitrate").checked;
+    let CustomBitrateNum = document.getElementById("CustomBitrateNum").value;
+
+    let CustomAudioBitrate =
+      document.getElementById("CustomAudioBitrate").checked;
+    let CustomAudioBitrateNum = document.getElementById(
+      "CustomAudioBitrateNum",
+    ).value;
+
+    let CustomFramerate = document.getElementById("CustomFramerate").checked;
+    let CustomFramerateNum =
+      document.getElementById("CustomFramerateNum").value;
+
+    let CustomResolution = document.getElementById("CustomResolution").checked;
+    let TypeOfScaling;
+    if (document.getElementById("16x9_AspectRatios").checked) {
+      TypeOfScaling = "16x9";
+    } else if (document.getElementById("CustomScaling").checked) {
+      TypeOfScaling = "CustomScaling";
+    }
+    let Preset_16x9_Dimensions = document.getElementById(
+      "Preset_16x9_Dimensions",
+    ).value;
+    let ScaleType = document.getElementById("ScaleType").value;
+    let ScaleMultiplier = document.getElementById("ScaleMultiplier").value;
+
+    let ChangeSpeed = document.getElementById("ChangeSpeed").checked;
+    let SpeedMultiplier = document.getElementById("SpeedMultiplier").value;
+
+    let LoopMedia = document.getElementById("LoopMedia").checked;
+    let NumLoops = document.getElementById("NumLoops").value;
+
+    let ReverseMedia = document.getElementById("ReverseMedia").checked;
+
+    let ExtractFrameTime = document.getElementById("ExtractFrameTime").value;
+
+    let VolumeMultiplier = document.getElementById(
+      "VolumeMultiplierValue",
+    ).value;
+
+    let DaVinci_Resolve_Linux = document.getElementById(
+      "DaVinci_Resolve_Linux",
+    ).checked;
+    let DR_Linux_AudioOption = document.getElementById(
+      "DR_Linux_AudioOption",
+    ).value;
+
+    let PowerOp = document.getElementById("PowerOptions-FFMPEG").value;
+
+    // Trim media first if selected (Least Computationally Expensive)
+    if (document.getElementById("TrimMedia").checked) {
+      if (
+        InputFileNames.length !== StartTimes.length ||
+        InputFileNames.length !== EndTimes.length
+      ) {
+        alert(
+          "TRIM MEDIA: Number of input files, start times, and end times must be the same.",
+        );
+        return false;
+      }
+      for (let i = 0; i < InputFileNames.length; i++) {
+        if (selectedFiles.includes(InputFileNames[i])) {
+          outputStr += `ffmpeg -ss "${StartTimes[i]}" -to "${EndTimes[i]}" -i "${InputFileNames[i].replaceAll(`$`, `\`$`)}" -c:v copy -c:a copy -map 0:v -map 0:a "${TempOutputItems[i].replaceAll(`$`, `\`$`)}"\n`;
         }
-
-        let PowerOp = document.getElementById("PowerOptions-MP3Cover").value
-        outputStr += powerOp(PowerOp);
-        outputStr += finalLine
-
-        return true
+      }
+      selectedFiles = TempOutputItems;
     }
 
-    if (mostRecentForm === `RemoveLineBreaks-FORM`) {
-        rlbOutput = document.getElementById("RemoveLineBreaks-Output").textContent;
-        if (rlbOutput.trim() === ``) {
-            alert("Output cannot be empty!");
-            return false
-        }
+    let hwAccelStr = ``;
+    if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux)
+      hwAccelStr = `-hwaccel cuda -hwaccel_output_format cuda`;
+    if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux)
+      hwAccelStr = `-init_hw_device vaapi=gpu:/dev/dri/renderD128 -hwaccel vaapi -hwaccel_device gpu`;
 
-        outputStr = rlbOutput
-        return true
+    let loopStr = ``;
+    if (LoopMedia && NumLoops !== ``) loopStr = `-stream_loop ${NumLoops}`;
+
+    // Handle modification parameters for output files
+    let modifications = ``;
+
+    if (GraphicsCardOp !== `None_UseCPU` && !DaVinci_Resolve_Linux)
+      modifications += `-c:v ${GraphicsCardOp} `;
+    if (GraphicsCardOp === `h264_nvenc` && !DaVinci_Resolve_Linux)
+      modifications += `-preset slow -cq 28 -b:v 0 `;
+
+    if (CopyCodecs && CopyVideoCodec && !DaVinci_Resolve_Linux)
+      modifications += `-c:v copy `;
+    if (CopyCodecs && CopyAudioCodec && !DaVinci_Resolve_Linux)
+      modifications += `-c:a copy `;
+
+    let DR_Linux_AudioStr = ``
+    if (DR_Linux_AudioOption !== `REMOVE`) DR_Linux_AudioStr = `-c:a ${DR_Linux_AudioOption}`
+
+    if (DaVinci_Resolve_Linux) modifications += `-c:v mpeg4 -q:v 0 ${DR_Linux_AudioStr} `;
+
+    if (VideoAudioMapping && VideoMapping) modifications += `-map 0:v `;
+    if (VideoAudioMapping && AudioMapping) modifications += `-map 0:a `;
+
+    let vfFilters = ``;
+    let afFilters = ``;
+
+    if (GraphicsCardOp === `h264_vaapi` && !DaVinci_Resolve_Linux)
+      vfFilters += `format=nv12,hwupload=extra_hw_frames=64`;
+
+    if (AudioFilterOp === `NormalizeAudio` && !DaVinci_Resolve_Linux)
+      afFilters += `loudnorm,`;
+
+    if (CustomResolution) {
+      if (TypeOfScaling === `16x9`) {
+        vfFilters += `scale=${Preset_16x9_Dimensions},`;
+      } else if (TypeOfScaling === `CustomScaling`) {
+        vfFilters += `scale=iw*${ScaleMultiplier}:ih*${ScaleMultiplier}:-1`;
+        if (ScaleType !== `None`) vfFilters += `:flags=${ScaleType},`;
+      }
+
+      if (OutputExtensions.includes(`gif`))
+        vfFilters += `split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse,`;
     }
 
-    if (mostRecentForm === `FileName_UrlConverter-FORM`) {
-        let fileUrlOutput = fileUrlConverter()
-        if (fileUrlOutput === undefined) {
-            alert("No input provided.");
-            return false
-        }
-        else if (!fileUrlOutput) {
-            alert(`Ensure that your file names adhere to the valid format for your specified platform.`)
-            return false
-        }
-
-        outputStr = fileUrlOutput
-        return true
+    if (ReverseMedia) {
+      vfFilters += `reverse,`;
+      afFilters += `areverse,`;
     }
 
-    /*
+    if (ChangeSpeed && SpeedMultiplier !== ``) {
+      vfFilters += `setpts=PTS/${SpeedMultiplier},`;
+      afFilters += `atempo=${SpeedMultiplier},`;
+    }
+
+    if (VolumeMultiplier) {
+      afFilters += `volume=${VolumeMultiplier},`;
+    }
+
+    // Remove the trailing comma from the filters if they are not empty
+    vfFilters = vfFilters.replace(/(^,)|(,$)/g, ``);
+    afFilters = afFilters.replace(/(^,)|(,$)/g, ``);
+
+    let vfStr = `-vf "${vfFilters}" `;
+    let afStr = `-af "${afFilters}" `;
+
+    if (!CopyVideoCodec && vfFilters != ``) modifications += vfStr;
+    if (
+      (AudioFilterOp === `RemoveAudio` && !DaVinci_Resolve_Linux) ||
+      (DaVinci_Resolve_Linux && DR_Linux_AudioOption === `REMOVE`)
+    )
+      modifications += `-an `;
+    else if (!CopyAudioCodec && afFilters != ``) modifications += afStr;
+
+    if (CustomBitrate && CustomBitrateNum !== ``)
+      modifications += `-b:v ${CustomBitrateNum}k -bufsize ${CustomBitrateNum}k `;
+
+    if (CustomAudioBitrate && CustomAudioBitrateNum !== ``)
+      modifications += `-b:a ${CustomAudioBitrateNum}k `;
+
+    if (CustomFramerate && CustomFramerateNum !== ``)
+      modifications += `-r ${CustomFramerateNum} `;
+
+    modifications = modifications.trim();
+
+    for (inFile of selectedFiles) {
+      inFile.replaceAll(`$`, `\`$`);
+
+      let outFile;
+      if (
+        document.getElementById("ConvertFileType").checked &&
+        !document.getElementById("ExtractFrame").checked &&
+        OutputExtensions.length > 0
+      ) {
+        // Use corresponding extensions in OutputExtensions
+        for (ext of OutputExtensions) {
+          if (document.getElementById("AppendToEnd").checked)
+            outFile = `${removeExt(inFile)} (OUTPUT).${ext}`;
+          else outFile = `(OUTPUT) ${removeExt(inFile)}.${ext}`;
+          outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`;
+        }
+      } else if (document.getElementById("ExtractFrame").checked) {
+        outputStr = `ffmpeg -i "${inFile}" -ss "${ExtractFrameTime}" -vframes 1 "(FRAME) ${removeExt(inFile)}.png"\n`;
+      } else {
+        let ext = inFile.split(`.`).pop();
+        if (document.getElementById("AppendToEnd").checked)
+          outFile = `${inFile} (OUTPUT).${ext}`;
+        else outFile = `(OUTPUT) ${inFile}`;
+        outputStr += `ffmpeg ${hwAccelStr} ${loopStr} -i "${inFile}" ${modifications} "${outFile}"\n`;
+      }
+    }
+
+    if (document.getElementById("TrimMedia").checked) {
+      outputStr += `# Remove Temporary Files\n`;
+      for (tempFile of TempOutputItems) {
+        outputStr += `Remove-Item -LiteralPath "${tempFile}"\n`;
+      }
+    }
+
+    // Finalize Script
+    outputStr += powerOp(PowerOp);
+    outputStr += finalLine;
+    return true;
+  }
+
+  if (mostRecentForm === `AudioAndImageToVideo-FORM`) {
+    outputStr += removeNonASCII_PS;
+
+    const textareaFileList = document
+      .getElementById("textarea-AAITV")
+      .value.trim()
+      .split(`\n`);
+    const files = document.getElementById("fileInput-AAITV").files;
+
+    if (files.length === 0 && textareaFileList[0] === ``) {
+      alert("No file names found.");
+      return false;
+    }
+
+    let selectedFiles = [];
+    if (textareaFileList[0] !== ``)
+      for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f));
+    else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name));
+
+    NormalizeAudio = document.getElementById("NormalizeAudio-AAITV").checked;
+    UseBlackImage = document.getElementById("UseBlackImage").checked;
+
+    for (f of selectedFiles) {
+      inFile = removeExt(f);
+      f.replaceAll(`$`, `\`$`);
+      if (f.split(`.`).pop() == `mp3`) {
+        pngStr = UseBlackImage ? `_black.jpg` : `${inFile}.png`;
+        normalizeStr = NormalizeAudio ? `-af "loudnorm"` : ``;
+        outputStr += `ffmpeg -loop 1 -i "${pngStr}" -i "${inFile}.mp3" ${normalizeStr} -pix_fmt yuv420p -shortest "${inFile}.mp4"\n`;
+      } else {
+        alert(`Ensure that ONLY MP3 files are uploaded/entered.`);
+        return false;
+      }
+    }
+
+    let PowerOp = document.getElementById("PowerOptions-AAITV").value;
+    outputStr += powerOp(PowerOp);
+    outputStr += finalLine;
+
+    return true;
+  }
+
+  if (mostRecentForm === `AddMP3CoverImages-FORM`) {
+    outputStr += removeNonASCII_PS;
+
+    const textareaFileList = document
+      .getElementById("textarea-MP3Cover")
+      .value.trim()
+      .split(`\n`);
+    const files = document.getElementById("fileInput-MP3Cover").files;
+
+    if (files.length === 0 && textareaFileList[0] === ``) {
+      alert("No file names found.");
+      return false;
+    }
+
+    let selectedFiles = [];
+    if (textareaFileList[0] !== ``)
+      for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f));
+    else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name));
+
+    for (mp3File of selectedFiles) {
+      if (mp3File.split(`.`).pop() == `mp3`) {
+        outputStr += `ffmpeg -i "${mp3File}" -i "${removeExt(mp3File)}.png" -c copy -map 0 -map 1 -metadata:s:v comment="Cover (Front)" "${removeExt(mp3File)} (COVER-ADDED).mp3"\n`;
+      } else {
+        alert(`Ensure that ONLY MP3 files are uploaded/entered.`);
+        return false;
+      }
+    }
+
+    let PowerOp = document.getElementById("PowerOptions-MP3Cover").value;
+    outputStr += powerOp(PowerOp);
+    outputStr += finalLine;
+
+    return true;
+  }
+
+  if (mostRecentForm === `RemoveLineBreaks-FORM`) {
+    rlbOutput = document.getElementById("RemoveLineBreaks-Output").textContent;
+    if (rlbOutput.trim() === ``) {
+      alert("Output cannot be empty!");
+      return false;
+    }
+
+    outputStr = rlbOutput;
+    return true;
+  }
+
+  if (mostRecentForm === `FileName_UrlConverter-FORM`) {
+    let fileUrlOutput = fileUrlConverter();
+    if (fileUrlOutput === undefined) {
+      alert("No input provided.");
+      return false;
+    } else if (!fileUrlOutput) {
+      alert(
+        `Ensure that your file names adhere to the valid format for your specified platform.`,
+      );
+      return false;
+    }
+
+    outputStr = fileUrlOutput;
+    return true;
+  }
+
+  /*
     if (mostRecentForm === `RemoveNonASCII-FORM`) {
         // Handled in HTML file
     }
     */
 
-    // if (mostRecentForm === `ChangeLetterCase-FORM`) {
-    //     // Handled in HTML file
-    // }
+  // if (mostRecentForm === `ChangeLetterCase-FORM`) {
+  //     // Handled in HTML file
+  // }
 
-    if (mostRecentForm === `Listify-FORM`) {
-        outputStr = listify_basic()
-        return true
-    }
+  if (mostRecentForm === `Listify-FORM`) {
+    outputStr = listify_basic();
+    return true;
+  }
 }
 
 document.getElementById("copyButton").addEventListener("click", function () {
-    const copyStatusText = document.getElementById("copyStatusText")
-    copyStatusText.textContent = "Not Copied! View alert or check input."
-    copyStatusText.style.color = "red"
-    if (outputStrBuilder()) {
-        navigator.clipboard.writeText(outputStr);
-        copyStatusText.textContent = "Copied!"
-        copyStatusText.style.color = "lime"
-    }
-})
+  const copyStatusText = document.getElementById("copyStatusText");
+  copyStatusText.textContent = "Not Copied! View alert or check input.";
+  copyStatusText.style.color = "red";
+  if (outputStrBuilder()) {
+    navigator.clipboard.writeText(outputStr);
+    copyStatusText.textContent = "Copied!";
+    copyStatusText.style.color = "lime";
+  }
+});
 
 // document.getElementById("downloadButton").addEventListener("click", function () {
 //     if (scriptBuilder()) {
@@ -417,7 +514,6 @@ document.getElementById("copyButton").addEventListener("click", function () {
 //         URL.revokeObjectURL(url);
 //         document.body.removeChild(a);
 //     }
-
 
 //     // const files = document.getElementById("fileInput").files;
 //     // if (files.length === 0) {

@@ -24,6 +24,9 @@
                     onclick="showForm('FFMPEG_GUI-FORM')">
                     FFMPEG GUI
                 </button>
+                <button class="standardBtn" onclick="showForm('ExtractAllAudioTracks-FORM')">
+                    Extract All Audio Tracks
+                </button>
                 <button class="standardBtn" onclick="showForm('AudioAndImageToVideo-FORM')">
                     Audio + Image -> Video
                 </button>
@@ -522,6 +525,47 @@
                     <option value="Hibernate">Hibernate</option>
                     <option value="Shut Down">Shut Down</option>
                 </select>
+            </fieldset>
+        </form>
+
+        <form id="ExtractAllAudioTracks-FORM">
+            <fieldset>
+                <legend>Extract All Audio Tracks</legend>
+
+                <p>
+                    Use this tool to extract all audio tracks from your video files.
+                </p>
+
+                <fieldset>
+                    <input class="fileInput" type="file" id="fileInput-EAAT" multiple />
+                    <input class="clearFiles" id="clearFiles-EAAT" style="font-size: large;" type="button"
+                        id="clear-fileInput-EAAT" value="Clear">
+                    <ul style="font-family: monospace; font-size: medium;" id="fileList-EAAT"></ul>
+                </fieldset>
+
+                OR, you can input either all file names here (One item per line):
+                <textarea id="textarea-EAAT" rows="10"></textarea>
+                (If there is content in this textarea, files will be ignored.)
+
+                <p>
+                    Enter the number of audio tracks each file has:
+                    <input type="number" id="NumAudioTracks_EAAT" name="NumAudioTracks_EAAT" min="1" value="1" />
+                </p>
+
+                <p>
+                    Choose your output file type:
+                    <select id="OutputExt_EEAT" name="OutputExt_EEAT">
+                        <option value="wav">wav (Near-Instant)</option>
+                        <option value="flac">flac</option>
+                        <option value="mp3">mp3</option>
+                        <option value="m4a">m4a</option>
+                    </select>
+                </p>
+
+                <p>
+                    Choose your bitrate (leave blank for defaults):
+                    <input type="number" id="Bitrate_EAAT" name="Bitrate_EAAT" min="0"> kpbs
+                </p>
             </fieldset>
         </form>
 

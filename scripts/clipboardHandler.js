@@ -260,10 +260,12 @@ function outputStrBuilder() {
     if (CopyCodecs && CopyAudioCodec && !DaVinci_Resolve_Linux)
       modifications += `-c:a copy `;
 
-    let DR_Linux_AudioStr = ``
-    if (DR_Linux_AudioOption !== `REMOVE`) DR_Linux_AudioStr = `-c:a ${DR_Linux_AudioOption}`
+    let DR_Linux_AudioStr = ``;
+    if (DR_Linux_AudioOption !== `REMOVE`)
+      DR_Linux_AudioStr = `-c:a ${DR_Linux_AudioOption}`;
 
-    if (DaVinci_Resolve_Linux) modifications += `-c:v mpeg4 -q:v 0 ${DR_Linux_AudioStr} `;
+    if (DaVinci_Resolve_Linux)
+      modifications += `-c:v mpeg4 -q:v 0 ${DR_Linux_AudioStr} `;
 
     if (VideoAudioMapping && VideoMapping) modifications += `-map 0:v `;
     if (VideoAudioMapping && AudioMapping) modifications += `-map 0:a `;
@@ -366,6 +368,44 @@ function outputStrBuilder() {
     // Finalize Script
     outputStr += powerOp(PowerOp);
     outputStr += finalLine;
+    return true;
+  }
+
+  if (mostRecentForm === `ExtractAllAudioTracks-FORM`) {
+    outputStr += removeNonASCII_PS;
+
+    const textareaFileList = document
+      .getElementById("textarea-EAAT")
+      .value.trim()
+      .split(`\n`);
+    const files = document.getElementById("fileInput-EAAT").files;
+
+    if (files.length === 0 && textareaFileList[0] === ``) {
+      alert("No file names found.");
+      return false;
+    }
+
+    let selectedFiles = [];
+    if (textareaFileList[0] !== ``)
+      for (f of textareaFileList) selectedFiles.push(removeNonASCII_JS(f));
+    else for (f of files) selectedFiles.push(removeNonASCII_JS(f.name));
+
+    let NumAudioTracks_EAAT = document.getElementById("NumAudioTracks_EAAT").value;
+    let OutputExt_EEAT = document.getElementById("OutputExt_EEAT").value;
+    let Bitrate_EEAT = document.getElementById("Bitrate_EAAT").value;
+
+    let bitrateStr = ``
+    if (Bitrate_EEAT.trim() !== ``) bitrateStr = `-b:a ${Bitrate_EEAT}k `
+
+    for (f of selectedFiles) {
+        outFileNoExt = removeExt(f)
+        for (i = 0; i < NumAudioTracks_EAAT; i++) {
+            outputStr += `ffmpeg -i "${removeNonASCII_JS(f)}" -map 0:a:${i} ${bitrateStr} "(OUTPUT) ${outFileNoExt} (TRACK ${i+1}).${OutputExt_EEAT}"\n`
+        }
+    }
+
+    outputStr += finalLine
+
     return true;
   }
 
